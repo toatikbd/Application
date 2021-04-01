@@ -26,6 +26,8 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{ asset('admin') }}/css/themes/all-themes.css" rel="stylesheet" />
+
+    @stack('css')
 </head>
 
 <body class="theme-red">
@@ -815,6 +817,9 @@
 
 <!-- Demo Js -->
 <script src="{{ asset('admin') }}/js/demo.js"></script>
+
+
+@stack('js')
 </body>
 
 </html>
