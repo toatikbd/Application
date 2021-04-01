@@ -29,10 +29,8 @@ Route::get('/', function() {
 
 //Admin route
 Route::get('/test', function (){
-   return view('layouts.admin');
+   return view('admin.dashboard.index');
 });
-Route::get('/index', function (){
-    return view('admin.dashboard.index');
-});
+
 
 //end Admin route
