@@ -8211,3 +8211,33 @@ html.ie11 .dropdown-menu ul.menu li a {
 
 html.ie11 .bs-searchbox .form-control {
   width: 90%; }
+
+
+
+/*===========
+custom style===========*/
+.custom-right-align{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.right-align-task-btn{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.breadcrumb-right-align{
+    position: absolute;
+    right: 15px;
+    top: 88px;
+}
+.text-dec-none:hover{
+    text-decoration: none;
+}
+.cursor-pointer{
+    cursor: pointer!important;
+}
+
+
+/*============
+end custom style==========*/

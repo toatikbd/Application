@@ -31,10 +31,11 @@
         </div>
 
         <div class="flex-w m-t-10 m-b-10">
-            <a href="#" class="size3 flex-c-m how-social trans-04 m-r-6">
+            @if (Route::has('login'))
+            <a href="{{ route('login') }}" class="size3 flex-c-m how-social trans-04 m-r-6">
                 <i class="fa fa-sign-in"></i>
             </a>
-
+            @endif
             <a href="#" class="size3 flex-c-m how-social trans-04 m-r-6">
                 <i class="fa fa-lock"></i>
             </a>
