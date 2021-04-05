@@ -7,7 +7,7 @@
         </div>
         <div class="row clearfix">
             <div class="row">
-                <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="card">
                         <div class="body">
                             <form>
@@ -24,13 +24,63 @@
                                     </div>
                                 </div>
                                 <div class="text-center">
-                                    <button type="button" class="btn btn-primary btn-lg m-t-15 waves-effect">Create</button>
+                                    <button type="submit" class="btn btn-primary btn-lg m-t-15 waves-effect">Create</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                     <!-- #END# Vertical Layout -->
                 </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>All Project</h2>
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-hover dashboard-task-infos">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Title</th>
+                                            <th>Description</th>
+                                            <th class="text-right">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Task A</td>
+                                            <td>John Doe</td>
+                                            <td class="text-right">
+                                                <button type="button" class="btn btn-primary btn-xs waves-effect">
+                                                    <i class="material-icons">visibility</i>
+                                                </button>
+                                                <button type="button" class="btn btn-warning btn-xs waves-effect">
+                                                    <i class="material-icons">edit</i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Task B</td>
+                                            <td>John Doe</td>
+                                            <td class="text-right">
+                                                <button type="button" class="btn btn-primary btn-xs waves-effect">
+                                                    <i class="material-icons">visibility</i>
+                                                </button>
+                                                <button type="button" class="btn btn-warning btn-xs waves-effect">
+                                                    <i class="material-icons">edit</i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

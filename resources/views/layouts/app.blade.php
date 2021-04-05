@@ -22,14 +22,14 @@
 
     <!-- Animation Css -->
     <link href="{{ asset('admin') }}/plugins/animate-css/animate.css" rel="stylesheet" />
-
+    @stack('css')
     <!-- Custom Css -->
     <link href="{{ asset('admin') }}/css/style.css" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{ asset('admin') }}/css/themes/all-themes.css" rel="stylesheet" />
 
-    @stack('css')
+
 </head>
 
 <body class="theme-red">
@@ -82,22 +82,18 @@
 
 <!-- Jquery Core Js -->
 <script src="{{ asset('admin') }}/plugins/jquery/jquery.min.js"></script>
-
 <!-- Bootstrap Core Js -->
 <script src="{{ asset('admin') }}/plugins/bootstrap/js/bootstrap.js"></script>
-
 <!-- Select Plugin Js -->
 <script src="{{ asset('admin') }}/plugins/bootstrap-select/js/bootstrap-select.js"></script>
-
 <!-- Slimscroll Plugin Js -->
 <script src="{{ asset('admin') }}/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-
 <!-- Waves Effect Plugin Js -->
 <script src="{{ asset('admin') }}/plugins/node-waves/waves.js"></script>
-
+<!-- Jquery CountTo Plugin Js -->
+<script src="{{ asset('admin') }}/plugins/jquery-countto/jquery.countTo.js"></script>
 <!-- Custom Js -->
 <script src="{{ asset('admin') }}/js/admin.js"></script>
-
 <!-- Demo Js -->
 <script src="{{ asset('admin') }}/js/demo.js"></script>
 

@@ -7668,7 +7668,7 @@ fieldset[disabled] .form-control {
         display: inline-flex;
         vertical-align: middle;
         width: 100%;
-        padding: 10px 13px; }
+        padding: 2px 12px; }
         .sidebar .menu .list a:hover, .sidebar .menu .list a:active, .sidebar .menu .list a:focus {
           text-decoration: none !important; }
         .sidebar .menu .list a small {

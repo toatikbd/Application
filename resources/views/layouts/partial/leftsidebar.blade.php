@@ -43,16 +43,16 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-            <li class="active">
-                <a href="{{ route('project.index') }}">
+            <li  class="{{ Request::is('project*') ? 'active' : '' }}">
+                <a href="{{ route('project.create') }}">
                     <i class="material-icons">work</i>
                     <span>All Project</span>
                 </a>
             </li>
-            <li>
-                <a href="../helper-classes.html">
+            <li class="{{ Request::is('preliminary-work*') ? 'active' : '' }}">
+                <a href="{{ route('preliminary-work.index') }}">
                     <i class="material-icons">layers</i>
-                    <span>Helper Classes</span>
+                    <span>Preliminary Work</span>
                 </a>
             </li>
         </ul>

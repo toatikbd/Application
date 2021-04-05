@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h2>All Projects <span class="badge bg-blue"></span></h2>
+            <h2>All Projects <span class="badge bg-blue">23</span></h2>
         </div>
         <div class="row clearfix">
             <!-- Task Info -->

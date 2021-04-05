@@ -28,8 +28,8 @@ Route::get('/', function() {
 });
 
 Route::resource('/project', App\Http\Controllers\ProjectController::class);
-
-
+Route::resource('/preliminary-work', App\Http\Controllers\PreliminaryWorkController::class);
+Route::resource('/site-evaluation', \App\Http\Controllers\SiteEvaluationController::class);
 
 //Admin route
 
