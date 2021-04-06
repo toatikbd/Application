@@ -49,6 +49,12 @@
                     <span>All Project</span>
                 </a>
             </li>
+            <li class="{{ Request::is('worker*') ? 'active' : '' }}">
+                <a href="{{ route('worker.index') }}">
+                    <i class="material-icons">layers</i>
+                    <span>Add Worker</span>
+                </a>
+            </li>
             <li class="{{ Request::is('preliminary-work*') ? 'active' : '' }}">
                 <a href="{{ route('preliminary-work.index') }}">
                     <i class="material-icons">layers</i>

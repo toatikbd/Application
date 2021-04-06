@@ -29,7 +29,9 @@ Route::get('/', function() {
 
 Route::resource('/project', App\Http\Controllers\ProjectController::class);
 Route::resource('/preliminary-work', App\Http\Controllers\PreliminaryWorkController::class);
-Route::resource('/site-evaluation', \App\Http\Controllers\SiteEvaluationController::class);
+Route::resource('/site-evaluation', App\Http\Controllers\SiteEvaluationController::class);
+Route::resource('/worker', App\Http\Controllers\WorkerController::class);
+
 
 //Admin route
 

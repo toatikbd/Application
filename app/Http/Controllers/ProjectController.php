@@ -25,7 +25,10 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view ('admin.project.create');
+        $projects = Project::latest()->get();
+//        return view('admin.slider.index', compact('sliders'));
+
+        return view ('admin.project.create', compact('projects'));
     }
 
     /**
@@ -37,15 +40,16 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required'
+            'name' => 'required',
+            'description' => 'required'
         ]);
         $project = new Project();
         $project->name = $request->name;
         $project->slug = Str::slug($request-> name);
-        $project->description = nullValue();
+        $project->description = $request->description;
         $project->save();
 
-        return redirect()->route('project.index');
+        return redirect()->route('project.create');
     }
 
     /**
@@ -65,9 +69,10 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function edit(Project $project)
+    public function edit($id)
     {
-        //
+        $project = Project::find($id);
+        return view('admin.project.edit',compact('project'));
     }
 
     /**
@@ -77,9 +82,14 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $project)
+    public function update(Request $request, $id)
     {
-        //
+        $project = Project::find($id);
+        $project->name = $request->name;
+        $project->slug = Str::slug($request->name);
+        $project->description = $request->description;
+        $project->save();
+        return redirect()->route('project.create');
     }
 
     /**
@@ -88,8 +98,9 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Project $project)
+    public function destroy($id)
     {
-        //
+        Project::find($id)->delete();
+        return redirect()->back();
     }
 }
