@@ -52,7 +52,7 @@
             <li class="{{ Request::is('worker*') ? 'active' : '' }}">
                 <a href="{{ route('worker.index') }}">
                     <i class="material-icons">layers</i>
-                    <span>Add Worker</span>
+                    <span>Add Supervisor</span>
                 </a>
             </li>
             <li class="{{ Request::is('preliminary-work*') ? 'active' : '' }}">

@@ -15,6 +15,11 @@ class CreateWorkersTable extends Migration
     {
         Schema::create('workers', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->unique();
+            $table->string('slug');
+            $table->string('job_title');
+            $table->string('department');
+            $table->string('image')->default('default.png');
             $table->timestamps();
         });
     }

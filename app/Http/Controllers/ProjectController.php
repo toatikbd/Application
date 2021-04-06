@@ -26,8 +26,6 @@ class ProjectController extends Controller
     public function create()
     {
         $projects = Project::latest()->get();
-//        return view('admin.slider.index', compact('sliders'));
-
         return view ('admin.project.create', compact('projects'));
     }
 
