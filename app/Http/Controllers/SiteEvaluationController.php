@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use App\Models\SiteEvaluation;
 use App\Models\Worker;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -45,8 +46,8 @@ class SiteEvaluationController extends Controller
             'task_description' => 'required',
             'project_id' => 'required',
             'worker_id' => 'required',
-            'startDate' => 'required',
-            'endDate' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
         ]);
 
         $image = $request->file('file');
@@ -60,8 +61,11 @@ class SiteEvaluationController extends Controller
         $siteEvaluation->slug = Str::slug($request->task_title);
         $siteEvaluation->task_description = $request->task_description;
         $siteEvaluation->task_progress = $request->task_progress;
-        $siteEvaluation->start_date = $request->startDate;
-        $siteEvaluation->end_date = $request->endDate;
+//        $siteEvaluation->start_date = $request->start_date;
+//        $siteEvaluation->end_date = $request->end_date;
+        $siteEvaluation->new = Carbon::today($request->start_date);
+        $siteEvaluation->new = Carbon::today($request->end_date);
+//        $newYear = new Carbon('first day of January 2016');
         $siteEvaluation->file = $imageName;
         if (isset($request->status)) {
             $siteEvaluation->status = true;
