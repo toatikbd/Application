@@ -1,12 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="UTF-8">
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta charset="utf-8">
+{{--    <meta name="viewport" content="width=device-width, initial-scale=1">--}}
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>TZ Admin</title>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'TZ Admin') }}</title>
+
+
     <!-- Favicon-->
     <link rel="icon" href="{{ asset('admin') }}/favicon.ico" type="image/x-icon">
 
@@ -29,56 +33,58 @@
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{ asset('admin') }}/css/themes/all-themes.css" rel="stylesheet" />
 
-
 </head>
+<body>
+<div id="app" class="theme-red">
 
-<body class="theme-red">
-<!-- Page Loader -->
-<div class="page-loader-wrapper">
-    <div class="loader">
-        <div class="preloader">
-            <div class="spinner-layer pl-red">
-                <div class="circle-clipper left">
-                    <div class="circle"></div>
-                </div>
-                <div class="circle-clipper right">
-                    <div class="circle"></div>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
                 </div>
             </div>
+            <p>Please wait...</p>
         </div>
-        <p>Please wait...</p>
     </div>
-</div>
-<!-- #END# Page Loader -->
-<!-- Overlay For Sidebars -->
-<div class="overlay"></div>
-<!-- #END# Overlay For Sidebars -->
-<!-- Search Bar -->
-<div class="search-bar">
-    <div class="search-icon">
-        <i class="material-icons">search</i>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <div class="search-icon">
+            <i class="material-icons">search</i>
+        </div>
+        <input type="text" placeholder="START TYPING...">
+        <div class="close-search">
+            <i class="material-icons">close</i>
+        </div>
     </div>
-    <input type="text" placeholder="START TYPING...">
-    <div class="close-search">
-        <i class="material-icons">close</i>
-    </div>
-</div>
-<!-- #END# Search Bar -->
-<!-- Top Bar -->
-@include('layouts.partial.topbar')
-<!-- #Top Bar -->
-<section>
-    <!-- Left Sidebar -->
-@include('layouts.partial.leftsidebar')
-<!-- #END# Left Sidebar -->
-    <!-- Right Sidebar -->
-@include('layouts.partial.rightsidebar')
-<!-- #END# Right Sidebar -->
-</section>
+    <!-- #END# Search Bar -->
+    <!-- Top Bar -->
+    @include('layouts.partial.topbar')
+    <!-- #Top Bar -->
+    <section>
+        <!-- Left Sidebar -->
+    @include('layouts.partial.leftsidebar')
+    <!-- #END# Left Sidebar -->
+        <!-- Right Sidebar -->
+    @include('layouts.partial.rightsidebar')
+    <!-- #END# Right Sidebar -->
+    </section>
 
-<section class="content">
-    @yield('content')
-</section>
+    <section class="content">
+        @yield('content')
+    </section>
+</div>
+
 
 <!-- Jquery Core Js -->
 <script src="{{ asset('admin') }}/plugins/jquery/jquery.min.js"></script>
@@ -99,6 +105,26 @@
 
 
 @stack('js')
-</body>
+<script>
+    $(function () {
+        //Widgets count
+        $('.count-to').countTo();
 
+        //Sales count to
+        $('.sales-count-to').countTo({
+            formatter: function (value, options) {
+                return '$' + value.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, ' ').replace('.', ',');
+            }
+        });
+
+        initRealTimeChart();
+        initDonutChart();
+        initSparkline();
+    });
+</script>
+
+</body>
 </html>
+
+
+

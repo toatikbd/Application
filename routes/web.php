@@ -13,19 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/', function () {
+    return view('welcome');
+});
 
-//Auth::routes(['register' => false]);
-Auth::routes();
+Auth::routes(['register' => false]);
+//Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('/', function() {
-    return view('layouts.website');
-});
+//Route::get('/', function() {
+//    return view('layouts.website');
+//});
 
 Route::resource('/project', App\Http\Controllers\ProjectController::class);
 Route::resource('/preliminary-work', App\Http\Controllers\PreliminaryWorkController::class);

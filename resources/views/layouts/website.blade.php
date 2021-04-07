@@ -93,14 +93,14 @@
 
 </script>
 <!--===============================================================================================-->
-<script src="vendor/tilt/tilt.jquery.min.js"></script>
+<script src="{{ asset('website') }}/vendor/tilt/tilt.jquery.min.js"></script>
 <script >
     $('.js-tilt').tilt({
         scale: 1.1
     })
 </script>
 <!--===============================================================================================-->
-<script src="js/main.js"></script>
+<script src="{{ asset('website') }}/js/main.js"></script>
 
 </body>
 </html>
