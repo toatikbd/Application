@@ -23,7 +23,23 @@
                         </a>
                     </div>
                 </div>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <strong> Whoops!</strong> There were some problems with your input<br><br>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                @if(Session::has('success'))
+                    <div class="alert alert success" role="alert">
+                        {{Session::get('success')}}
+                    </div>
+                @endif
             </div>
+
             <form action="{{ route('worker.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
@@ -57,7 +73,7 @@
                             <div class="form-group">
                                 <div>
                                     <input id="photo_upload" type="file" name="image" class="btn btn-primary btn-lg waves-effect" onchange="previewFiles()">
-                                    <div id="preview"></div>
+                                    <div class="preview"></div>
                                 </div>
                             </div>
                             <div class="text-center">
@@ -81,34 +97,6 @@
 
 @push('js')
     <script type="text/javascript">
-        function previewFiles() {
 
-            var preview = document.querySelector('#preview');
-            var files   = document.querySelector('input[type=file]').files;
-
-            function readAndPreview(file) {
-
-                // Make sure `file.name` matches our extensions criteria
-                if ( /\.(jpe?g|png|gif)$/i.test(file.name) ) {
-                    var reader = new FileReader();
-
-                    reader.addEventListener("load", function () {
-                        var image = new Image();
-                        image.height = 100;
-                        image.title = file.name;
-                        image.src = this.result;
-                        preview.appendChild( image );
-                    }, false);
-
-                    reader.readAsDataURL(file);
-                }
-
-            }
-
-            if (files) {
-                [].forEach.call(files, readAndPreview);
-            }
-
-        }
     </script>
 @endpush

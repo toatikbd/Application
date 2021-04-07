@@ -76,7 +76,8 @@ class WorkerController extends Controller
         $worker->department = $request->department;
         $worker->image = $imageName;
         $worker->save();
-        return redirect()->route('worker.index');
+        return redirect()->route('worker.index')
+            ->with('success', 'Supervisor Created Successfully');
     }
 
     /**
@@ -98,7 +99,7 @@ class WorkerController extends Controller
      */
     public function edit(Worker $worker)
     {
-        //
+        return view('admin.worker.edit', compact('worker'));
     }
 
     /**
@@ -110,7 +111,26 @@ class WorkerController extends Controller
      */
     public function update(Request $request, Worker $worker)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'job_title' => 'required',
+            'department' => 'required'
+        ]);
+
+        $image = $request->file('image');
+        if($image){
+            $imageName = time() . '.' . $image->extension();
+            $image->move(public_path('images'), $imageName);
+            $worker->image = $imageName;
+        }
+
+        $worker->name = $request->name;
+        $worker->slug = Str::slug($request-> name);
+        $worker->job_title = $request->job_title;
+        $worker->department = $request->department;
+        $worker->save();
+        return redirect()->route('worker.index');
+
     }
 
     /**

@@ -102,25 +102,12 @@
 <script src="{{ asset('admin') }}/js/admin.js"></script>
 <!-- Demo Js -->
 <script src="{{ asset('admin') }}/js/demo.js"></script>
-
-
 @stack('js')
+<!-- developer custom js -->
+<script src="{{ asset('admin') }}/js/dev-init.js"></script>
+
 <script>
-    $(function () {
-        //Widgets count
-        $('.count-to').countTo();
 
-        //Sales count to
-        $('.sales-count-to').countTo({
-            formatter: function (value, options) {
-                return '$' + value.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, ' ').replace('.', ',');
-            }
-        });
-
-        initRealTimeChart();
-        initDonutChart();
-        initSparkline();
-    });
 </script>
 
 </body>

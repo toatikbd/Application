@@ -4,7 +4,7 @@
     <!-- Bootstrap Select Css -->
     <link href="{{ asset('admin') }}/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
     <!-- noUISlider Css -->
-    <link href="{{ asset('admin') }}/plugins/nouislider/nouislider.min.css" rel="stylesheet" />
+{{--    <link href="{{ asset('admin') }}/plugins/nouislider/nouislider.min.css" rel="stylesheet" />--}}
     <!-- Bootstrap Material Datetime Picker Css -->
     <link href="{{ asset('admin') }}/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
     <!-- Bootstrap DatePicker Css -->
@@ -39,33 +39,59 @@
                         </a>
                     </div>
                 </div>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <strong> Whoops!</strong> There were some problems with your input<br><br>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             </div>
-            <form method="">
+            <form action="{{ route('site-evaluation.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                     <div class="card">
                         <div class="body">
                             <label for="task_title">Task Title</label>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <input type="text" id="task_title" class="form-control" placeholder="Enter Task Title">
+                                    <input type="text" id="task_title" name="task_title" class="form-control" placeholder="Enter Task Title">
                                 </div>
                             </div>
                             <label for="task_description">Task Description</label>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <input type="text" id="task_description" class="form-control" placeholder="Please type your Task description in shorthand">
+                                    <input type="text" id="task_description" name="task_description" class="form-control" placeholder="Please type your Task description in shorthand">
                                 </div>
                             </div>
-                            <label for="task_description">Work Progress</label>
-                            <div class="form-group">
-                                <div id="nouislider_basic_example"></div>
-                                <div class="m-t-20 font-12"><b>Value: </b><span class="js-nouislider-value"></span></div>
-                            </div>
-                            <label for="task_description">File Upload</label>
-                            <div class="form-group">
-                                <div>
-                                    <input type="file" name="file" class="btn btn-primary btn-lg waves-effect" multiple />
+                            <div class="row clearfix">
+                            <div class="col-md-4">
+                                <label for="task_progress">Work Progress</label>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="form-line">
+                                            <input type="text" name="task_progress" class="form-control" placeholder="10%">
+                                        </div>
+                                        <span class="input-group-addon">%</span>
+                                    </div>
                                 </div>
+                            </div>
+                            {{--  <div class="form-group">--}}
+                            {{--  <div id="nouislider_basic_example"></div>--}}
+                            {{--  <div class="m-t-20 font-12"><b>Value: </b><span class="js-nouislider-value"></span></div>--}}
+                            {{--  </div>--}}
+                            <div class="col-md-8">
+                                <label for="task_file">File Upload</label>
+                                <div class="form-group">
+                                    <div>
+                                        <input type="file" id="task_file" name="file" class="btn btn-primary btn-lg waves-effect" onchange="previewFiles()"/>
+                                        <div class="preview"></div>
+                                    </div>
+                                </div>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -74,62 +100,58 @@
                     <div class="card">
                         <div class="body">
                             <label for="select_worker">Select Project</label>
-                            <div class="form-group">
+                            <div class="form-group {{ $errors->has('projects') ? 'focused error' : '' }}">
                                 <div class="form-line custom-live-search">
-                                    <select class="form-control show-tick" id="select_worker" data-live-search="true">
-                                        <option value="">-- Please select --</option>
-                                        <option value="10">10</option>
-                                        <option value="20">20</option>
-                                        <option value="30">30</option>
-                                        <option value="40">40</option>
-                                        <option value="50">50</option>
+                                    <select class="form-control show-tick" id="select_worker" name="project_id" data-live-search="true">
+                                        <option selected disabled>-- Please select project--</option>
+                                        @foreach($projects as $key => $project)
+                                            <option value="{{ $project->id }}"> {{ $project->name }} </option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
+
                             <label for="end_date">Date</label>
                             <div class="form-group">
                                 <div class="form-line">
                                     <div class="input-daterange input-group" id="bs_datepicker_range_container">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Date start...">
+                                            <input type="text" name="start_date" class="form-control" placeholder="Date start...">
                                         </div>
                                         <span class="input-group-addon">to</span>
                                         <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Date end...">
+                                            <input type="text" name="end_date" class="form-control" placeholder="Date end..." autocomplete="off">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <label for="select_worker">Select Worker</label>
-                            <div class="form-group">
+                            <label for="select_worker">Select Supervisor</label>
+                            <div class="form-group {{ $errors->has('workers') ? 'focused error' : '' }}">
                                 <div class="form-line custom-live-search">
-                                    <select class="form-control show-tick" id="select_worker" data-live-search="true">
-                                        <option value="">-- Please select --</option>
-                                        <option value="10">10</option>
-                                        <option value="20">20</option>
-                                        <option value="30">30</option>
-                                        <option value="40">40</option>
-                                        <option value="50">50</option>
+                                    <select class="form-control show-tick" id="select_worker" name="worker_id" data-live-search="true">
+                                        <option selected disabled>-- Please select --</option>
+                                        @foreach($workers as $key => $worker)
+                                            <option value="{{ $worker->id }}"> {{ $worker->name }} </option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
-                            <label for="work_status">Work Status</label>
+                            <label for="status">Work Status</label>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <select class="form-control show-tick" id="work_status">
-                                        <option value="">-- Please select --</option>
-                                        <option value="10">10</option>
-                                        <option value="20">20</option>
-                                        <option value="30">30</option>
-                                    </select>
+                                    <input type="checkbox" id="the_end"  name="status" value="1" class="filled-in chk-col-red"/>
+                                    <label for="the_end">THE END</label>
                                 </div>
                             </div>
                             <div class="text-center">
-                                <!-- <a href="" class="btn btn-primary btn-lg m-t-15 waves-effect">Create</a> -->
-                                <a href="site-evaluation.html" class="btn btn-success waves-effect">
+                                <a href="{{ route('worker.index') }}" class="btn btn-danger waves-effect">
+                                    <i class="material-icons">settings_backup_restore</i>
+                                    <span>BACK</span>
+                                </a>
+                                <button type="submit"  class="btn btn-success waves-effect">
                                     <i class="material-icons">save</i>
                                     <span>SAVE</span>
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -144,41 +166,14 @@
     <!-- Select Plugin Js -->
     <script src="{{ asset('admin') }}/plugins/bootstrap-select/js/bootstrap-select.js"></script>
     <!-- noUISlider Plugin Js -->
-    <script src="{{ asset('admin') }}/plugins/nouislider/nouislider.js"></script>
+{{--    <script src="{{ asset('admin') }}/plugins/nouislider/nouislider.js"></script>--}}
     <!-- Bootstrap Material Datetime Picker Plugin Js -->
     <script src="{{ asset('admin') }}/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
     <!-- Bootstrap Datepicker Plugin Js -->
     <script src="{{ asset('admin') }}/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 
     <script>
-        //noUISlider
-        var sliderBasic = document.getElementById('nouislider_basic_example');
-        noUiSlider.create(sliderBasic, {
-            start: [30],
-            connect: 'lower',
-            step: 1,
-            range: {
-                'min': [0],
-                'max': [100]
-            }
-        });
-        getNoUISliderValue(sliderBasic, true);
-        //Get noUISlider Value and write on
-        function getNoUISliderValue(slider, percentage) {
-            slider.noUiSlider.on('update', function () {
-                var val = slider.noUiSlider.get();
-                if (percentage) {
-                    val = parseInt(val);
-                    val += '%';
-                }
-                $(slider).parent().find('span.js-nouislider-value').text(val);
-            });
-        }
-        //end noUISlider
-        // autosize($('textarea.auto-growth'));
-        $('#bs_datepicker_range_container').datepicker({
-            autoclose: true,
-            container: '#bs_datepicker_range_container'
-        });
+
+
     </script>
 @endpush
