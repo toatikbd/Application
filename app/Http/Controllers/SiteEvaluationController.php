@@ -107,6 +107,7 @@ class SiteEvaluationController extends Controller
      */
     public function update(Request $request, SiteEvaluation $siteEvaluation)
     {
+        // dd($request->all());
 
         $this->validate($request, [
             'task_title' => 'required',
@@ -137,7 +138,7 @@ class SiteEvaluationController extends Controller
         } else {
             $siteEvaluation->status = false;
         }
-        $siteEvaluation->save();
+        $siteEvaluation->update();
         return redirect()->route('site-evaluation.index');
     }
 
