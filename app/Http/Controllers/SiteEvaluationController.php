@@ -18,7 +18,8 @@ class SiteEvaluationController extends Controller
      */
     public function index()
     {
-        return view('admin.site-evaluation.index');
+        $siteEvaluations = SiteEvaluation::latest()->get();
+        return view('admin.site-evaluation.index', compact('siteEvaluations'));
     }
 
     /**
@@ -61,11 +62,8 @@ class SiteEvaluationController extends Controller
         $siteEvaluation->slug = Str::slug($request->task_title);
         $siteEvaluation->task_description = $request->task_description;
         $siteEvaluation->task_progress = $request->task_progress;
-//        $siteEvaluation->start_date = $request->start_date;
-//        $siteEvaluation->end_date = $request->end_date;
-        $siteEvaluation->new = Carbon::today($request->start_date);
-        $siteEvaluation->new = Carbon::today($request->end_date);
-//        $newYear = new Carbon('first day of January 2016');
+        $siteEvaluation->start_date = Carbon::createFromFormat('d-m-Y',$request->start_date);
+        $siteEvaluation->end_date = Carbon::createFromFormat('d-m-Y',$request->end_date);
         $siteEvaluation->file = $imageName;
         if (isset($request->status)) {
             $siteEvaluation->status = true;
@@ -95,7 +93,9 @@ class SiteEvaluationController extends Controller
      */
     public function edit(SiteEvaluation $siteEvaluation)
     {
-        //
+        $projects = Project::latest()->get();
+        $workers = Worker::latest()->get();
+        return view('admin.site-evaluation.edit', compact('projects','workers', 'siteEvaluation'));
     }
 
     /**
@@ -107,7 +107,38 @@ class SiteEvaluationController extends Controller
      */
     public function update(Request $request, SiteEvaluation $siteEvaluation)
     {
-        //
+
+        $this->validate($request, [
+            'task_title' => 'required',
+            'task_description' => 'required',
+            'project_id' => 'required',
+            'worker_id' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+        ]);
+
+        $image = $request->file('file');
+        if($image){
+            $imageName = time() . '.' . $image->extension();
+            $image->move(public_path('files'), $imageName);
+            $siteEvaluation->file = $imageName;
+        }
+
+        $siteEvaluation->project_id = $request->project_id;
+        $siteEvaluation->worker_id = $request->worker_id;
+        $siteEvaluation->task_title = $request->task_title;
+        $siteEvaluation->slug = Str::slug($request->task_title);
+        $siteEvaluation->task_description = $request->task_description;
+        $siteEvaluation->task_progress = $request->task_progress;
+        $siteEvaluation->start_date = Carbon::createFromFormat('d-m-Y',$request->start_date);
+        $siteEvaluation->end_date = Carbon::createFromFormat('d-m-Y',$request->end_date);
+        if (isset($request->status)) {
+            $siteEvaluation->status = true;
+        } else {
+            $siteEvaluation->status = false;
+        }
+        $siteEvaluation->save();
+        return redirect()->route('site-evaluation.index');
     }
 
     /**

@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h2>All Supervisor <span class="badge bg-blue">23</span></h2>
+            <h2>All Supervisor <span class="badge bg-blue">{{ $workers->count() }}</span></h2>
         </div>
         <div class="row clearfix">
             <!-- Task Info -->
@@ -50,7 +50,6 @@
                                                     <button class="btn  btn-xs btn-danger waves-effect" type="submit">
                                                         <i class="material-icons">delete</i>
                                                     </button>
-
                                                 </form>
                                             </td>
                                         </tr>
