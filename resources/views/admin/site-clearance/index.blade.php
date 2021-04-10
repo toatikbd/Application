@@ -1,13 +1,13 @@
 @extends('layouts.app')
-@section('title', 'Mobilization')
+@section('title', 'Site Clearance')
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h2>Mobilization <span class="badge bg-blue">{{ $mobilizations->count() }}</span></h2>
+            <h2>Site Clearance <span class="badge bg-blue">{{ $siteClearances->count() }}</span></h2>
             <ol class="breadcrumb breadcrumb-col-pink breadcrumb-right-align">
                 <li><a href="{{ url('/home') }}"><i class="material-icons">home</i> Dashboard</a></li>
                 <li><a href="{{ route('preliminary-work.index') }}"><i class="material-icons">library_books</i> Preliminary Work</a></li>
-                <li class="active"><i class="material-icons">archive</i> Mobilization</li>
+                <li class="active"><i class="material-icons">archive</i> Site Clearance</li>
             </ol>
         </div>
         <div class="row clearfix">
@@ -16,7 +16,7 @@
                 <div class="card">
                     <div class="header">
                         <h2>TASK INFOS</h2>
-                        <a href="{{ route('mobilization.create') }}" class="btn btn-success waves-effect right-align-task-btn">
+                        <a href="{{ route('site-clearance.create') }}" class="btn btn-success waves-effect right-align-task-btn">
                             <i class="material-icons">add</i>
                             <span>Create a Task</span>
                         </a>
@@ -39,34 +39,34 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($mobilizations as $key => $mobilization)
+                                @foreach ($siteClearances as $key => $siteClearance)
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
-                                    <td>{{ Str::limit($mobilization->task_title, 10) }}</td>
+                                    <td>{{ Str::limit($siteClearance->task_title, 10) }}</td>
                                     <td>
                                         <div class="progress">
-                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="{{ $mobilization->task_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $mobilization->task_progress }}%"></div>
+                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="{{ $siteClearance->task_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $siteClearance->task_progress }}%"></div>
                                         </div>
                                     </td>
-                                    <td>{{ $mobilization->worker->name }}</td>
-                                    <td>{{ $mobilization->project->name }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($mobilization->start_date)->format('d/m/Y')}}</td>
-                                    <td>{{ \Carbon\Carbon::parse($mobilization->end_date)->format('d/m/Y')}}</td>
+                                    <td>{{ $siteClearance->worker->name }}</td>
+                                    <td>{{ $siteClearance->project->name }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($siteClearance->start_date)->format('d/m/Y')}}</td>
+                                    <td>{{ \Carbon\Carbon::parse($siteClearance->end_date)->format('d/m/Y')}}</td>
                                     <td>
-                                        <span class="label bg-red">{{ \App\Classes\DayCount::days( $mobilization->start_date, $mobilization->end_date) }} Days</span>
+                                        <span class="label bg-red">{{ \App\Classes\DayCount::days( $siteClearance->start_date, $siteClearance->end_date) }} Days</span>
                                     </td>
                                     <td>
-                                        @if($mobilization->status == true)
+                                        @if($siteClearance->status == true)
                                             <span class="badge bg-blue">The End</span>
                                         @else
                                             <span class="badge bg-pink">Doing</span>
                                         @endif
                                     </td>
                                     <td class="text-right">
-                                        <a href="{{ route('mobilization.show', $mobilization->id) }}" class="btn btn-primary btn-xs waves-effect">
+                                        <a href="{{ route('site-clearance.show', $siteClearance->id) }}" class="btn btn-primary btn-xs waves-effect">
                                             <i class="material-icons">visibility</i>
                                         </a>
-                                        <a href="{{ route('mobilization.edit', $mobilization->id) }}" class="btn btn-warning btn-xs waves-effect">
+                                        <a href="{{ route('site-clearance.edit', $siteClearance->id) }}" class="btn btn-warning btn-xs waves-effect">
                                             <i class="material-icons">edit</i>
                                         </a>
                                     </td>
