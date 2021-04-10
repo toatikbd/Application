@@ -33,7 +33,7 @@
                                     <th>Project Name</th>
                                     <th>Start Date</th>
                                     <th>End Date</th>
-                                    <th>Date Total</th>
+                                    <th>Day Total</th>
                                     <th>Status</th>
                                     <th class="text-right">Action</th>
                                 </tr>
@@ -63,7 +63,7 @@
                                         @endif
                                     </td>
                                     <td class="text-right">
-                                        <a href="#" class="btn btn-primary btn-xs waves-effect">
+                                        <a href="{{ route('site-evaluation.show', $siteEvaluation->id) }}" class="btn btn-primary btn-xs waves-effect">
                                             <i class="material-icons">visibility</i>
                                         </a>
                                         <a href="{{ route('site-evaluation.edit', $siteEvaluation->id) }}" class="btn btn-warning btn-xs waves-effect">

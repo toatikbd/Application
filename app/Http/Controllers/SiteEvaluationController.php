@@ -82,7 +82,7 @@ class SiteEvaluationController extends Controller
      */
     public function show(SiteEvaluation $siteEvaluation)
     {
-        //
+        return view('admin.site-evaluation.show', compact('siteEvaluation'));
     }
 
     /**
