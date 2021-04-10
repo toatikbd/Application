@@ -31,7 +31,7 @@ Route::resource('/project', App\Http\Controllers\ProjectController::class);
 Route::resource('/preliminary-work', App\Http\Controllers\PreliminaryWorkController::class);
 Route::resource('/site-evaluation', App\Http\Controllers\SiteEvaluationController::class);
 Route::resource('/worker', App\Http\Controllers\WorkerController::class);
-
+Route::resource('/mobilization', App\Http\Controllers\MobilizationController::class);
 
 //Admin route
 
