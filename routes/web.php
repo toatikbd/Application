@@ -32,7 +32,7 @@ Route::resource('/preliminary-work', App\Http\Controllers\PreliminaryWorkControl
 Route::resource('/site-evaluation', App\Http\Controllers\SiteEvaluationController::class);
 Route::resource('/worker', App\Http\Controllers\WorkerController::class);
 Route::resource('/mobilization', App\Http\Controllers\MobilizationController::class);
-
+Route::resource('/site-clearance', App\Http\Controllers\SiteClearanceController::class);
 //Admin route
 
 
