@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mobilization;
+use App\Models\SiteClearance;
+use App\Models\SiteEvaluation;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $siteEvaluations = SiteEvaluation::all()->count();
+        $mobilizations = Mobilization::all()->count();
+        $siteClearances = SiteClearance::all()->count();
+        return view('home', compact('siteEvaluations', 'mobilizations', 'siteClearances'));
     }
 }

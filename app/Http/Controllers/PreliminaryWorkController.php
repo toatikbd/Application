@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mobilization;
 use App\Models\PreliminaryWork;
+use App\Models\SiteClearance;
+use App\Models\SiteEvaluation;
 use Illuminate\Http\Request;
 
 class PreliminaryWorkController extends Controller
@@ -14,7 +17,11 @@ class PreliminaryWorkController extends Controller
      */
     public function index()
     {
-        return view('admin.preliminary-work.index');
+        $siteEvaluations = SiteEvaluation::all()->count();
+        $mobilizations = Mobilization::all()->count();
+        $siteClearances = SiteClearance::all()->count();
+        return view('admin.preliminary-work.index', compact('siteEvaluations', 'mobilizations', 'siteClearances'));
+
     }
 
     /**

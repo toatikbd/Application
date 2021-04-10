@@ -15,7 +15,7 @@
                         </div>
                         <div class="content">
                             <div class="text">Site Evaluation</div>
-                            <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20"></div>
+                            <div class="number count-to" data-from="0" data-to="{{ $siteEvaluations }}" data-speed="15" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </a>
@@ -28,7 +28,7 @@
                         </div>
                         <div class="content">
                             <div class="text">Mobilization</div>
-                            <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20"></div>
+                            <div class="number count-to" data-from="0" data-to="{{ $mobilizations }}" data-speed="1000" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </a>
@@ -40,8 +40,8 @@
                             <i class="material-icons">forum</i>
                         </div>
                         <div class="content">
-                            <div class="text">Site Clearance</div>
-                            <div class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20"></div>
+                            <div class="text">Site Clearance </div>
+                            <div class="number count-to" data-from="0" data-to="{{ $siteClearances }}" data-speed="1000" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </a>
