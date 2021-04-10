@@ -61,6 +61,12 @@
                     <span>Preliminary Work</span>
                 </a>
             </li>
+{{--            <li class="{{ Request::is('documentation*') ? 'active' : '' }}">--}}
+{{--                <a href="{{ route('documentation.index') }}">--}}
+{{--                    <i class="material-icons">layers</i>--}}
+{{--                    <span>Documentation</span>--}}
+{{--                </a>--}}
+{{--            </li>--}}
         </ul>
     </div>
     <!-- #Menu -->
