@@ -88,26 +88,27 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Title</th>
+                                    <th>Document Title</th>
                                     <th>Project Name</th>
                                     <th class="text-right">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @foreach ($documentations as $key => $documentation)
                                     <tr>
-                                        <td>1</td>
-                                        <td>asdf</td>
-                                        <td>ghjkl</td>
+                                        <td>{{ $key + 1 }}</td>
+                                        <td>{{ Str::limit($documentation->task_title, 15) }}</td>
+                                        <td>{{ $documentation->project->name }}</td>
                                         <td class="text-right">
-                                            <a href="" class="btn btn-primary btn-xs waves-effect">
+                                            <a href="{{ route('documentation.show', $documentation->id) }}" class="btn btn-primary btn-xs waves-effect">
                                                 <i class="material-icons">visibility</i>
                                             </a>
-                                            <a href="" class="btn btn-warning btn-xs waves-effect">
+                                            <a href="{{ route('documentation.edit', $documentation->id) }}" class="btn btn-warning btn-xs waves-effect">
                                                 <i class="material-icons">edit</i>
                                             </a>
                                         </td>
                                     </tr>
-{{--                                @endforeach--}}
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>

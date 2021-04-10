@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Documentation;
 use App\Models\Mobilization;
 use App\Models\SiteClearance;
 use App\Models\SiteEvaluation;
@@ -29,6 +30,7 @@ class HomeController extends Controller
         $siteEvaluations = SiteEvaluation::all()->count();
         $mobilizations = Mobilization::all()->count();
         $siteClearances = SiteClearance::all()->count();
-        return view('home', compact('siteEvaluations', 'mobilizations', 'siteClearances'));
+        $documentations = Documentation::latest()->get();
+        return view('home', compact('siteEvaluations', 'mobilizations', 'siteClearances', 'documentations'));
     }
 }

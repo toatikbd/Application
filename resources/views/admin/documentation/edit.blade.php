@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Mobilization')
+@section('title', 'Documentation')
 @push('css')
     <!-- Bootstrap Select Css -->
     <link href="{{ asset('admin') }}/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
@@ -17,11 +17,10 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h2>Mobilization</h2>
+            <h2>Documentation</h2>
             <ol class="breadcrumb breadcrumb-col-pink breadcrumb-right-align">
                 <li><a href="{{ url('/home') }}"><i class="material-icons">home</i> Dashboard</a></li>
-                <li><a href="{{ route('preliminary-work.index') }}"><i class="material-icons">library_books</i> Preliminary Work</a></li>
-                <li class="active"><i class="material-icons">archive</i> Mobilization</li>
+                <li class="active"><i class="material-icons">archive</i> Documentation</li>
             </ol>
         </div>
 
@@ -31,7 +30,7 @@
                 <div class="card">
                     <div class="header">
                         <h2>TASK INFOS</h2>
-                        <a href="{{ route('mobilization.index') }}" class="btn btn-success waves-effect right-align-task-btn">
+                        <a href="{{ route('documentation.index') }}" class="btn btn-success waves-effect right-align-task-btn">
                             <i class="material-icons">visibility</i>
                             <span>View All Tasks</span>
                         </a>
@@ -48,7 +47,7 @@
                     </div>
                 @endif
             </div>
-            <form action="{{ route('mobilization.update', $mobilization->id) }}" method="POST">
+            <form action="{{ route('documentation.update', $documentation->id) }}" method="POST">
                 @csrf
                 @method('put')
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
@@ -57,13 +56,13 @@
                             <label for="task_title">Task Title</label>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <input type="text" id="task_title" name="task_title" value="{{ $mobilization->task_title }}" class="form-control" placeholder="Enter Task Title">
+                                    <input type="text" id="task_title" name="task_title" value="{{ $documentation->task_title }}" class="form-control" placeholder="Enter Task Title">
                                 </div>
                             </div>
                             <label for="task_description">Task Description</label>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <input type="text" id="task_description" name="task_description" value="{{ $mobilization->task_description }}" class="form-control" placeholder="Please type your Task description in shorthand">
+                                    <input type="text" id="task_description" name="task_description" value="{{ $documentation->task_description }}" class="form-control" placeholder="Please type your Task description in shorthand">
                                 </div>
                             </div>
                             <div class="row clearfix">
@@ -72,7 +71,7 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="form-line">
-                                                <input type="text" name="task_progress" value="{{ $mobilization->task_progress }}" class="form-control" placeholder="10%">
+                                                <input type="text" name="task_progress" value="{{ $documentation->task_progress }}" class="form-control" placeholder="10%">
                                             </div>
                                             <span class="input-group-addon">%</span>
                                         </div>
@@ -84,7 +83,7 @@
                                         <div>
                                             <input type="file" id="task_file" name="file" class="btn btn-primary btn-lg waves-effect" onchange="previewFiles()"/>
                                             <div class="preview"></div>
-                                            <img src="{{ asset('files/'.$mobilization->file) }}" alt="{{ $mobilization->task_title }}" style="max-width:130px; margin-top: 20px">
+                                            <img src="{{ asset('files/'.$documentation->file) }}" alt="{{ $documentation->task_title }}" style="max-width:130px; margin-top: 20px">
                                         </div>
                                     </div>
                                 </div>
@@ -101,7 +100,7 @@
                                     <select class="form-control show-tick" id="select_project" name="project_id" data-live-search="true">
                                         <option selected disabled>-- Please select project--</option>
                                         @foreach($projects as $key => $project)
-                                            <option {{ $project->id == $mobilization->project_id ? 'selected' : '' }} value="{{ $project->id }}"> {{ $project->name }} </option>
+                                            <option {{ $project->id == $documentation->project_id ? 'selected' : '' }} value="{{ $project->id }}"> {{ $project->name }} </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -111,11 +110,11 @@
                                 <div class="form-line">
                                     <div class="input-daterange input-group" id="bs_datepicker_range_container">
                                         <div class="form-line">
-                                            <input type="text" name="start_date" value="{{ \Carbon\Carbon::parse($mobilization->start_date)->format('d-m-Y')}}" class="form-control" placeholder="Date start..." au>
+                                            <input type="text" name="start_date" value="{{ \Carbon\Carbon::parse($documentation->start_date)->format('d-m-Y')}}" class="form-control" placeholder="Date start..." au>
                                         </div>
                                         <span class="input-group-addon">to</span>
                                         <div class="form-line">
-                                            <input type="text" name="end_date" value="{{ \Carbon\Carbon::parse($mobilization->end_date)->format('d-m-Y')}}" class="form-control" placeholder="Date end..." autocomplete="off">
+                                            <input type="text" name="end_date" value="{{ \Carbon\Carbon::parse($documentation->end_date)->format('d-m-Y')}}" class="form-control" placeholder="Date end..." autocomplete="off">
                                         </div>
                                     </div>
                                 </div>
@@ -126,7 +125,7 @@
                                     <select class="form-control show-tick" id="select_worker" name="worker_id" data-live-search="true">
                                         <option selected disabled>-- Please select --</option>
                                         @foreach($workers as $key => $worker)
-                                            <option {{ $worker->id == $mobilization->worker_id ? 'selected' : '' }} value="{{ $worker->id }}"> {{ $worker->name }} </option>
+                                            <option {{ $worker->id == $documentation->worker_id ? 'selected' : '' }} value="{{ $worker->id }}"> {{ $worker->name }} </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -134,12 +133,12 @@
                             <label for="status">Work Status</label>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <input type="checkbox" id="the_end"  name="status" value="1" {{ $mobilization->status == true ? 'checked' : '' }} class="filled-in chk-col-red"/>
+                                    <input type="checkbox" id="the_end"  name="status" value="1" {{ $documentation->status == true ? 'checked' : '' }} class="filled-in chk-col-red"/>
                                     <label for="the_end">THE END</label>
                                 </div>
                             </div>
                             <div class="text-center">
-                                <a href="{{ route('mobilization.index') }}" class="btn btn-danger waves-effect">
+                                <a href="{{ route('documentation.index') }}" class="btn btn-danger waves-effect">
                                     <i class="material-icons">settings_backup_restore</i>
                                     <span>BACK</span>
                                 </a>

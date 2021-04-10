@@ -15,6 +15,16 @@ class CreateDocumentationsTable extends Migration
     {
         Schema::create('documentations', function (Blueprint $table) {
             $table->id();
+            $table->string('task_title');
+            $table->string('slug')->unique();
+            $table->string('task_description');
+            $table->integer('task_progress');
+            $table->string('file')->nullable();
+            $table->unsignedBigInteger('project_id');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->unsignedBigInteger('worker_id');
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

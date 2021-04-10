@@ -1,13 +1,12 @@
 @extends('layouts.app')
-@section('title', 'Mobilization')
+@section('title', 'Documentation')
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h2>Mobilization <span class="badge bg-blue">{{ $mobilizations->count() }}</span></h2>
+            <h2>Documentation <span class="badge bg-blue">{{ $documentations->count() }}</span></h2>
             <ol class="breadcrumb breadcrumb-col-pink breadcrumb-right-align">
                 <li><a href="{{ url('/home') }}"><i class="material-icons">home</i> Dashboard</a></li>
-                <li><a href="{{ route('preliminary-work.index') }}"><i class="material-icons">library_books</i> Preliminary Work</a></li>
-                <li class="active"><i class="material-icons">archive</i> Mobilization</li>
+                <li class="active"><i class="material-icons">archive</i> Documentation</li>
             </ol>
         </div>
         <div class="row clearfix">
@@ -16,8 +15,8 @@
                 <div class="card">
                     <div class="header">
                         <h2>TASK INFOS</h2>
-                        <a href="{{ route('mobilization.create') }}" class="btn btn-success waves-effect right-align-task-btn">
-                            <i class="material-icons">add</i>
+                        <a href="{{ route('documentation.create') }}" class="btn btn-success waves-effect right-align-task-btn">
+                            <i class="material-icons">add_circle_outline</i>
                             <span>Create a Task</span>
                         </a>
                     </div>
@@ -27,7 +26,7 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Task Title</th>
+                                    <th>Document Title</th>
                                     <th>Progress<span class="badge bg-pink">%</span></th>
                                     <th>Supervisor</th>
                                     <th>Project Name</th>
@@ -39,34 +38,34 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($mobilizations as $key => $mobilization)
+                                @foreach ($documentations as $key => $documentation)
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
-                                    <td>{{ Str::limit($mobilization->task_title, 10) }}</td>
+                                    <td>{{ Str::limit($documentation->task_title, 10) }}</td>
                                     <td>
                                         <div class="progress">
-                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="{{ $mobilization->task_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $mobilization->task_progress }}%"></div>
+                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="{{ $documentation->task_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $documentation->task_progress }}%"></div>
                                         </div>
                                     </td>
-                                    <td>{{ $mobilization->worker->name }}</td>
-                                    <td>{{ $mobilization->project->name }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($mobilization->start_date)->format('d/m/Y')}}</td>
-                                    <td>{{ \Carbon\Carbon::parse($mobilization->end_date)->format('d/m/Y')}}</td>
+                                    <td>{{ $documentation->worker->name }}</td>
+                                    <td>{{ $documentation->project->name }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($documentation->start_date)->format('d/m/Y')}}</td>
+                                    <td>{{ \Carbon\Carbon::parse($documentation->end_date)->format('d/m/Y')}}</td>
                                     <td>
-                                        <span class="label bg-red">{{ \App\Classes\DayCount::days( $mobilization->start_date, $mobilization->end_date) }} Days</span>
+                                        <span class="label bg-red">{{ \App\Classes\DayCount::days( $documentation->start_date, $documentation->end_date) }} Days</span>
                                     </td>
                                     <td>
-                                        @if($mobilization->status == true)
+                                        @if($documentation->status == true)
                                             <span class="badge bg-blue">The End</span>
                                         @else
                                             <span class="badge bg-pink">Doing</span>
                                         @endif
                                     </td>
                                     <td class="text-right">
-                                        <a href="{{ route('mobilization.show', $mobilization->id) }}" class="btn btn-primary btn-xs waves-effect">
+                                        <a href="{{ route('documentation.show', $documentation->id) }}" class="btn btn-primary btn-xs waves-effect">
                                             <i class="material-icons">visibility</i>
                                         </a>
-                                        <a href="{{ route('mobilization.edit', $mobilization->id) }}" class="btn btn-warning btn-xs waves-effect">
+                                        <a href="{{ route('documentation.edit', $documentation->id) }}" class="btn btn-warning btn-xs waves-effect">
                                             <i class="material-icons">edit</i>
                                         </a>
                                     </td>

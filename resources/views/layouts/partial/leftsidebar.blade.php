@@ -51,7 +51,7 @@
             </li>
             <li class="{{ Request::is('worker*') ? 'active' : '' }}">
                 <a href="{{ route('worker.index') }}">
-                    <i class="material-icons">layers</i>
+                    <i class="material-icons">face</i>
                     <span>Add Supervisor</span>
                 </a>
             </li>
@@ -61,12 +61,12 @@
                     <span>Preliminary Work</span>
                 </a>
             </li>
-{{--            <li class="{{ Request::is('documentation*') ? 'active' : '' }}">--}}
-{{--                <a href="{{ route('documentation.index') }}">--}}
-{{--                    <i class="material-icons">layers</i>--}}
-{{--                    <span>Documentation</span>--}}
-{{--                </a>--}}
-{{--            </li>--}}
+            <li class="{{ Request::is('documentation*') ? 'active' : '' }}">
+                <a href="{{ route('documentation.index') }}">
+                    <i class="material-icons">insert_drive_file</i>
+                    <span>Documentation</span>
+                </a>
+            </li>
         </ul>
     </div>
     <!-- #Menu -->

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Mobilization')
+@section('title', 'Documentation')
 @push('css')
     <!-- Bootstrap Select Css -->
     <link href="{{ asset('admin') }}/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
@@ -17,11 +17,10 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h2>Mobilization</h2>
+            <h2>Documentation</h2>
             <ol class="breadcrumb breadcrumb-col-pink breadcrumb-right-align">
                 <li><a href="{{ url('/home') }}"><i class="material-icons">home</i> Dashboard</a></li>
-                <li><a href="{{ route('mobilization.index') }}"><i class="material-icons">library_books</i> Preliminary Work</a></li>
-                <li class="active"><i class="material-icons">archive</i> Mobilization</li>
+                <li class="active"><i class="material-icons">archive</i> Documentation</li>
             </ol>
         </div>
 
@@ -31,7 +30,7 @@
                 <div class="card">
                     <div class="header">
                         <h2>TASK INFOS</h2>
-                        <a href="{{ route('mobilization.index') }}" class="btn btn-success waves-effect right-align-task-btn">
+                        <a href="{{ route('documentation.index') }}" class="btn btn-success waves-effect right-align-task-btn">
                             <i class="material-icons">visibility</i>
                             <span>View All Tasks</span>
                         </a>
@@ -48,12 +47,12 @@
                     </div>
                 @endif
             </div>
-            <form action="{{ route('mobilization.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('documentation.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                     <div class="card">
                         <div class="body">
-                            <label for="task_title">Task Title</label>
+                            <label for="task_title">Document Title</label>
                             <div class="form-group">
                                 <div class="form-line">
                                     <input type="text" id="task_title" name="task_title" class="form-control" placeholder="Enter Task Title">
@@ -139,7 +138,7 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                <a href="{{ route('mobilization.index') }}" class="btn btn-danger waves-effect">
+                                <a href="{{ route('documentation.index') }}" class="btn btn-danger waves-effect">
                                     <i class="material-icons">settings_backup_restore</i>
                                     <span>BACK</span>
                                 </a>
