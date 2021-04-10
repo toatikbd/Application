@@ -41,15 +41,17 @@
             </a>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box bg-light-green hover-expand-effect">
-                <div class="icon">
-                    <i class="material-icons">forum</i>
+            <a href="{{ route('site-clearance.index') }}" class="text-dec-none">
+                <div class="info-box bg-cyan hover-expand-effect cursor-pointer">
+                    <div class="icon">
+                        <i class="material-icons">forum</i>
+                    </div>
+                    <div class="content">
+                        <div class="text">Site Clearance</div>
+                        <div class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20"></div>
+                    </div>
                 </div>
-                <div class="content">
-                    <div class="text">Site Clearance</div>
-                    <div class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20"></div>
-                </div>
-            </div>
+            </a>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="info-box bg-blue-grey hover-expand-effect">

@@ -1,10 +1,8 @@
 @extends('layouts.app')
-@section('title', 'Project')
+@section('title', 'Mobilization')
 @push('css')
     <!-- Bootstrap Select Css -->
     <link href="{{ asset('admin') }}/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
-    <!-- noUISlider Css -->
-{{--    <link href="{{ asset('admin') }}/plugins/nouislider/nouislider.min.css" rel="stylesheet" />--}}
     <!-- Bootstrap Material Datetime Picker Css -->
     <link href="{{ asset('admin') }}/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
     <!-- Bootstrap DatePicker Css -->
@@ -19,11 +17,11 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h2>Site Evaluation</h2>
+            <h2>Mobilization</h2>
             <ol class="breadcrumb breadcrumb-col-pink breadcrumb-right-align">
                 <li><a href="{{ url('/home') }}"><i class="material-icons">home</i> Dashboard</a></li>
-                <li><a href="{{ route('preliminary-work.index') }}"><i class="material-icons">library_books</i> Preliminary Work</a></li>
-                <li class="active"><i class="material-icons">archive</i> Site Evaluation</li>
+                <li><a href="{{ route('mobilization.index') }}"><i class="material-icons">library_books</i> Preliminary Work</a></li>
+                <li class="active"><i class="material-icons">archive</i> Mobilization</li>
             </ol>
         </div>
 
@@ -33,7 +31,7 @@
                 <div class="card">
                     <div class="header">
                         <h2>TASK INFOS</h2>
-                        <a href="{{ route('site-evaluation.index') }}" class="btn btn-success waves-effect right-align-task-btn">
+                        <a href="{{ route('mobilization.index') }}" class="btn btn-success waves-effect right-align-task-btn">
                             <i class="material-icons">visibility</i>
                             <span>View All Tasks</span>
                         </a>
@@ -50,7 +48,7 @@
                     </div>
                 @endif
             </div>
-            <form action="{{ route('site-evaluation.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('mobilization.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                     <div class="card">
@@ -79,10 +77,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- {{--  <div class="form-group">--}} -->
-                            <!-- {{--  <div id="nouislider_basic_example"></div>--}} -->
-                            <!-- {{--  <div class="m-t-20 font-12"><b>Value: </b><span class="js-nouislider-value"></span></div>--}} -->
-                            <!-- {{--  </div>--}} -->
+
                             <div class="col-md-8">
                                 <label for="task_file">File Upload</label>
                                 <div class="form-group">
@@ -144,7 +139,7 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                <a href="{{ route('worker.index') }}" class="btn btn-danger waves-effect">
+                                <a href="{{ route('mobilization.index') }}" class="btn btn-danger waves-effect">
                                     <i class="material-icons">settings_backup_restore</i>
                                     <span>BACK</span>
                                 </a>
@@ -165,8 +160,6 @@
 @push('js')
     <!-- Select Plugin Js -->
     <script src="{{ asset('admin') }}/plugins/bootstrap-select/js/bootstrap-select.js"></script>
-    <!-- noUISlider Plugin Js -->
-<!-- {{--    <script src="{{ asset('admin') }}/plugins/nouislider/nouislider.js"></script>--}} -->
     <!-- Bootstrap Material Datetime Picker Plugin Js -->
     <script src="{{ asset('admin') }}/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
     <!-- Bootstrap Datepicker Plugin Js -->
