@@ -79,8 +79,39 @@
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="card">
+                    <div class="header">
+                        <h2>Documentation</h2>
+                    </div>
                     <div class="body">
-
+                        <div class="table-responsive">
+                            <table class="table table-hover dashboard-task-infos">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Title</th>
+                                    <th>Project Name</th>
+                                    <th class="text-right">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>asdf</td>
+                                        <td>ghjkl</td>
+                                        <td class="text-right">
+                                            <a href="" class="btn btn-primary btn-xs waves-effect">
+                                                <i class="material-icons">visibility</i>
+                                            </a>
+                                            <a href="" class="btn btn-warning btn-xs waves-effect">
+                                                <i class="material-icons">edit</i>
+                                            </a>
+                                        </td>
+                                    </tr>
+{{--                                @endforeach--}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                     </div>
                 </div><!-- #END# Vertical Layout -->
             </div>
