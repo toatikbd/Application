@@ -1,46 +1,134 @@
 @extends('layouts.app')
-@section('title', 'Edit Project')
+@section('title', 'Contractor')
+@push('css')
+    <!-- Bootstrap Select Css -->
+    <link href="{{ asset('admin') }}/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <style>
+        .bootstrap-select .bs-searchbox .form-control, .bootstrap-select .bs-actionsbox .form-control, .bootstrap-select .bs-donebutton .form-control {
+            margin-left: 1px!important;
+            padding-left: 35px!important;
+        }
+    </style>
+@endpush
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h2 class="text-center">Edit Projects</h2>
+            <h2>Contractor</h2>
+            <ol class="breadcrumb breadcrumb-col-pink breadcrumb-right-align">
+                <li><a href="{{ url('/home') }}"><i class="material-icons">home</i> Dashboard</a></li>
+                <li class="active"><i class="material-icons">archive</i> Contractor</li>
+            </ol>
         </div>
+
         <div class="row clearfix">
-            <div class="row">
-                <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
+            <!-- Task Info -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>TASK INFOS</h2>
+                        <a href="{{ route('contractor.index') }}" class="btn btn-success waves-effect right-align-task-btn">
+                            <i class="material-icons">visibility</i>
+                            <span>View All Tasks</span>
+                        </a>
+                    </div>
+                </div>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <strong> Whoops!</strong> There were some problems with your input<br><br>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+            </div>
+            <form action="{{ route('contractor.update', $contractor->id) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('put')
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                     <div class="card">
                         <div class="body">
-                            <form action="{{ route('project.update', $project->id) }}" method="POST">
-                                @csrf
-                                @method('put')
-                                <label for="project_title">Project Title</label>
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" id="project_title" name="name" value="{{ $project->name }}" class="form-control" placeholder="Enter your Project Title">
+                            <label for="name">Full Name</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" id="name" name="name" value="name" class="form-control" placeholder="Full Name">
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-md-6">
+                                    <label for="mobile">Mobile Number</label>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="number" id="mobile" name="mobile" value="mobile" class="form-control" placeholder="01789898989">
+                                        </div>
                                     </div>
                                 </div>
-                                <label for="project_description">Project Description</label>
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <textarea rows="4" id="project_description" name="description" class="form-control no-resize" placeholder="Please type your Project description in shorthand">
-                                            {{ $project->description }}
-                                        </textarea>
+                                <div class="col-md-6">
+                                    <label for="task_file">Email Address</label>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="email" id="email" name="email" value="email" class="form-control" placeholder="xyz@gmail.com">
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="text-center">
-                                    <a href="{{ route('project.create') }}" class="btn btn-danger m-t-15 waves-effect">BACK</a>
-                                    <button type="submit" class="btn btn-primary m-t-15 waves-effect">Update</button>
+                            </div>
+                            <label for="address">Address</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" id="address" name="address" value="address" class="form-control" placeholder="Home address">
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
-                    <!-- #END# Vertical Layout -->
                 </div>
-            </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    <div class="card">
+                        <div class="body">
+                            <label for="photo">Photo</label>
+                            <div class="form-group">
+                                <div>
+                                    <input type="file" id="photo" name="photo" class="btn btn-primary btn-lg waves-effect" onchange="previewFiles()"/>
+                                    <div class="preview"></div>
+                                    <img src="{{ asset('contractors/'.$contractor->photo) }}" alt="{{ $contractor->name }}" style="max-width:130px; margin-top: 20px">
+                                </div>
+                            </div>
+                            <label for="select_worker">Select Project</label>
+                            <div class="form-group {{ $errors->has('projects') ? 'focused error' : '' }}">
+                                <div class="form-line custom-live-search">
+                                    <select class="form-control show-tick" id="select_worker" name="project_id" data-live-search="true">
+                                        <option selected disabled>-- Please select project--</option>
+                                        @foreach($projects as $key => $project)
+                                            <option {{ $project->id == $contractor->project_id ? 'selected' : '' }} value="{{ $project->id }}"> {{ $project->name }} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <a href="{{ route('contractor.index') }}" class="btn btn-danger waves-effect">
+                                    <i class="material-icons">settings_backup_restore</i>
+                                    <span>BACK</span>
+                                </a>
+                                <button type="submit"  class="btn btn-success waves-effect">
+                                    <i class="material-icons">save</i>
+                                    <span>SAVE</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!-- #END# Task Info -->
         </div>
     </div>
 @endsection
 
 @push('js')
+    <!-- Select Plugin Js -->
+    <script src="{{ asset('admin') }}/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+    <script>
 
+
+    </script>
 @endpush
+

@@ -82,7 +82,8 @@ class ContractorController extends Controller
      */
     public function edit(Contractor $contractor)
     {
-        //
+        $projects = Project::latest()->get();
+        return view('admin.contractor.edit', compact('projects', 'contractor'));
     }
 
     /**
