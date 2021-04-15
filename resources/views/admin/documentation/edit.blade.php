@@ -83,7 +83,7 @@
                                         <div>
                                             <input type="file" id="task_file" name="file" class="btn btn-primary btn-lg waves-effect" onchange="previewFiles()"/>
                                             <div class="preview"></div>
-                                            <img src="{{ asset('files/'.$documentation->file) }}" alt="{{ $documentation->task_title }}" style="max-width:130px; margin-top: 20px">
+                                            <img src="{{ asset('documentations/'.$documentation->file) }}" alt="{{ $documentation->task_title }}" style="max-width:130px; margin-top: 20px">
                                         </div>
                                     </div>
                                 </div>

@@ -107,7 +107,37 @@ class DocumentationController extends Controller
      */
     public function update(Request $request, Documentation $documentation)
     {
-        //
+        $this->validate($request, [
+            'task_title' => 'required',
+            'task_description' => 'required',
+            'project_id' => 'required',
+            'worker_id' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+        ]);
+
+        $image = $request->file('file');
+        if($image){
+            $imageName = time() . '.' . $image->extension();
+            $image->move(public_path('documentations'), $imageName);
+            $documentation->file = $imageName;
+        }
+
+        $documentation->project_id = $request->project_id;
+        $documentation->worker_id = $request->worker_id;
+        $documentation->task_title = $request->task_title;
+        $documentation->slug = Str::slug($request->task_title);
+        $documentation->task_description = $request->task_description;
+        $documentation->task_progress = $request->task_progress;
+        $documentation->start_date = Carbon::createFromFormat('d-m-Y',$request->start_date);
+        $documentation->end_date = Carbon::createFromFormat('d-m-Y',$request->end_date);
+        if (isset($request->status)) {
+            $documentation->status = true;
+        } else {
+            $documentation->status = false;
+        }
+        $documentation->update();
+        return redirect()->route('documentation.index');
     }
 
     /**
