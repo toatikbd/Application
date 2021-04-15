@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contractor;
+use App\Models\Project;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ContractorController extends Controller
 {
@@ -14,7 +17,7 @@ class ContractorController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.contractor.index');
     }
 
     /**
@@ -24,7 +27,8 @@ class ContractorController extends Controller
      */
     public function create()
     {
-        //
+        $projects = Project::latest()->get();
+        return view('admin.contractor.create', compact('projects'));
     }
 
     /**
@@ -35,7 +39,27 @@ class ContractorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'mobile' => 'required',
+            'email' => 'required',
+            'address' => 'required',
+        ]);
+
+        $image = $request->file('photo');
+        $imageName = time() . '.' . $image->extension();
+        $image->move(public_path('contractors'), $imageName);
+
+        $contractor = new Contractor();
+        $contractor->project_id = $request->project_id;
+        $contractor->name = $request->name;
+        $contractor->slug = Str::slug($request->name);
+        $contractor->mobile = $request->mobile;
+        $contractor->email = $request->email;
+        $contractor->address = $request->address;
+        $contractor->photo = $imageName;
+        $contractor->save();
+        return redirect()->route('contractor.index');
     }
 
     /**

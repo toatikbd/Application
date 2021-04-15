@@ -67,6 +67,30 @@
                     <span>Documentation</span>
                 </a>
             </li>
+            <li class="{{ Request::is('documentation*') ? 'active' : '' }}">
+                <a href="{{ route('documentation.index') }}">
+                    <i class="material-icons">attach_money</i>
+                    <span>Financial Plan</span>
+                </a>
+            </li>
+            <li class="{{ Request::is('contractor*') ? 'active' : '' }}">
+                <a href="{{ route('contractor.index') }}">
+                    <i class="material-icons">content_paste</i>
+                    <span>Contractor Selection</span>
+                </a>
+            </li>
+            <li class="{{ Request::is('documentation*') ? 'active' : '' }}">
+                <a href="{{ route('documentation.index') }}">
+                    <i class="material-icons">access_alarm</i>
+                    <span>Time Management Plan</span>
+                </a>
+            </li>
+            <li class="{{ Request::is('documentation*') ? 'active' : '' }}">
+                <a href="{{ route('documentation.index') }}">
+                    <i class="material-icons">import_export</i>
+                    <span>Procurement Plan</span>
+                </a>
+            </li>
         </ul>
     </div>
     <!-- #Menu -->
