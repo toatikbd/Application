@@ -17,7 +17,8 @@ class ContractorController extends Controller
      */
     public function index()
     {
-        return view('admin.contractor.index');
+        $contractors = Contractor::latest()->get();
+        return view('admin.contractor.index', compact('contractors'));
     }
 
     /**

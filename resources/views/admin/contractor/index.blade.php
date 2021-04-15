@@ -32,23 +32,25 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Task A</td>
-                                    <td>sdfasdf</td>
-                                    <td>John Doe</td>
-                                    <td>John Doe</td>
-                                    <td>John Doe</td>
-                                    <td>John Doe</td>
-                                    <td class="text-right">
-{{--                                        <a href="{{ route('contractor.show', $contractor->id) }}" class="btn btn-primary btn-xs waves-effect">--}}
-                                            <i class="material-icons">visibility</i>
-{{--                                        </a>--}}
-{{--                                        <a href="{{ route('contractor.edit', $contractor->id) }}" class="btn btn-warning btn-xs waves-effect">--}}
-                                            <i class="material-icons">edit</i>
-{{--                                        </a>--}}
-                                    </td>
-                                </tr>
+                                @foreach ($contractors as $key => $contractor)
+                                    <tr>
+                                        <td>{{ $key + 1 }}</td>
+                                        <td>{{ Str::limit($contractor->name, 10) }}</td>
+                                        <td>{{ $contractor->mobile }}</td>
+                                        <td>{{ $contractor->email }}</td>
+                                        <td>{{ $contractor->mobile }}</td>
+                                        <td>{{ $contractor->address }}</td>
+                                        <td>{{ $contractor->project->name }}</td>
+                                        <td class="text-right">
+                                            <a href="{{ route('contractor.show', $contractor->id) }}" class="btn btn-primary btn-xs waves-effect">
+                                                <i class="material-icons">visibility</i>
+                                            </a>
+                                            <a href="{{ route('contractor.edit', $contractor->id) }}" class="btn btn-warning btn-xs waves-effect">
+                                                <i class="material-icons">edit</i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
