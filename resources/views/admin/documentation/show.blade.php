@@ -1,5 +1,14 @@
 @extends('layouts.app')
 @section('title', 'Documentation')
+@push('css')
+    <style>
+        #viewpdf{
+            width: 100%;
+            height: 400px;
+            border: 1px solid rgba(0,0,0,.2);
+        }
+    </style>
+@endpush
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
@@ -47,7 +56,7 @@
                                                 <tr>
                                                     <th scope="row">File</th>
                                                     <td>
-                                                        <img class="img-responsive thumbnail" width="50" height="auto" src="{{ asset('documentations/'.$documentation->file) }}" alt="{{ $documentation->task_title }}">
+                                                        <div id="viewpdf"></div>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -104,5 +113,9 @@
 @endsection
 
 @push('js')
-
+    <script src="{{ asset('admin') }}/js/pdfobject.min.js"></script>
+    <script type="text/javascript">
+        var viewer = $("#viewpdf");
+        PDFObject.embed("{{ asset('documentations/'.$documentation->file) }}", viewer);
+    </script>
 @endpush

@@ -52,7 +52,7 @@ class DocumentationController extends Controller
         ]);
 
         $image = $request->file('file');
-        $imageName = time() . '.' . $image->extension();
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
         $image->move(public_path('documentations'), $imageName);
 
         $documentation = new Documentation();
