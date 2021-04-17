@@ -52,7 +52,7 @@
                             <label for="name">Full Name</label>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <input type="text" id="name" name="name" value="name" class="form-control" placeholder="Full Name">
+                                    <input type="text" id="name" name="name" value="{{ $contractor->name }}" class="form-control" placeholder="Full Name">
                                 </div>
                             </div>
                             <div class="row clearfix">
@@ -60,7 +60,7 @@
                                     <label for="mobile">Mobile Number</label>
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="number" id="mobile" name="mobile" value="mobile" class="form-control" placeholder="01789898989">
+                                            <input type="number" id="mobile" name="mobile" value="{{ $contractor->mobile }}" class="form-control" placeholder="01789898989">
                                         </div>
                                     </div>
                                 </div>
@@ -68,7 +68,7 @@
                                     <label for="task_file">Email Address</label>
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="email" id="email" name="email" value="email" class="form-control" placeholder="xyz@gmail.com">
+                                            <input type="email" id="email" name="email" value="{{ $contractor->email }}" class="form-control" placeholder="xyz@gmail.com">
                                         </div>
                                     </div>
                                 </div>
@@ -76,7 +76,7 @@
                             <label for="address">Address</label>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <input type="text" id="address" name="address" value="address" class="form-control" placeholder="Home address">
+                                    <input type="text" id="address" name="address" value="{{ $contractor->address }}" class="form-control" placeholder="Home address">
                                 </div>
                             </div>
                         </div>
