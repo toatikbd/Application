@@ -95,7 +95,28 @@ class ContractorController extends Controller
      */
     public function update(Request $request, Contractor $contractor)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'mobile' => 'required',
+            'email' => 'required',
+            'address' => 'required',
+        ]);
+
+        $image = $request->file('photo');
+        if($image){
+            $imageName = time() . '.' . $image->extension();
+            $image->move(public_path('contractors'), $imageName);
+            $contractor->photo = $imageName;
+        }
+
+        $contractor->project_id = $request->project_id;
+        $contractor->name = $request->name;
+        $contractor->slug = Str::slug($request->name);
+        $contractor->mobile = $request->mobile;
+        $contractor->email = $request->email;
+        $contractor->address = $request->address;
+        $contractor->update();
+        return redirect()->route('contractor.index');
     }
 
     /**

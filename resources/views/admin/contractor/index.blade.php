@@ -36,7 +36,9 @@
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ Str::limit($contractor->name, 10) }}</td>
-                                        <td>{{ $contractor->mobile }}</td>
+                                        <td>
+                                            <img src="{{ asset('contractors/'.$contractor->photo) }}" alt="{{ $contractor->name }}" style="max-width:70px;">
+                                        </td>
                                         <td>{{ $contractor->email }}</td>
                                         <td>{{ $contractor->mobile }}</td>
                                         <td>{{ $contractor->address }}</td>
