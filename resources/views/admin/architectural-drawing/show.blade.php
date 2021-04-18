@@ -1,14 +1,23 @@
 @extends('layouts.app')
-@section('title', 'Site Evaluation')
+@section('title', 'Architectural Drawing')
+@push('css')
+    <style>
+        #viewpdf{
+            width: 100%;
+            height: 400px;
+            border: 1px solid rgba(0,0,0,.2);
+        }
+    </style>
+@endpush
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h2>Site Evaluation</h2>
+            <h2>Architectural Drawing</h2>
             <ol class="breadcrumb breadcrumb-col-pink breadcrumb-right-align">
                 <li><a href="{{ url('/home') }}"><i class="material-icons">home</i> Dashboard</a></li>
-                <li><a href="{{ route('preliminary-work.index') }}"><i class="material-icons">library_books</i> Preliminary Work</a></li>
-                <li><a href="{{ route('site-evaluation.index') }}"><i class="material-icons">library_books</i> Site Evaluation</a></li>
-                <li class="active"><i class="material-icons">archive</i> View Evaluation</li>
+                <li><a href="{{ route('design-drawing.index') }}"><i class="material-icons">library_books</i> Design and Drawing</a></li>
+                <li><a href="{{ route('architectural-drawing.index') }}"><i class="material-icons">library_books</i> Architectural Drawing</a></li>
+                <li class="active"><i class="material-icons">archive</i> View Drawing</li>
             </ol>
         </div>
         <div class="row clearfix">
@@ -16,8 +25,8 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="card">
                     <div class="header">
-                        <h2>Task Details <span class="badge bg-green">{{ ($siteEvaluation->task_title) }}</span></h2>
-                        <a href="{{ route('site-evaluation.index') }}" class="btn btn-success waves-effect right-align-task-btn">
+                        <h2>Task Details <span class="badge bg-green">{{ ($architecturalDrawing->task_title) }}</span></h2>
+                        <a href="{{ route('architectural-drawing.index') }}" class="btn btn-success waves-effect right-align-task-btn">
                             <i class="material-icons">visibility</i>
                             <span>View All</span>
                         </a>
@@ -31,24 +40,24 @@
                                             <tbody>
                                                 <tr>
                                                     <th scope="row">Task Title</th>
-                                                    <td>{{ ($siteEvaluation->task_title) }}</td>
+                                                    <td>{{ ($architecturalDrawing->task_title) }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">Task Description</th>
-                                                    <td>{{ ($siteEvaluation->task_description) }}</td>
+                                                    <td>{{ ($architecturalDrawing->task_description) }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">Progress</th>
                                                     <td>
                                                         <div class="progress">
-                                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="{{ $siteEvaluation->task_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $siteEvaluation->task_progress }}%"></div>
+                                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="{{ $architecturalDrawing->task_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $architecturalDrawing->task_progress }}%"></div>
                                                         </div>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">File</th>
                                                     <td>
-                                                        <img class="img-responsive thumbnail" width="50" height="auto" src="{{ asset('files/'.$siteEvaluation->file) }}" alt="{{ $siteEvaluation->task_title }}">
+                                                        <div id="viewpdf"></div>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -60,7 +69,7 @@
                                                 <tr>
                                                     <th scope="row">Task Status</th>
                                                     <td>
-                                                        @if($siteEvaluation->status == true)
+                                                        @if($architecturalDrawing->status == true)
                                                             <span class="badge bg-blue">The End</span>
                                                         @else
                                                             <span class="badge bg-pink">Doing</span>
@@ -69,24 +78,24 @@
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">Project Name</th>
-                                                    <td>{{ $siteEvaluation->project->name }}</td>
+                                                    <td>{{ $architecturalDrawing->project->name }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">Supervisor</th>
-                                                    <td>{{ $siteEvaluation->worker->name }}</td>
+                                                    <td>{{ $architecturalDrawing->worker->name }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">Start Date</th>
-                                                    <td>{{ \Carbon\Carbon::parse($siteEvaluation->start_date)->format('d/m/Y')}}</td>
+                                                    <td>{{ \Carbon\Carbon::parse($architecturalDrawing->start_date)->format('d/m/Y')}}</td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">End Date</th>
-                                                    <td>{{ \Carbon\Carbon::parse($siteEvaluation->end_date)->format('d/m/Y')}}</td>
+                                                    <td>{{ \Carbon\Carbon::parse($architecturalDrawing->end_date)->format('d/m/Y')}}</td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">Day Total</th>
                                                     <td>
-                                                        <span class="label bg-red">{{ \App\Classes\DayCount::days( $siteEvaluation->start_date, $siteEvaluation->end_date) }} Days</span>
+                                                        <span class="label bg-red">{{ \App\Classes\DayCount::days( $architecturalDrawing->start_date, $architecturalDrawing->end_date) }} Days</span>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -101,9 +110,12 @@
             <!-- #END# Task Info -->
         </div>
     </div>
-
 @endsection
 
 @push('js')
-
+    <script src="{{ asset('admin') }}/js/pdfobject.min.js"></script>
+    <script type="text/javascript">
+        var viewer = $("#viewpdf");
+        PDFObject.embed("{{ asset('architectural_drawing/'.$architecturalDrawing->file) }}", viewer);
+    </script>
 @endpush
