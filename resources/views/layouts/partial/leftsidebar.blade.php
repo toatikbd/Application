@@ -61,8 +61,8 @@
                     <span>Preliminary Work</span>
                 </a>
             </li>
-            <li class="{{ Request::is('preliminary-work*') ? 'active' : '' }}">
-                <a href="{{ route('preliminary-work.index') }}">
+            <li class="{{ Request::is('design-drawing*') ? 'active' : '' }}">
+                <a href="{{ route('design-drawing.index') }}">
                     <i class="material-icons">gesture</i>
                     <span>Design and Drawing</span>
                 </a>

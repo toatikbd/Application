@@ -35,6 +35,10 @@ Route::resource('/mobilization', App\Http\Controllers\MobilizationController::cl
 Route::resource('/site-clearance', App\Http\Controllers\SiteClearanceController::class);
 Route::resource('/documentation', App\Http\Controllers\DocumentationController::class);
 Route::resource('/contractor', App\Http\Controllers\ContractorController::class);
+Route::resource('/design-drawing', App\Http\Controllers\DesignDrawingController::class);
+
+
+
 //Admin route
 
 
