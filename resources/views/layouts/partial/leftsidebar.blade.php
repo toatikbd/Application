@@ -61,6 +61,12 @@
                     <span>Preliminary Work</span>
                 </a>
             </li>
+            <li class="{{ Request::is('preliminary-work*') ? 'active' : '' }}">
+                <a href="{{ route('preliminary-work.index') }}">
+                    <i class="material-icons">gesture</i>
+                    <span>Design and Drawing</span>
+                </a>
+            </li>
             <li class="{{ Request::is('documentation*') ? 'active' : '' }}">
                 <a href="{{ route('documentation.index') }}">
                     <i class="material-icons">insert_drive_file</i>
