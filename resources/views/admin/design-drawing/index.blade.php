@@ -8,7 +8,7 @@
         <!-- Widgets -->
         <div class="row clearfix">
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <a href="{{ route('site-evaluation.index') }}" class="text-dec-none">
+                <a href="{{ route('architectural-drawing.index') }}" class="text-dec-none">
                     <div class="info-box bg-pink hover-expand-effect cursor-pointer">
                         <div class="icon">
                             <i class="material-icons">playlist_add_check</i>
