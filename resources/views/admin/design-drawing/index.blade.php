@@ -34,14 +34,14 @@
                 </a>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <a href="{{ route('site-clearance.index') }}" class="text-dec-none">
+                <a href="{{ route('interior-detail.index') }}" class="text-dec-none">
                     <div class="info-box bg-blue hover-expand-effect cursor-pointer">
                         <div class="icon">
                             <i class="material-icons">forum</i>
                         </div>
                         <div class="content">
                             <div class="text">Interior Full Details</div>
-{{--                            <div class="number count-to" data-from="0" data-to="{{ $siteClearances }}" data-speed="1000" data-fresh-interval="20"></div>--}}
+                            <div class="number count-to" data-from="0" data-to="{{ $structuralDesigns }}" data-speed="1000" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </a>
