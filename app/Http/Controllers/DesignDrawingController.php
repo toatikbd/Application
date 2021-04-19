@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ArchitecturalDrawing;
 use App\Models\DesignDrawing;
+use App\Models\StructuralDesign;
 use Illuminate\Http\Request;
 
 class DesignDrawingController extends Controller
@@ -15,8 +16,9 @@ class DesignDrawingController extends Controller
      */
     public function index()
     {
+        $structuralDesigns = StructuralDesign::all()->count();
         $architecturalDrawings = ArchitecturalDrawing::all()->count();
-        return view('admin.design-drawing.index', compact('architecturalDrawings'));
+        return view('admin.design-drawing.index', compact('architecturalDrawings', 'structuralDesigns'));
     }
 
     /**

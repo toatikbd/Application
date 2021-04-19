@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Architectural Drawing')
+@section('title', 'Structural Design')
 @push('css')
     <!-- Bootstrap Select Css -->
     <link href="{{ asset('admin') }}/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
@@ -17,21 +17,20 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h2>Architectural Drawing</h2>
+            <h2>Structural Design</h2>
             <ol class="breadcrumb breadcrumb-col-pink breadcrumb-right-align">
                 <li><a href="{{ url('/home') }}"><i class="material-icons">home</i> Dashboard</a></li>
                 <li><a href="{{ route('design-drawing.index') }}"><i class="material-icons">gesture</i> Design and Drawing</a></li>
-                <li class="active"><i class="material-icons">archive</i> Architectural Drawing</li>
+                <li class="active"><i class="material-icons">archive</i> Structural Design</li>
             </ol>
         </div>
-
         <div class="row clearfix">
             <!-- Task Info -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="card">
                     <div class="header">
                         <h2>TASK INFOS</h2>
-                        <a href="{{ route('architectural-drawing.index') }}" class="btn btn-success waves-effect right-align-task-btn">
+                        <a href="{{ route('structural-design.index') }}" class="btn btn-success waves-effect right-align-task-btn">
                             <i class="material-icons">visibility</i>
                             <span>View All Tasks</span>
                         </a>
@@ -48,7 +47,7 @@
                     </div>
                 @endif
             </div>
-            <form action="{{ route('architectural-drawing.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('structural-design.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                     <div class="card">
@@ -104,7 +103,6 @@
                                     </select>
                                 </div>
                             </div>
-
                             <label for="end_date">Date</label>
                             <div class="form-group">
                                 <div class="form-line">
@@ -138,7 +136,7 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                <a href="{{ route('architectural-drawing.index') }}" class="btn btn-danger waves-effect">
+                                <a href="{{ route('structural-design.index') }}" class="btn btn-danger waves-effect">
                                     <i class="material-icons">settings_backup_restore</i>
                                     <span>BACK</span>
                                 </a>
@@ -163,5 +161,4 @@
     <script src="{{ asset('admin') }}/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
     <!-- Bootstrap Datepicker Plugin Js -->
     <script src="{{ asset('admin') }}/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-
 @endpush

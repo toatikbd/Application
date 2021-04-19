@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class StructuralDesign extends Model
 {
     use HasFactory;
+    public function worker()
+    {
+        return $this->belongsTo('App\Models\Worker', 'worker_id');
+    }
+    public function project()
+    {
+        return $this->belongsTo('App\Models\Project', 'project_id');
+    }
 }

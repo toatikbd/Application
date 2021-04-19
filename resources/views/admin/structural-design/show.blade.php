@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Architectural Drawing')
+@section('title', 'Structural Design')
 @push('css')
     <style>
         #viewpdf{
@@ -12,12 +12,12 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h2>Architectural Drawing</h2>
+            <h2>Structural Design</h2>
             <ol class="breadcrumb breadcrumb-col-pink breadcrumb-right-align">
                 <li><a href="{{ url('/home') }}"><i class="material-icons">home</i> Dashboard</a></li>
                 <li><a href="{{ route('design-drawing.index') }}"><i class="material-icons">library_books</i> Design and Drawing</a></li>
-                <li><a href="{{ route('architectural-drawing.index') }}"><i class="material-icons">library_books</i> Architectural Drawing</a></li>
-                <li class="active"><i class="material-icons">archive</i> View Drawing</li>
+                <li><a href="{{ route('structural-design.index') }}"><i class="material-icons">library_books</i> Structural Design</a></li>
+                <li class="active"><i class="material-icons">archive</i> View Structural Design</li>
             </ol>
         </div>
         <div class="row clearfix">
@@ -25,8 +25,8 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="card">
                     <div class="header">
-                        <h2>Task Details <span class="badge bg-green">{{ ($architecturalDrawing->task_title) }}</span></h2>
-                        <a href="{{ route('architectural-drawing.index') }}" class="btn btn-success waves-effect right-align-task-btn">
+                        <h2>Task Details <span class="badge bg-green">{{ ($structuralDesign->task_title) }}</span></h2>
+                        <a href="{{ route('structural-design.index') }}" class="btn btn-success waves-effect right-align-task-btn">
                             <i class="material-icons">visibility</i>
                             <span>View All</span>
                         </a>
@@ -40,17 +40,17 @@
                                             <tbody>
                                                 <tr>
                                                     <th scope="row">Task Title</th>
-                                                    <td>{{ ($architecturalDrawing->task_title) }}</td>
+                                                    <td>{{ ($structuralDesign->task_title) }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">Task Description</th>
-                                                    <td>{{ ($architecturalDrawing->task_description) }}</td>
+                                                    <td>{{ ($structuralDesign->task_description) }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">Progress</th>
                                                     <td>
                                                         <div class="progress">
-                                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="{{ $architecturalDrawing->task_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $architecturalDrawing->task_progress }}%"></div>
+                                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="{{ $structuralDesign->task_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $structuralDesign->task_progress }}%"></div>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -69,7 +69,7 @@
                                                 <tr>
                                                     <th scope="row">Task Status</th>
                                                     <td>
-                                                        @if($architecturalDrawing->status == true)
+                                                        @if($structuralDesign->status == true)
                                                             <span class="badge bg-blue">The End</span>
                                                         @else
                                                             <span class="badge bg-pink">Doing</span>
@@ -78,24 +78,24 @@
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">Project Name</th>
-                                                    <td>{{ $architecturalDrawing->project->name }}</td>
+                                                    <td>{{ $structuralDesign->project->name }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">Supervisor</th>
-                                                    <td>{{ $architecturalDrawing->worker->name }}</td>
+                                                    <td>{{ $structuralDesign->worker->name }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">Start Date</th>
-                                                    <td>{{ \Carbon\Carbon::parse($architecturalDrawing->start_date)->format('d/m/Y')}}</td>
+                                                    <td>{{ \Carbon\Carbon::parse($structuralDesign->start_date)->format('d/m/Y')}}</td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">End Date</th>
-                                                    <td>{{ \Carbon\Carbon::parse($architecturalDrawing->end_date)->format('d/m/Y')}}</td>
+                                                    <td>{{ \Carbon\Carbon::parse($structuralDesign->end_date)->format('d/m/Y')}}</td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">Day Total</th>
                                                     <td>
-                                                        <span class="label bg-red">{{ \App\Classes\DayCount::days( $architecturalDrawing->start_date, $architecturalDrawing->end_date) }} Days</span>
+                                                        <span class="label bg-red">{{ \App\Classes\DayCount::days( $structuralDesign->start_date, $structuralDesign->end_date) }} Days</span>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -116,6 +116,6 @@
     <script src="{{ asset('admin') }}/js/pdfobject.min.js"></script>
     <script type="text/javascript">
         var viewer = $("#viewpdf");
-        PDFObject.embed("{{ asset('architectural_drawing/'.$architecturalDrawing->file) }}", viewer);
+        PDFObject.embed("{{ asset('structural_design/'.$structuralDesign->file) }}", viewer);
     </script>
 @endpush

@@ -28,7 +28,7 @@
                         </div>
                         <div class="content">
                             <div class="text">Structural Design</div>
-                            <div class="number count-to" data-from="0" data-to="{{ $architecturalDrawings }}" data-speed="1000" data-fresh-interval="20"></div>
+                            <div class="number count-to" data-from="0" data-to="{{ $structuralDesigns }}" data-speed="1000" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </a>
