@@ -14,7 +14,7 @@ class StructuralDesignController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.structural-design.index');
     }
 
     /**
