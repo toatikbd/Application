@@ -37,7 +37,7 @@ Route::resource('/documentation', App\Http\Controllers\DocumentationController::
 Route::resource('/contractor', App\Http\Controllers\ContractorController::class);
 Route::resource('/design-drawing', App\Http\Controllers\DesignDrawingController::class);
 Route::resource('/architectural-drawing', App\Http\Controllers\ArchitecturalDrawingController::class);
-
+Route::resource('/structural-design', App\Http\Controllers\StructuralDesignController::class);
 
 //Admin route
 

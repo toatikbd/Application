@@ -52,7 +52,7 @@ class DocumentationController extends Controller
         ]);
 
         $image = $request->file('file');
-        $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $imageName = time() . '.' . $image->extension();
         $image->move(public_path('documentations'), $imageName);
 
         $documentation = new Documentation();
@@ -107,6 +107,7 @@ class DocumentationController extends Controller
      */
     public function update(Request $request, Documentation $documentation)
     {
+//        dd($request->all());
         $this->validate($request, [
             'task_title' => 'required',
             'task_description' => 'required',
@@ -119,9 +120,10 @@ class DocumentationController extends Controller
         $image = $request->file('file');
         if($image){
             $imageName = time() . '.' . $image->extension();
-            $image->move(public_path('documentations'), $imageName);
+            $image->move(public_path('files'), $imageName);
             $documentation->file = $imageName;
         }
+
 
         $documentation->project_id = $request->project_id;
         $documentation->worker_id = $request->worker_id;
@@ -136,7 +138,7 @@ class DocumentationController extends Controller
         } else {
             $documentation->status = false;
         }
-        $documentation->update();
+        $documentation->save();
         return redirect()->route('documentation.index');
     }
 
