@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\MEP;
+use App\Models\Project;
+use App\Models\Worker;
 use Illuminate\Http\Request;
 
 class MEPController extends Controller
@@ -14,7 +16,8 @@ class MEPController extends Controller
      */
     public function index()
     {
-        //
+        $meps = MEP::latest()->get();
+        return view('admin.mep.index', compact('meps'));
     }
 
     /**
@@ -24,7 +27,9 @@ class MEPController extends Controller
      */
     public function create()
     {
-        //
+        $projects = Project::latest()->get();
+        $workers = Worker::latest()->get();
+        return view('admin.mep.create', compact('projects', 'workers'));
     }
 
     /**

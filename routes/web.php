@@ -39,6 +39,7 @@ Route::resource('/design-drawing', App\Http\Controllers\DesignDrawingController:
 Route::resource('/architectural-drawing', App\Http\Controllers\ArchitecturalDrawingController::class);
 Route::resource('/structural-design', App\Http\Controllers\StructuralDesignController::class);
 Route::resource('/interior-detail', App\Http\Controllers\InteriorDetailController::class);
+Route::resource('/mep', App\Http\Controllers\MEPController::class);
 //Admin route
 
 
