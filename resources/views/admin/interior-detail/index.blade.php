@@ -63,10 +63,10 @@
                                         @endif
                                     </td>
                                     <td class="text-right">
-                                        <a href="{{ route('structural-design.show', $interiorDetail->id) }}" class="btn btn-primary btn-xs waves-effect">
+                                        <a href="{{ route('interior-detail.show', $interiorDetail->id) }}" class="btn btn-primary btn-xs waves-effect">
                                             <i class="material-icons">visibility</i>
                                         </a>
-                                        <a href="{{ route('architectural-drawing.edit', $interiorDetail->id) }}" class="btn btn-warning btn-xs waves-effect">
+                                        <a href="{{ route('interior-detail.edit', $interiorDetail->id) }}" class="btn btn-warning btn-xs waves-effect">
                                             <i class="material-icons">edit</i>
                                         </a>
                                     </td>
