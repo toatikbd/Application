@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h2>MEPs <span class="badge bg-blue">{{ $meps->count() }}</span></h2>
+            <h2>MEPs <span class="badge bg-blue">{{ $mEPs->count() }}</span></h2>
             <ol class="breadcrumb breadcrumb-col-pink breadcrumb-right-align">
                 <li><a href="{{ url('/home') }}"><i class="material-icons">home</i> Dashboard</a></li>
                 <li><a href="{{ route('design-drawing.index') }}"><i class="material-icons">gesture</i> Design and Drawing</a></li>
@@ -39,13 +39,13 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($meps as $key => $mep)
+                                @foreach ($mEPs as $key => $mep)
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ Str::limit($mep->task_title, 10) }}</td>
                                     <td>
                                         <div class="progress">
-                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="{{ $interiorDetail->task_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $interiorDetail->task_progress }}%"></div>
+                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="{{ $mep->task_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $mep->task_progress }}%"></div>
                                         </div>
                                     </td>
                                     <td>{{ $mep->worker->name }}</td>

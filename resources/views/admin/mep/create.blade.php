@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'interior Detail')
+@section('title', 'MEP')
 @push('css')
     <!-- Bootstrap Select Css -->
     <link href="{{ asset('admin') }}/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
@@ -17,11 +17,11 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h2>Interior Detail</h2>
+            <h2>MEP</h2>
             <ol class="breadcrumb breadcrumb-col-pink breadcrumb-right-align">
                 <li><a href="{{ url('/home') }}"><i class="material-icons">home</i> Dashboard</a></li>
                 <li><a href="{{ route('design-drawing.index') }}"><i class="material-icons">gesture</i> Design and Drawing</a></li>
-                <li class="active"><i class="material-icons">archive</i> Interior Detail</li>
+                <li class="active"><i class="material-icons">archive</i> MEP</li>
             </ol>
         </div>
         <div class="row clearfix">
@@ -30,7 +30,7 @@
                 <div class="card">
                     <div class="header">
                         <h2>TASK INFOS</h2>
-                        <a href="{{ route('interior-detail.index') }}" class="btn btn-success waves-effect right-align-task-btn">
+                        <a href="{{ route('mep.index') }}" class="btn btn-success waves-effect right-align-task-btn">
                             <i class="material-icons">visibility</i>
                             <span>View All Tasks</span>
                         </a>
@@ -47,7 +47,7 @@
                     </div>
                 @endif
             </div>
-            <form action="{{ route('interior-detail.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('mep.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                     <div class="card">
@@ -136,7 +136,7 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                <a href="{{ route('interior-detail.index') }}" class="btn btn-danger waves-effect">
+                                <a href="{{ route('mep.index') }}" class="btn btn-danger waves-effect">
                                     <i class="material-icons">settings_backup_restore</i>
                                     <span>BACK</span>
                                 </a>
