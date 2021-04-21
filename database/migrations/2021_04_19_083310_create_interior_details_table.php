@@ -15,6 +15,16 @@ class CreateInteriorDetailsTable extends Migration
     {
         Schema::create('interior_details', function (Blueprint $table) {
             $table->id();
+            $table->string('task_title')->unique();
+            $table->string('slug');
+            $table->string('task_description');
+            $table->integer('task_progress');
+            $table->string('file')->nullable();
+            $table->unsignedBigInteger('project_id');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->unsignedBigInteger('worker_id');
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

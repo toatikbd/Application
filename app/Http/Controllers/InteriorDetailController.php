@@ -14,7 +14,8 @@ class InteriorDetailController extends Controller
      */
     public function index()
     {
-        return view('admin.interior-detail.index');
+        $interiorDetails = InteriorDetail::latest()->get();
+        return view('admin.interior-detail.index', compact('interiorDetails'));
     }
 
     /**

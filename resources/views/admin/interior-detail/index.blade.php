@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-{{--            <h2>Interior Full Details <span class="badge bg-blue">{{ $structuralDesigns->count() }}</span></h2>--}}
+            <h2>Interior Full Details <span class="badge bg-blue">{{ $interiorDetails->count() }}</span></h2>
             <ol class="breadcrumb breadcrumb-col-pink breadcrumb-right-align">
                 <li><a href="{{ url('/home') }}"><i class="material-icons">home</i> Dashboard</a></li>
                 <li><a href="{{ route('design-drawing.index') }}"><i class="material-icons">gesture</i> Design and Drawing</a></li>
@@ -39,34 +39,34 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($structuralDesigns as $key => $structuralDesign)
+                                @foreach ($interiorDetails as $key => $interiorDetail)
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
-                                    <td>{{ Str::limit($structuralDesign->task_title, 10) }}</td>
+                                    <td>{{ Str::limit($interiorDetail->task_title, 10) }}</td>
                                     <td>
                                         <div class="progress">
-                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="{{ $structuralDesign->task_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $structuralDesign->task_progress }}%"></div>
+                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="{{ $interiorDetail->task_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $interiorDetail->task_progress }}%"></div>
                                         </div>
                                     </td>
-                                    <td>{{ $structuralDesign->worker->name }}</td>
-                                    <td>{{ $structuralDesign->project->name }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($structuralDesign->start_date)->format('d/m/Y')}}</td>
-                                    <td>{{ \Carbon\Carbon::parse($structuralDesign->end_date)->format('d/m/Y')}}</td>
+                                    <td>{{ $interiorDetail->worker->name }}</td>
+                                    <td>{{ $interiorDetail->project->name }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($interiorDetail->start_date)->format('d/m/Y')}}</td>
+                                    <td>{{ \Carbon\Carbon::parse($interiorDetail->end_date)->format('d/m/Y')}}</td>
                                     <td>
-                                        <span class="label bg-red">{{ \App\Classes\DayCount::days( $structuralDesign->start_date, $structuralDesign->end_date) }} Days</span>
+                                        <span class="label bg-red">{{ \App\Classes\DayCount::days( $interiorDetail->start_date, $interiorDetail->end_date) }} Days</span>
                                     </td>
                                     <td>
-                                        @if($structuralDesign->status == true)
+                                        @if($interiorDetail->status == true)
                                             <span class="badge bg-blue">The End</span>
                                         @else
                                             <span class="badge bg-pink">Doing</span>
                                         @endif
                                     </td>
                                     <td class="text-right">
-                                        <a href="{{ route('structural-design.show', $structuralDesign->id) }}" class="btn btn-primary btn-xs waves-effect">
+                                        <a href="{{ route('structural-design.show', $interiorDetail->id) }}" class="btn btn-primary btn-xs waves-effect">
                                             <i class="material-icons">visibility</i>
                                         </a>
-                                        <a href="{{ route('architectural-drawing.edit', $structuralDesign->id) }}" class="btn btn-warning btn-xs waves-effect">
+                                        <a href="{{ route('architectural-drawing.edit', $interiorDetail->id) }}" class="btn btn-warning btn-xs waves-effect">
                                             <i class="material-icons">edit</i>
                                         </a>
                                     </td>
