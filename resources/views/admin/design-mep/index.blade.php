@@ -16,7 +16,7 @@
                 <div class="card">
                     <div class="header">
                         <h2>TASK INFOS</h2>
-                        <a href="{{ route('mep.create') }}" class="btn btn-success waves-effect right-align-task-btn">
+                        <a href="{{ route('design-mep.create') }}" class="btn btn-success waves-effect right-align-task-btn">
                             <i class="material-icons">add_circle_outline</i>
                             <span>Create a Task</span>
                         </a>
@@ -63,10 +63,10 @@
                                         @endif
                                     </td>
                                     <td class="text-right">
-                                        <a href="{{ route('mep.show', $mep->id) }}" class="btn btn-primary btn-xs waves-effect">
+                                        <a href="{{ route('design-mep.show', $mep->id) }}" class="btn btn-primary btn-xs waves-effect">
                                             <i class="material-icons">visibility</i>
                                         </a>
-                                        <a href="{{ route('mep.edit', $mep->id) }}" class="btn btn-warning btn-xs waves-effect">
+                                        <a href="{{ route('design-mep.edit', $mep->id) }}" class="btn btn-warning btn-xs waves-effect">
                                             <i class="material-icons">edit</i>
                                         </a>
                                     </td>

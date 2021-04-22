@@ -30,7 +30,7 @@
                 <div class="card">
                     <div class="header">
                         <h2>TASK INFOS</h2>
-                        <a href="{{ route('mep.index') }}" class="btn btn-success waves-effect right-align-task-btn">
+                        <a href="{{ route('design-mep.index') }}" class="btn btn-success waves-effect right-align-task-btn">
                             <i class="material-icons">visibility</i>
                             <span>View All Tasks</span>
                         </a>
@@ -47,7 +47,7 @@
                     </div>
                 @endif
             </div>
-            <form action="{{ route('mep.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('design-mep.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                     <div class="card">
@@ -136,7 +136,7 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                <a href="{{ route('mep.index') }}" class="btn btn-danger waves-effect">
+                                <a href="{{ route('design-mep.index') }}" class="btn btn-danger waves-effect">
                                     <i class="material-icons">settings_backup_restore</i>
                                     <span>BACK</span>
                                 </a>

@@ -19,7 +19,7 @@ class MEPController extends Controller
     public function index()
     {
         $mEPs = MEP::latest()->get();
-        return view('admin.mep.index', compact('mEPs'));
+        return view('admin.design-mep.index', compact('mEPs'));
     }
 
     /**
@@ -31,7 +31,7 @@ class MEPController extends Controller
     {
         $projects = Project::latest()->get();
         $workers = Worker::latest()->get();
-        return view('admin.mep.create', compact('projects', 'workers'));
+        return view('admin.design-mep.create', compact('projects', 'workers'));
     }
 
     /**
@@ -52,7 +52,7 @@ class MEPController extends Controller
         ]);
         $image = $request->file('file');
         $imageName = time() . '.' . $image->getClientOriginalExtension();
-        $image->move(public_path('mep'), $imageName);
+        $image->move(public_path('design-mep'), $imageName);
 
         $mEP = new MEP();
         $mEP->project_id = $request->project_id;
@@ -70,7 +70,7 @@ class MEPController extends Controller
             $mEP->status = false;
         }
         $mEP->save();
-        return redirect()->route('mep.index');
+        return redirect()->route('design-mep.index');
     }
 
     /**
@@ -81,7 +81,7 @@ class MEPController extends Controller
      */
     public function show(MEP $mEP)
     {
-//        return view('admin.mep.show', compact('mEP'));
+//        return view('admin.design-mep.show', compact('mEP'));
     }
 
     /**

@@ -47,7 +47,7 @@
                 </a>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <a href="{{ route('mep.index') }}" class="text-dec-none">
+                <a href="{{ route('design-mep.index') }}" class="text-dec-none">
                     <div class="info-box bg-blue-grey hover-expand-effect cursor-pointer">
                         <div class="icon">
                             <i class="material-icons">gps_fixed</i>
