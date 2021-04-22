@@ -52,7 +52,7 @@ class MEPController extends Controller
         ]);
         $image = $request->file('file');
         $imageName = time() . '.' . $image->getClientOriginalExtension();
-        $image->move(public_path('design-mep'), $imageName);
+        $image->move(public_path('design_mep'), $imageName);
 
         $mEP = new MEP();
         $mEP->project_id = $request->project_id;
@@ -81,7 +81,7 @@ class MEPController extends Controller
      */
     public function show(MEP $mEP)
     {
-//        return view('admin.design-mep.show', compact('mEP'));
+        return view('admin.design-mep.show', compact('mEP'));
     }
 
     /**
