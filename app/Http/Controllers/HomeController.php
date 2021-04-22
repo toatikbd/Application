@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ArchitecturalDrawing;
 use App\Models\Documentation;
+use App\Models\InteriorDetail;
+use App\Models\MEP;
 use App\Models\Mobilization;
 use App\Models\SiteClearance;
 use App\Models\SiteEvaluation;
+use App\Models\StructuralDesign;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -31,6 +35,21 @@ class HomeController extends Controller
         $mobilizations = Mobilization::all()->count();
         $siteClearances = SiteClearance::all()->count();
         $documentations = Documentation::latest()->get();
-        return view('home', compact('siteEvaluations', 'mobilizations', 'siteClearances', 'documentations'));
+        $architecturalDrawings = ArchitecturalDrawing::all()->count();
+        $structuralDesigns = StructuralDesign::all()->count();
+        $interiorDetails = InteriorDetail::all()->count();
+        $mEPs = MEP::all()->count();
+        return view('home',
+            compact(
+                'siteEvaluations',
+                'mobilizations',
+                'siteClearances',
+                'documentations',
+                'architecturalDrawings',
+                'structuralDesigns',
+                'interiorDetails',
+                'mEPs'
+            )
+        );
     }
 }

@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h2>Architectural Drawing <span class="badge bg-blue">{{ $structuralDesigns->count() }}</span></h2>
+            <h2>Structural Design <span class="badge bg-blue">{{ $structuralDesigns->count() }}</span></h2>
             <ol class="breadcrumb breadcrumb-col-pink breadcrumb-right-align">
                 <li><a href="{{ url('/home') }}"><i class="material-icons">home</i> Dashboard</a></li>
                 <li><a href="{{ route('design-drawing.index') }}"><i class="material-icons">gesture</i> Design and Drawing</a></li>
