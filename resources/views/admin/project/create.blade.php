@@ -15,13 +15,13 @@
                                 <label for="project_title">Project Title</label>
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input type="text" id="project_title" name="name" class="form-control" placeholder="Enter your Project Title">
+                                        <input type="text" id="project_title" name="name" autocomplete="off" class="form-control" placeholder="Enter your Project Title">
                                     </div>
                                 </div>
                                 <label for="project_description">Project Description</label>
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <textarea rows="4" id="project_description" name="description" class="form-control no-resize" placeholder="Please type your Project description in shorthand"></textarea>
+                                        <textarea rows="4" id="project_description" name="description" autocomplete="off" class="form-control no-resize" placeholder="Please type your Project description in shorthand"></textarea>
                                     </div>
                                 </div>
                                 <div class="text-center">

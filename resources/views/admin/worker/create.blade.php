@@ -48,13 +48,13 @@
                             <label for="name">Full Name</label>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <input type="text" id="name" name="name" class="form-control" placeholder="Enter Full Name">
+                                    <input type="text" id="name" name="name" autocomplete="off" class="form-control" placeholder="Enter Full Name">
                                 </div>
                             </div>
                             <label for="job_title">Job Title</label>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <input type="text" id="job_title" name="job_title" class="form-control" placeholder="Job Title">
+                                    <input type="text" id="job_title" name="job_title" autocomplete="off" class="form-control" placeholder="Job Title">
                                 </div>
                             </div>
                         </div>

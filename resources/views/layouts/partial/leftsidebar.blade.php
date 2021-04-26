@@ -73,8 +73,8 @@
                     <span>Documentation</span>
                 </a>
             </li>
-            <li class="{{ Request::is('documentation*') ? 'active' : '' }}">
-                <a href="{{ route('documentation.index') }}">
+            <li>
+                <a href="#">
                     <i class="material-icons">attach_money</i>
                     <span>Financial Plan</span>
                 </a>
@@ -85,14 +85,14 @@
                     <span>Contractor Selection</span>
                 </a>
             </li>
-            <li class="{{ Request::is('documentation*') ? 'active' : '' }}">
-                <a href="{{ route('documentation.index') }}">
+            <li>
+                <a href="#">
                     <i class="material-icons">access_alarm</i>
                     <span>Time Management Plan</span>
                 </a>
             </li>
-            <li class="{{ Request::is('documentation*') ? 'active' : '' }}">
-                <a href="{{ route('documentation.index') }}">
+            <li>
+                <a href="#">
                     <i class="material-icons">import_export</i>
                     <span>Procurement Plan</span>
                 </a>

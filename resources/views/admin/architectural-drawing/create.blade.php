@@ -56,13 +56,13 @@
                             <label for="task_title">Task Title</label>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <input type="text" id="task_title" name="task_title" class="form-control" placeholder="Enter Task Title">
+                                    <input type="text" id="task_title" name="task_title" autocomplete="off" class="form-control" placeholder="Enter Task Title">
                                 </div>
                             </div>
                             <label for="task_description">Task Description</label>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <input type="text" id="task_description" name="task_description" class="form-control" placeholder="Please type your Task description in shorthand">
+                                    <input type="text" id="task_description" name="task_description" autocomplete="off" class="form-control" placeholder="Please type your Task description in shorthand">
                                 </div>
                             </div>
                             <div class="row clearfix">
@@ -71,7 +71,7 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="form-line">
-                                            <input type="text" name="task_progress" class="form-control" placeholder="10%">
+                                            <input type="text" name="task_progress" autocomplete="off" class="form-control" placeholder="10%">
                                         </div>
                                         <span class="input-group-addon">%</span>
                                     </div>
@@ -110,11 +110,11 @@
                                 <div class="form-line">
                                     <div class="input-daterange input-group" id="bs_datepicker_range_container">
                                         <div class="form-line">
-                                            <input type="text" name="start_date" class="form-control" placeholder="Date start..." au>
+                                            <input type="text" name="start_date" autocomplete="off" class="form-control" placeholder="Date start..." au>
                                         </div>
                                         <span class="input-group-addon">to</span>
                                         <div class="form-line">
-                                            <input type="text" name="end_date" class="form-control" placeholder="Date end..." autocomplete="off">
+                                            <input type="text" name="end_date" autocomplete="off" class="form-control" placeholder="Date end..." autocomplete="off">
                                         </div>
                                     </div>
                                 </div>
