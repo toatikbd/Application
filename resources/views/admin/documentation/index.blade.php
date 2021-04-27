@@ -26,10 +26,10 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Document Title</th>
+                                    <th>Title</th>
                                     <th>Progress<span class="badge bg-pink">%</span></th>
                                     <th>Supervisor</th>
-                                    <th>Project Name</th>
+                                    <th>Project</th>
                                     <th>Start Date</th>
                                     <th>End Date</th>
                                     <th>Day Total</th>
