@@ -120,7 +120,7 @@ class DocumentationController extends Controller
         $image = $request->file('file');
         if($image){
             $imageName = time() . '.' . $image->extension();
-            $image->move(public_path('files'), $imageName);
+            $image->move(public_path('documentations'), $imageName);
             $documentation->file = $imageName;
         }
 
