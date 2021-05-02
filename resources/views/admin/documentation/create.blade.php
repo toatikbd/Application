@@ -46,6 +46,7 @@
                         </ul>
                     </div>
                 @endif
+                <span class="text-success">{{Session::get('message')}}</span>
             </div>
             <form action="{{ route('documentation.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -81,8 +82,7 @@
                                 <label for="task_file">File Upload</label>
                                 <div class="form-group">
                                     <div>
-                                        <input type="file" id="task_file" name="file" class="btn btn-primary btn-lg waves-effect" onchange="previewFiles()"/>
-                                        <div class="preview"></div>
+                                        <input id="task_file" type="file" name="file" class="btn btn-primary btn-lg waves-effect">
                                     </div>
                                 </div>
                             </div>

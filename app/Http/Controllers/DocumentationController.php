@@ -16,6 +16,13 @@ class DocumentationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+//    protected $documentation;
+//    protected $file;
+//    protected $type;
+//    protected $pdfFile;
+//    protected $directory;
+//    protected $fileUrl;
+
     public function index()
     {
         $documentations = Documentation::latest()->get();
@@ -51,9 +58,15 @@ class DocumentationController extends Controller
             'end_date' => 'required',
         ]);
 
-        $image = $request->file('file');
-        $imageName = time() . '.' . $image->extension();
-        $image->move(public_path('documentations'), $imageName);
+//        $this->file = $request->file('file');
+//        $this->type = $this->file->getClientOriginalExtension();
+//        $this->pdfFile = time().'.'.$this->type;
+//        $this->directory = 'documentation-file/';
+//        $this->file->move($this->directory, $this->pdfFile);
+
+        $pdfFile = $request->file('file');
+        $pdfName = time() . '.' . $pdfFile->extension();
+        $pdfFile->move(public_path('documentation-file'), $pdfName);
 
         $documentation = new Documentation();
         $documentation->project_id = $request->project_id;
@@ -64,14 +77,16 @@ class DocumentationController extends Controller
         $documentation->task_progress = $request->task_progress;
         $documentation->start_date = Carbon::createFromFormat('d-m-Y',$request->start_date);
         $documentation->end_date = Carbon::createFromFormat('d-m-Y',$request->end_date);
-        $documentation->file = $imageName;
+//        $documentation->file = $this->directory.$this->pdfFile;
+        $documentation->file = $pdfName;
         if (isset($request->status)) {
             $documentation->status = true;
         } else {
             $documentation->status = false;
         }
         $documentation->save();
-        return redirect()->route('documentation.index');
+        return redirect()->route('documentation.create')
+            ->with('message', 'info create Successfully');;
     }
 
     /**
@@ -117,13 +132,43 @@ class DocumentationController extends Controller
             'end_date' => 'required',
         ]);
 
-        $image = $request->file('file');
-        if($image){
-            $imageName = time() . '.' . $image->extension();
-            $image->move(public_path('documentations'), $imageName);
-            $documentation->file = $imageName;
+//        if($this->file = $request->file('file'))
+//        {
+//            if(file_exists($this->documentation->file)){
+//                unlink($this->documentation->file);
+//            }
+//            $this->type = $this->file->getClientOriginalExtension();
+//            $this->pdfFile = time().'.'.$this->type;
+//            $this->directory = 'documentation-file/';
+//            $this->file->move($this->directory, $this->pdfFile);
+//            $this->fileUrl = $this->directory. $this->pdfFile;
+//        }
+//        else{
+//            $this->fileUrl = $this->documentation->file;
+//        }
+
+        if ($pdfFile = $request->file('file'))
+        {
+            if (file_exists($documentation->file))
+            {
+                unlink($documentation->file);
+            }
+            $pdfName = time() . '.' . $pdfFile->extension();
+            $pdfFile->move(public_path('documentation-file'), $pdfName);
+            $documentation->file = $pdfName;
+
+        }
+        else{
+            $this->documentation->file;
         }
 
+
+        $pdfFile = $request->file('file');
+        if($pdfFile){
+            $pdfName = time() . '.' . $pdfFile->extension();
+            $pdfFile->move(public_path('documentation-file'), $pdfName);
+            $documentation->file = $pdfName;
+        }
 
         $documentation->project_id = $request->project_id;
         $documentation->worker_id = $request->worker_id;
@@ -138,6 +183,7 @@ class DocumentationController extends Controller
         } else {
             $documentation->status = false;
         }
+//        $documentation->file = $this->fileUrl;
         $documentation->save();
         return redirect()->route('documentation.index');
     }

@@ -171,6 +171,6 @@
     <script src="{{ asset('admin') }}/js/pdfobject.min.js"></script>
     <script type="text/javascript">
         var viewer = $("#viewpdf");
-        PDFObject.embed("{{ asset('documentations/'.$documentation->file) }}", viewer);
+        PDFObject.embed("{{ asset('documentation-file/'.$documentation->file) }}", viewer);
     </script>
 @endpush
