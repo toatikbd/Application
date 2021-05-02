@@ -132,42 +132,17 @@ class DocumentationController extends Controller
             'end_date' => 'required',
         ]);
 
-//        if($this->file = $request->file('file'))
-//        {
-//            if(file_exists($this->documentation->file)){
-//                unlink($this->documentation->file);
-//            }
-//            $this->type = $this->file->getClientOriginalExtension();
-//            $this->pdfFile = time().'.'.$this->type;
-//            $this->directory = 'documentation-file/';
-//            $this->file->move($this->directory, $this->pdfFile);
-//            $this->fileUrl = $this->directory. $this->pdfFile;
-//        }
-//        else{
-//            $this->fileUrl = $this->documentation->file;
-//        }
-
         if ($pdfFile = $request->file('file'))
         {
-            if (file_exists($documentation->file))
+            $oldFile = public_path(). "/documentation-file/". $documentation->file;
+            if (file_exists($oldFile))
             {
-                unlink($documentation->file);
+                unlink($oldFile);
             }
             $pdfName = time() . '.' . $pdfFile->extension();
             $pdfFile->move(public_path('documentation-file'), $pdfName);
             $documentation->file = $pdfName;
 
-        }
-        else{
-            $this->documentation->file;
-        }
-
-
-        $pdfFile = $request->file('file');
-        if($pdfFile){
-            $pdfName = time() . '.' . $pdfFile->extension();
-            $pdfFile->move(public_path('documentation-file'), $pdfName);
-            $documentation->file = $pdfName;
         }
 
         $documentation->project_id = $request->project_id;
