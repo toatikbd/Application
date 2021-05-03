@@ -47,27 +47,9 @@ class WorkerController extends Controller
             'image' =>  'required|image|mimes:jpeg,png,jpg,svg'
         ]);
 
-//        $image = $request->file('image');
-//        $slug = Str::slug($request->name);
-//        if (isset($image)) {
-//            // make uniq name for image
-//            $currentDate = Carbon::now()->toDateString();
-//            $imageName = $slug . '-' . $currentDate . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
-//            // Check if worker Dir exists
-//            if (!Storage::disk('public')->exists('worker')) {
-//                Storage::disk('public')->makeDirectory('worker');
-//            }
-//            $workerImage = Image::make($image)->stream();
-//            Storage::disk('public')->put('worker/' . $imageName, $workerImage);
-//
-//        } else {
-//            $imageName = 'default.png';
-//        }
-
-
         $image = $request->file('image');
         $imageName = time() . '.' . $image->extension();
-        $image->move(public_path('images'), $imageName);
+        $image->move(public_path('uploaded/supervisor'), $imageName);
 
         $worker = new Worker();
         $worker->name = $request->name;
@@ -117,10 +99,22 @@ class WorkerController extends Controller
             'department' => 'required'
         ]);
 
-        $image = $request->file('image');
-        if($image){
-            $imageName = time() . '.' . $image->extension();
-            $image->move(public_path('images'), $imageName);
+//        $image = $request->file('image');
+//        if($image){
+//            $imageName = time() . '.' . $image->extension();
+//            $image->move(public_path('images'), $imageName);
+//            $worker->image = $imageName;
+//        }
+
+        if ($imageFile = $request->file('image'))
+        {
+            $oldImage = public_path(). "/uploaded/supervisor/". $worker->image;
+            if (file_exists($oldImage))
+            {
+                unlink($oldImage);
+            }
+            $imageName = time() . '.' . $imageFile->extension();
+            $imageFile->move(public_path('uploaded/supervisor'), $imageName);
             $worker->image = $imageName;
         }
 
@@ -130,7 +124,6 @@ class WorkerController extends Controller
         $worker->department = $request->department;
         $worker->save();
         return redirect()->route('worker.index');
-
     }
 
     /**
@@ -141,6 +134,11 @@ class WorkerController extends Controller
      */
     public function destroy(Worker $worker)
     {
+        $oldImage = public_path(). "/uploaded/supervisor/". $worker->image;
+        if (file_exists($oldImage))
+        {
+            unlink($oldImage);
+        }
         $worker->delete();
         return redirect()->back();
     }

@@ -16,12 +16,6 @@ class DocumentationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-//    protected $documentation;
-//    protected $file;
-//    protected $type;
-//    protected $pdfFile;
-//    protected $directory;
-//    protected $fileUrl;
 
     public function index()
     {
@@ -58,12 +52,6 @@ class DocumentationController extends Controller
             'end_date' => 'required',
         ]);
 
-//        $this->file = $request->file('file');
-//        $this->type = $this->file->getClientOriginalExtension();
-//        $this->pdfFile = time().'.'.$this->type;
-//        $this->directory = 'documentation-file/';
-//        $this->file->move($this->directory, $this->pdfFile);
-
         $pdfFile = $request->file('file');
         $pdfName = time() . '.' . $pdfFile->extension();
         $pdfFile->move(public_path('documentation-file'), $pdfName);
@@ -77,7 +65,6 @@ class DocumentationController extends Controller
         $documentation->task_progress = $request->task_progress;
         $documentation->start_date = Carbon::createFromFormat('d-m-Y',$request->start_date);
         $documentation->end_date = Carbon::createFromFormat('d-m-Y',$request->end_date);
-//        $documentation->file = $this->directory.$this->pdfFile;
         $documentation->file = $pdfName;
         if (isset($request->status)) {
             $documentation->status = true;
@@ -142,7 +129,6 @@ class DocumentationController extends Controller
             $pdfName = time() . '.' . $pdfFile->extension();
             $pdfFile->move(public_path('documentation-file'), $pdfName);
             $documentation->file = $pdfName;
-
         }
 
         $documentation->project_id = $request->project_id;
@@ -158,7 +144,6 @@ class DocumentationController extends Controller
         } else {
             $documentation->status = false;
         }
-//        $documentation->file = $this->fileUrl;
         $documentation->save();
         return redirect()->route('documentation.index');
     }

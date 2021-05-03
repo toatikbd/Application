@@ -30,7 +30,7 @@
                     </div>
                     <div class="body">
                         <div class="table-responsive">
-                            <table class="table table-bordered dashboard-task-infos table-striped table-hover dataTable js-exportable">
+                            <table class="table table-hover table-bordered dashboard-task-infos table-striped dataTable js-exportable">
                                 <thead>
                                 <tr>
                                     <th>#</th>

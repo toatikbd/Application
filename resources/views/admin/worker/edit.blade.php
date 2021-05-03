@@ -70,7 +70,7 @@
                                 <div>
                                     <input id="photo_upload" type="file" name="image" class="btn btn-primary btn-lg waves-effect" onchange="previewFiles()">
                                     <div id="preview"></div>
-                                    <img src="{{ asset('images/'.$worker->image) }}" alt="{{ $worker->name }}" style="max-width:130px; margin-top: 20px">
+                                    <img src="{{ asset('uploaded/supervisor/'.$worker->image) }}" alt="{{ $worker->name }}" style="max-width:130px; margin-top: 20px">
                                 </div>
                             </div>
                             <div class="text-center">

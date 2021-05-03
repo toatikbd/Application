@@ -3,8 +3,6 @@
 @push('css')
     <!-- Bootstrap Select Css -->
     <link href="{{ asset('admin') }}/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
-    <!-- noUISlider Css -->
-{{--    <link href="{{ asset('admin') }}/plugins/nouislider/nouislider.min.css" rel="stylesheet" />--}}
     <!-- Bootstrap Material Datetime Picker Css -->
     <link href="{{ asset('admin') }}/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
     <!-- Bootstrap DatePicker Css -->
@@ -79,10 +77,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- {{--  <div class="form-group">--}} -->
-                            <!-- {{--  <div id="nouislider_basic_example"></div>--}} -->
-                            <!-- {{--  <div class="m-t-20 font-12"><b>Value: </b><span class="js-nouislider-value"></span></div>--}} -->
-                            <!-- {{--  </div>--}} -->
                             <div class="col-md-8">
                                 <label for="task_file">File Upload</label>
                                 <div class="form-group">
@@ -165,15 +159,8 @@
 @push('js')
     <!-- Select Plugin Js -->
     <script src="{{ asset('admin') }}/plugins/bootstrap-select/js/bootstrap-select.js"></script>
-    <!-- noUISlider Plugin Js -->
-<!-- {{--    <script src="{{ asset('admin') }}/plugins/nouislider/nouislider.js"></script>--}} -->
     <!-- Bootstrap Material Datetime Picker Plugin Js -->
     <script src="{{ asset('admin') }}/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
     <!-- Bootstrap Datepicker Plugin Js -->
     <script src="{{ asset('admin') }}/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-
-    <script>
-
-
-    </script>
 @endpush
