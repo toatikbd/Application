@@ -10,10 +10,12 @@ class SiteEvaluation extends Model
     use HasFactory;
     public function worker()
     {
-        return $this->belongsTo('App\Models\Worker', 'worker_id');
+        return $this->belongsTo(Worker::class);
+//        return $this->belongsTo('App\Models\Worker', 'worker_id');
     }
     public function project()
     {
-        return $this->belongsTo('App\Models\Project', 'project_id');
+        return $this->belongsTo(Project::class);
+//        return $this->belongsTo('App\Models\Project', 'project_id');
     }
 }

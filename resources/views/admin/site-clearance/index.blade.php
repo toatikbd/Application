@@ -1,5 +1,9 @@
 @extends('layouts.app')
 @section('title', 'Site Clearance')
+@push('css')
+    <!-- JQuery DataTable Css -->
+    <link href="{{ asset('admin') }}/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+@endpush
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
@@ -23,7 +27,7 @@
                     </div>
                     <div class="body">
                         <div class="table-responsive">
-                            <table class="table table-hover dashboard-task-infos">
+                            <table class="table table-hover table-bordered dashboard-task-infos table-striped dataTable js-exportable">
                                 <thead>
                                 <tr>
                                     <th>#</th>
@@ -85,5 +89,11 @@
 @endsection
 
 @push('js')
-
+    <!-- Jquery DataTable Plugin Js -->
+    <script src="{{ asset('admin') }}/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="{{ asset('admin') }}/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="{{ asset('admin') }}/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="{{ asset('admin') }}/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="{{ asset('admin') }}/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+    <script src="{{ asset('admin') }}/js/pages/tables/jquery-datatable.js"></script>
 @endpush

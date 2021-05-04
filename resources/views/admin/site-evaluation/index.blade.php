@@ -3,9 +3,6 @@
 @push('css')
     <!-- JQuery DataTable Css -->
     <link href="{{ asset('admin') }}/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
-    <style>
-
-    </style>
 @endpush
 @section('content')
     <div class="container-fluid">
@@ -55,7 +52,7 @@
                                             <div class="progress-bar bg-green" role="progressbar" aria-valuenow="{{ $siteEvaluation->task_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $siteEvaluation->task_progress }}%"></div>
                                         </div>
                                     </td>
-                                    <td>{{ $siteEvaluation->worker->name }}</td>
+                                    <td>{{ optional($siteEvaluation->worker)->name }}</td>
                                     <td>{{ $siteEvaluation->project->name }}</td>
                                     <td>{{ \Carbon\Carbon::parse($siteEvaluation->start_date)->format('d/m/Y')}}</td>
                                     <td>{{ \Carbon\Carbon::parse($siteEvaluation->end_date)->format('d/m/Y')}}</td>

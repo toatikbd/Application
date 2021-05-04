@@ -10,6 +10,7 @@ class InteriorDetail extends Model
     use HasFactory;
     public function worker()
     {
+//        return $this->belongsTo(Worker::class);
         return $this->belongsTo('App\Models\Worker', 'worker_id');
     }
     public function project()

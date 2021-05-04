@@ -21,9 +21,11 @@ class CreateSiteEvaluationsTable extends Migration
             $table->integer('task_progress');
             $table->string('file');
             $table->unsignedBigInteger('project_id');
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
             $table->date('start_date');
             $table->date('end_date');
             $table->unsignedBigInteger('worker_id');
+            $table->foreign('worker_id')->references('id')->on('workers')->onDelete('cascade');
             $table->boolean('status')->default(false);
             $table->timestamps();
         });
