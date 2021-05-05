@@ -14,7 +14,7 @@ class ProcurementController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.procurement.index');
     }
 
     /**

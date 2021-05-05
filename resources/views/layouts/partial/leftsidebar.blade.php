@@ -91,8 +91,8 @@
                     <span>Time Management Plan</span>
                 </a>
             </li>
-            <li>
-                <a href="#">
+            <li class="{{ Request::is('procurement*') ? 'active' : '' }}">
+                <a href="{{ route('procurement.index') }}">
                     <i class="material-icons">import_export</i>
                     <span>Procurement Plan</span>
                 </a>
