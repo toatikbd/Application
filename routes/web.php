@@ -42,7 +42,7 @@ Route::resource('/interior-detail', App\Http\Controllers\InteriorDetailControlle
 Route::resource('/design-mep', App\Http\Controllers\MEPController::class);
 Route::resource('/procurement', App\Http\Controllers\ProcurementController::class);
 Route::resource('/requisition', App\Http\Controllers\RequisitionController::class);
-
+Route::resource('/country', App\Http\Controllers\CountryController::class);
 
 //Admin route
 

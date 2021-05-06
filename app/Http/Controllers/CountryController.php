@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Country;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CountryController extends Controller
 {
@@ -14,7 +15,7 @@ class CountryController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.country.index');
     }
 
     /**
@@ -24,7 +25,8 @@ class CountryController extends Controller
      */
     public function create()
     {
-        //
+        $countries = Country::latest()->get();
+        return view('admin.country.create', compact('countries'));
     }
 
     /**
@@ -35,7 +37,15 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required'
+        ]);
+        $country = new Country();
+        $country->name = $request->name;
+        $country->slug = Str::slug($request-> name);
+        $country->note = $request->note;
+        $country->save();
+        return redirect()->route('country.create');
     }
 
     /**
@@ -46,7 +56,7 @@ class CountryController extends Controller
      */
     public function show(Country $country)
     {
-        //
+
     }
 
     /**
@@ -57,7 +67,7 @@ class CountryController extends Controller
      */
     public function edit(Country $country)
     {
-        //
+        return view('admin.country.edit', compact('country'));
     }
 
     /**
@@ -69,7 +79,15 @@ class CountryController extends Controller
      */
     public function update(Request $request, Country $country)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required'
+        ]);
+
+        $country->name = $request->name;
+        $country->slug = Str::slug($request-> name);
+        $country->note = $request->note;
+        $country->update();
+        return redirect()->route('country.create');
     }
 
     /**
@@ -80,6 +98,7 @@ class CountryController extends Controller
      */
     public function destroy(Country $country)
     {
-        //
+        $country->delete();
+        return redirect()->back();
     }
 }
