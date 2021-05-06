@@ -41,7 +41,7 @@ Route::resource('/structural-design', App\Http\Controllers\StructuralDesignContr
 Route::resource('/interior-detail', App\Http\Controllers\InteriorDetailController::class);
 Route::resource('/design-mep', App\Http\Controllers\MEPController::class);
 Route::resource('/procurement', App\Http\Controllers\ProcurementController::class);
-
+Route::resource('/requisition', App\Http\Controllers\RequisitionController::class);
 
 
 //Admin route

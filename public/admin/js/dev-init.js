@@ -45,6 +45,12 @@ $('#bs_datepicker_range_container').datepicker({
     container: '#bs_datepicker_range_container',
     format: 'dd-mm-yyyy'
 });
+//Bootstrap datepicker plugin
+$('#bs_datepicker_container input').datepicker({
+    autoclose: true,
+    container: '#bs_datepicker_container',
+    format: 'dd-mm-yyyy'
+});
 
 
 //noUISlider

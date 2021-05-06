@@ -14,7 +14,7 @@ class RequisitionController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.requisition.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class RequisitionController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.requisition.create');
     }
 
     /**
