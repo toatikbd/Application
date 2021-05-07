@@ -66,9 +66,16 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 0.1.0 = 10/04/2021
 
 ##Installation
+- git clone 
+- npm install
+- composer install
+- composer update
+- create database update .env file
 - php artisan migrate
+- php artisan serve
 - php artisan migrate:rollback
 - php artisan migrate:rollback --step=5
+- php artisan migrate:fresh
 - php artisan migrate:refresh
 - php artisan migrate:refresh --seed
 - php artisan make:model Name -mcr
