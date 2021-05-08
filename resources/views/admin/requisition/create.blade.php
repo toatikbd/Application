@@ -61,10 +61,10 @@
                             </div>
                             <div class="row clearfix">
                                 <div class="col-md-6">
-                                    <label for="category">Category</label>
+                                    <label for="requisition_category">Category</label>
                                     <div class="form-group">
                                         <div class="form-line custom-live-search">
-                                            <select class="form-control show-tick" id="category" name="worker_id" data-live-search="true">
+                                            <select class="form-control show-tick" id="requisition_category" name="requisition_category" data-live-search="true">
                                                 <option selected disabled>-- Please select --</option>
                                                 <option>Burger, Shake and a Smile</option>
                                             </select>
@@ -72,10 +72,10 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="category">Requisition Type</label>
+                                    <label for="requisition_type">Requisition Type</label>
                                     <div class="form-group">
                                         <div class="form-line custom-live-search">
-                                            <select class="form-control show-tick" id="category" name="worker_id" data-live-search="true">
+                                            <select class="form-control show-tick" id="requisition_type" name="requisition_type" data-live-search="true">
                                                 <option selected disabled>-- Please select --</option>
                                                 <option>Local</option>
                                                 <option>Foreign</option>
@@ -94,10 +94,10 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="title">Country of Origin</label>
+                                    <label for="country_id">Country of Origin</label>
                                     <div class="form-group">
                                         <div class="form-line custom-live-search">
-                                            <select class="form-control show-tick" id="category" name="worker_id" data-live-search="true">
+                                            <select class="form-control show-tick" id="country_id" name="country_id" data-live-search="true">
                                                 <option selected disabled>-- Please select --</option>
                                                 <option>Local</option>
                                                 <option>Foreign</option>
