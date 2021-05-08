@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\RequisitionCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class RequisitionCategoryController extends Controller
 {
@@ -14,7 +15,7 @@ class RequisitionCategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.requisition-category.index');
     }
 
     /**
@@ -24,7 +25,8 @@ class RequisitionCategoryController extends Controller
      */
     public function create()
     {
-        //
+        $requisitionCategories = RequisitionCategory::latest()->get();
+        return view('admin.requisition-category.create', compact('requisitionCategories'));
     }
 
     /**
@@ -35,7 +37,15 @@ class RequisitionCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required'
+        ]);
+        $category = new RequisitionCategory();
+        $category->name = $request->name;
+        $category->slug = Str::slug($request-> name);
+        $category->note = $request->note;
+        $category->save();
+        return redirect()->route('requisition-category.create');
     }
 
     /**
@@ -57,7 +67,7 @@ class RequisitionCategoryController extends Controller
      */
     public function edit(RequisitionCategory $requisitionCategory)
     {
-        //
+        return view('admin.requisition-category.edit', compact('requisitionCategory'));
     }
 
     /**
@@ -69,7 +79,14 @@ class RequisitionCategoryController extends Controller
      */
     public function update(Request $request, RequisitionCategory $requisitionCategory)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required'
+        ]);
+        $requisitionCategory->name = $request->name;
+        $requisitionCategory->slug = Str::slug($request-> name);
+        $requisitionCategory->note = $request->note;
+        $requisitionCategory->update();
+        return redirect()->route('requisition-category.create');
     }
 
     /**
@@ -80,6 +97,7 @@ class RequisitionCategoryController extends Controller
      */
     public function destroy(RequisitionCategory $requisitionCategory)
     {
-        //
+        $requisitionCategory->delete();
+        return redirect()->back();
     }
 }
