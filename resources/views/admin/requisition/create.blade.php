@@ -48,7 +48,7 @@
                     </div>
                 @endif
             </div>
-            <form action="{{ route('requisition.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('requisition.store') }}" method="POST">
                 @csrf
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                     <div class="card">
@@ -62,11 +62,13 @@
                             <div class="row clearfix">
                                 <div class="col-md-6">
                                     <label for="requisition_category">Category</label>
-                                    <div class="form-group">
+                                    <div class="form-group {{ $errors->has('requisitionCategories') ? 'focused error' : '' }}">
                                         <div class="form-line custom-live-search">
-                                            <select class="form-control show-tick" id="requisition_category" name="requisition_category" data-live-search="true">
-                                                <option selected disabled>-- Please select --</option>
-                                                <option>Burger, Shake and a Smile</option>
+                                            <select class="form-control show-tick" id="requisition_category" name="category_id" data-live-search="true">
+                                                <option selected disabled>-- Please select project--</option>
+                                                @foreach($requisitionCategories as $key => $category)
+                                                    <option value="{{ $category->id }}"> {{ $category->name }} </option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -77,8 +79,8 @@
                                         <div class="form-line custom-live-search">
                                             <select class="form-control show-tick" id="requisition_type" name="requisition_type" data-live-search="true">
                                                 <option selected disabled>-- Please select --</option>
-                                                <option>Local</option>
-                                                <option>Foreign</option>
+                                                <option name="requisition_type" value="Local">Local</option>
+                                                <option name="requisition_type" value="Foreign">Foreign</option>
                                             </select>
                                         </div>
                                     </div>
@@ -95,12 +97,13 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="country_id">Country of Origin</label>
-                                    <div class="form-group">
+                                    <div class="form-group {{ $errors->has('countries') ? 'focused error' : '' }}">
                                         <div class="form-line custom-live-search">
                                             <select class="form-control show-tick" id="country_id" name="country_id" data-live-search="true">
-                                                <option selected disabled>-- Please select --</option>
-                                                <option>Local</option>
-                                                <option>Foreign</option>
+                                                <option selected disabled>-- Please select project--</option>
+                                                @foreach($countries as $key => $country)
+                                                    <option value="{{ $country->id }}"> {{ $country->name }} </option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -131,42 +134,31 @@
                                 </div>
                             </div>
                             <label for="select_worker">Select Project</label>
-                            <select class="form-control show-tick" id="category" name="worker_id" data-live-search="true">
-                                <option selected disabled>-- Please select --</option>
-                                <option>Local</option>
-                                <option>Foreign</option>
-                            </select>
-{{--                            <div class="form-group {{ $errors->has('projects') ? 'focused error' : '' }}">--}}
-{{--                                <div class="form-line custom-live-search">--}}
-{{--                                    <select class="form-control show-tick" id="select_worker" name="project_id" data-live-search="true">--}}
-{{--                                        <option selected disabled>-- Please select project--</option>--}}
-{{--                                        @foreach($projects as $key => $project)--}}
-{{--                                            <option value="{{ $project->id }}"> {{ $project->name }} </option>--}}
-{{--                                        @endforeach--}}
-{{--                                    </select>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-
+                            <div class="form-group {{ $errors->has('projects') ? 'focused error' : '' }}">
+                                <div class="form-line custom-live-search">
+                                    <select class="form-control show-tick" id="select_worker" name="project_id" data-live-search="true">
+                                        <option selected disabled>-- Please select project--</option>
+                                        @foreach($projects as $key => $project)
+                                            <option value="{{ $project->id }}"> {{ $project->name }} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
 
                             <label for="select_worker">Select Supervisor</label>
-                            <select class="form-control show-tick" id="category" name="worker_id" data-live-search="true">
-                                <option selected disabled>-- Please select --</option>
-                                <option>Local</option>
-                                <option>Foreign</option>
-                            </select>
-{{--                            <div class="form-group {{ $errors->has('workers') ? 'focused error' : '' }}">--}}
-{{--                                <div class="form-line custom-live-search">--}}
-{{--                                    <select class="form-control show-tick" id="select_worker" name="worker_id" data-live-search="true">--}}
-{{--                                        <option selected disabled>-- Please select --</option>--}}
-{{--                                        @foreach($workers as $key => $worker)--}}
-{{--                                            <option value="{{ $worker->id }}"> {{ $worker->name }} </option>--}}
-{{--                                        @endforeach--}}
-{{--                                    </select>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
+                           <div class="form-group {{ $errors->has('workers') ? 'focused error' : '' }}">
+                               <div class="form-line custom-live-search">
+                                   <select class="form-control show-tick" id="select_worker" name="worker_id" data-live-search="true">
+                                       <option selected disabled>-- Please select --</option>
+                                       @foreach($workers as $key => $worker)
+                                           <option value="{{ $worker->id }}"> {{ $worker->name }} </option>
+                                       @endforeach
+                                   </select>
+                               </div>
+                           </div>
 
                             <div class="text-center">
-                                <a href="{{ route('worker.index') }}" class="btn btn-danger waves-effect">
+                                <a href="{{ route('requisition.index') }}" class="btn btn-danger waves-effect">
                                     <i class="material-icons">settings_backup_restore</i>
                                     <span>BACK</span>
                                 </a>
