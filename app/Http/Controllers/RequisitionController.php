@@ -20,7 +20,8 @@ class RequisitionController extends Controller
      */
     public function index()
     {
-        return view('admin.requisition.index');
+        $requisitions = Requisition::latest()->get();
+        return view('admin.requisition.index', compact('requisitions'));
     }
 
     /**
@@ -45,7 +46,7 @@ class RequisitionController extends Controller
      */
     public function store(Request $request)
     {
-        dd::all;
+        
         $this->validate($request, [
             'title' => 'required',
             'category_id' => 'required',
@@ -85,7 +86,7 @@ class RequisitionController extends Controller
      */
     public function show(Requisition $requisition)
     {
-        //
+        return view ('admin.requisition.show', compact('requisition'));
     }
 
     /**

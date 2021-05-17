@@ -15,7 +15,7 @@
                         </div>
                         <div class="content">
                             <div class="text">Requisition</div>
-                            <div class="number count-to" data-from="0" data-to="" data-speed="15" data-fresh-interval="20"></div>
+                            <div class="number count-to" data-from="0" data-to="{{ $requisitions }}" data-speed="15" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </a>
@@ -83,7 +83,7 @@
                         </div>
                         <div class="content">
                             <div class="text">Country</div>
-                            <div class="number count-to" data-from="0" data-to="" data-speed="15" data-fresh-interval="20"></div>
+                            <div class="number count-to" data-from="0" data-to="{{ $countries }}" data-speed="15" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </a>
@@ -96,7 +96,7 @@
                         </div>
                         <div class="content">
                             <div class="text">Requisition Category</div>
-                            <div class="number count-to" data-from="0" data-to="" data-speed="1000" data-fresh-interval="20"></div>
+                            <div class="number count-to" data-from="0" data-to="{{ $requisitionCategories }}" data-speed="1000" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </a>

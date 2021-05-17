@@ -7,7 +7,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-{{--            <h2>Requisition <span class="badge bg-blue">{{ $requisitions->count() }}</span></h2>--}}
+            <h2>Requisition <span class="badge bg-blue">{{ $requisitions->count() }}</span></h2>
             <ol class="breadcrumb breadcrumb-col-pink breadcrumb-right-align">
                 <li><a href="{{ url('/home') }}"><i class="material-icons">home</i> Dashboard</a></li>
                 <li><a href="{{ route('procurement.index') }}"><i class="material-icons">library_books</i> Procurement</a></li>
@@ -22,7 +22,7 @@
                         <h2>Requisition INFOS</h2>
                         <a href="{{ route('requisition.create') }}" class="btn btn-success waves-effect right-align-task-btn">
                             <i class="material-icons">add</i>
-                            <span>Create a Task</span>
+                            <span>Create a Requisition</span>
                         </a>
                     </div>
                     <div class="body">
@@ -31,51 +31,43 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Task Title</th>
-                                    <th>Progress<span class="badge bg-pink">%</span></th>
-                                    <th>Supervisor</th>
-                                    <th>Project Name</th>
-                                    <th>Start Date</th>
-                                    <th>End Date</th>
-                                    <th>Day Total</th>
+                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th>Type</th>
+                                    <th>Manufacturer</th>
+                                    <th>Price</th>
+                                    <th>Needed Date</th>
                                     <th>Status</th>
                                     <th class="text-right">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-{{--                                @foreach ($requisitions as $key => $requisition)--}}
-{{--                                <tr>--}}
-{{--                                    <td>{{ $key + 1 }}</td>--}}
-{{--                                    <td>{{ Str::limit($requisition->task_title, 10) }}</td>--}}
-{{--                                    <td>--}}
-{{--                                        <div class="progress">--}}
-{{--                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="{{ $siteEvaluation->task_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $siteEvaluation->task_progress }}%"></div>--}}
-{{--                                        </div>--}}
-{{--                                    </td>--}}
-{{--                                    <td>{{ optional($requisition->worker)->name }}</td>--}}
-{{--                                    <td>{{ $requisition->project->name }}</td>--}}
-{{--                                    <td>{{ \Carbon\Carbon::parse($requisition->start_date)->format('d/m/Y')}}</td>--}}
-{{--                                    <td>{{ \Carbon\Carbon::parse($requisition->end_date)->format('d/m/Y')}}</td>--}}
-{{--                                    <td>--}}
-{{--                                        <span class="label bg-red">{{ \App\Classes\DayCount::days( $requisition->start_date, $requisition->end_date) }} Days</span>--}}
-{{--                                    </td>--}}
-{{--                                    <td>--}}
-{{--                                        @if($requisition->status == true)--}}
-{{--                                            <span class="badge bg-blue">The End</span>--}}
-{{--                                        @else--}}
-{{--                                            <span class="badge bg-pink">Doing</span>--}}
-{{--                                        @endif--}}
-{{--                                    </td>--}}
-{{--                                    <td class="text-right">--}}
-{{--                                        <a href="{{ route('requisition.show', $requisition->id) }}" class="btn btn-primary btn-xs waves-effect">--}}
-{{--                                            <i class="material-icons">visibility</i>--}}
-{{--                                        </a>--}}
-{{--                                        <a href="{{ route('requisition.edit', $requisition->id) }}" class="btn btn-warning btn-xs waves-effect">--}}
-{{--                                            <i class="material-icons">edit</i>--}}
-{{--                                        </a>--}}
-{{--                                    </td>--}}
-{{--                                </tr>--}}
-{{--                                @endforeach--}}
+                                @foreach ($requisitions as $key => $requisition)
+                                <tr>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ Str::limit($requisition->title, 10) }}</td>
+                                    <td>{{ optional($requisition->requisitionCategory)->name }}</td>
+                                    <td>{{ $requisition->requisition_type }}</td>
+                                    <td>{{ $requisition->manufacturer }}</td>
+                                    <td>{{ $requisition->price }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($requisition->needed_date)->format('d/m/Y')}}</td>
+                                    <td>
+                                        @if($requisition->approved_by == true)
+                                            <span class="badge bg-blue">Approved</span>
+                                        @else
+                                            <span class="badge bg-pink">Unapproved</span>
+                                        @endif
+                                    </td>
+                                    <td class="text-right">
+                                        <a href="{{ route('requisition.show', $requisition->id) }}" class="btn btn-primary btn-xs waves-effect">
+                                            <i class="material-icons">visibility</i>
+                                        </a>
+                                        <a href="{{ route('requisition.edit', $requisition->id) }}" class="btn btn-warning btn-xs waves-effect">
+                                            <i class="material-icons">edit</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>

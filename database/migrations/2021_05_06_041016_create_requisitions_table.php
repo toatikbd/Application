@@ -18,7 +18,7 @@ class CreateRequisitionsTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('requisition_type');
+            $table->string('requisition_type');
             $table->string('manufacturer');
             $table->unsignedBigInteger('country_id');
             $table->text('description')->nullable();

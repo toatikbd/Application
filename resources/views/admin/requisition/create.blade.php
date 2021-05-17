@@ -146,17 +146,39 @@
                             </div>
 
                             <label for="select_worker">Select Supervisor</label>
-                           <div class="form-group {{ $errors->has('workers') ? 'focused error' : '' }}">
-                               <div class="form-line custom-live-search">
-                                   <select class="form-control show-tick" id="select_worker" name="worker_id" data-live-search="true">
-                                       <option selected disabled>-- Please select --</option>
-                                       @foreach($workers as $key => $worker)
-                                           <option value="{{ $worker->id }}"> {{ $worker->name }} </option>
-                                       @endforeach
-                                   </select>
-                               </div>
-                           </div>
-
+                            <div class="form-group {{ $errors->has('workers') ? 'focused error' : '' }}">
+                                <div class="form-line custom-live-search">
+                                    <select class="form-control show-tick" id="select_worker" name="worker_id" data-live-search="true">
+                                        <option selected disabled>-- Please select --</option>
+                                        @foreach($workers as $key => $worker)
+                                            <option value="{{ $worker->id }}"> {{ $worker->name }} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <label for="status">Status</label>
+                            <!-- <div class="form-group">
+                                <div class="form-line">
+                                    <input type="checkbox" id="approved"  name="approved_by" value="1" class="filled-in chk-col-red"/>
+                                    <label for="approved_by"></label>
+                                </div>
+                                <div class="form-line">
+                                    <input type="checkbox" id="unapproved"  name="approved_by" value="2" class="filled-in chk-col-red"/>
+                                    <label for="unapproved"></label>
+                                </div>
+                            </div> -->
+                            <div class="form-check">
+                                <input class="form-check-input chk-col-green" type="radio" name="approved_by" value="1" id="approved">
+                                <label class="form-check-label" for="approved">
+                                    Approved
+                                </label>
+                                </div>
+                                <div class="form-check">
+                                <input class="form-check-input chk-col-red" type="radio" name="approved_by" value="2" id="unapproved" checked>
+                                <label class="form-check-label" for="unapproved">
+                                    Unapproved
+                                </label>
+                            </div>
                             <div class="text-center">
                                 <a href="{{ route('requisition.index') }}" class="btn btn-danger waves-effect">
                                     <i class="material-icons">settings_backup_restore</i>
