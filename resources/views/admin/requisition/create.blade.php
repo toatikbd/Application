@@ -108,8 +108,34 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <label for="select_worker">Select Project</label>
+                                    <div class="form-group {{ $errors->has('projects') ? 'focused error' : '' }}">
+                                        <div class="form-line custom-live-search">
+                                            <select class="form-control show-tick" id="select_worker" name="project_id" data-live-search="true">
+                                                <option selected disabled>-- Please select project--</option>
+                                                @foreach($projects as $key => $project)
+                                                    <option value="{{ $project->id }}"> {{ $project->name }} </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="select_worker">Select Supervisor</label>
+                                    <div class="form-group {{ $errors->has('workers') ? 'focused error' : '' }}">
+                                        <div class="form-line custom-live-search">
+                                            <select class="form-control show-tick" id="select_worker" name="worker_id" data-live-search="true">
+                                                <option selected disabled>-- Please select --</option>
+                                                @foreach($workers as $key => $worker)
+                                                    <option value="{{ $worker->id }}"> {{ $worker->name }} </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <label for="description">Requisition Description</label>
+                            <label for="description">Requisition Remarks</label>
                             <div class="form-group">
                                 <div class="form-line">
                                     <textarea rows="4" id="description" name="description" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
@@ -127,46 +153,36 @@
                                     <input type="number" id="product_price" name="price" autocomplete="off" class="form-control" placeholder="Enter Price">
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <label for="quantity">Quantity</label>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="number" id="quantity" name="quantity" autocomplete="off" class="form-control" placeholder="Enter Quantity">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <label for="select_worker">Select Unit</label>
+                                    <div class="form-group {{ $errors->has('projects') ? 'focused error' : '' }}">
+                                        <div class="form-line custom-live-search">
+                                            <select class="form-control show-tick" id="select_worker" name="project_id" data-live-search="true">
+                                                <option selected disabled>-- Unit--</option>
+                                                @foreach($projects as $key => $project)
+                                                    <option value="{{ $project->id }}"> {{ $project->name }} </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <label for="needed_date">Needed Date</label>
                             <div class="form-group">
                                 <div class="form-line" id="bs_datepicker_container">
                                     <input type="text" name="needed_date" class="form-control" autocomplete="off" placeholder="Please choose a date...">
                                 </div>
                             </div>
-                            <label for="select_worker">Select Project</label>
-                            <div class="form-group {{ $errors->has('projects') ? 'focused error' : '' }}">
-                                <div class="form-line custom-live-search">
-                                    <select class="form-control show-tick" id="select_worker" name="project_id" data-live-search="true">
-                                        <option selected disabled>-- Please select project--</option>
-                                        @foreach($projects as $key => $project)
-                                            <option value="{{ $project->id }}"> {{ $project->name }} </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-
-                            <label for="select_worker">Select Supervisor</label>
-                            <div class="form-group {{ $errors->has('workers') ? 'focused error' : '' }}">
-                                <div class="form-line custom-live-search">
-                                    <select class="form-control show-tick" id="select_worker" name="worker_id" data-live-search="true">
-                                        <option selected disabled>-- Please select --</option>
-                                        @foreach($workers as $key => $worker)
-                                            <option value="{{ $worker->id }}"> {{ $worker->name }} </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
                             <label for="status">Status</label>
-                            <!-- <div class="form-group">
-                                <div class="form-line">
-                                    <input type="checkbox" id="approved"  name="approved_by" value="1" class="filled-in chk-col-red"/>
-                                    <label for="approved_by"></label>
-                                </div>
-                                <div class="form-line">
-                                    <input type="checkbox" id="unapproved"  name="approved_by" value="2" class="filled-in chk-col-red"/>
-                                    <label for="unapproved"></label>
-                                </div>
-                            </div> -->
                             <div class="form-check">
                                 <input class="form-check-input chk-col-green" type="radio" name="approved_by" value="1" id="approved">
                                 <label class="form-check-label" for="approved">
