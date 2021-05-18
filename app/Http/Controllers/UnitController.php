@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Unit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class UnitController extends Controller
 {
@@ -14,7 +15,7 @@ class UnitController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.unit.index');
     }
 
     /**
@@ -24,7 +25,8 @@ class UnitController extends Controller
      */
     public function create()
     {
-        //
+        $units = Unit::latest()->get();
+        return view('admin.unit.create', compact('units'));
     }
 
     /**
@@ -35,7 +37,17 @@ class UnitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'symbol' => 'required'
+        ]);
+        $unit = new Unit();
+        $unit->name = $request->name;
+        $unit->slug = Str::slug($request-> name);
+        $unit->symbol = $request->symbol;
+        $unit->qty_name = $request->qty_name;
+        $unit->save();
+        return redirect()->route('unit.create');
     }
 
     /**
@@ -57,7 +69,7 @@ class UnitController extends Controller
      */
     public function edit(Unit $unit)
     {
-        //
+        return view('admin.unit.edit', compact('unit'));
     }
 
     /**
@@ -69,7 +81,16 @@ class UnitController extends Controller
      */
     public function update(Request $request, Unit $unit)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'symbol' => 'required'
+        ]);
+        $unit->name = $request->name;
+        $unit->slug = Str::slug($request-> name);
+        $unit->symbol = $request->symbol;
+        $unit->qty_name = $request->qty_name;
+        $unit->update();
+        return redirect()->route('unit.create');
     }
 
     /**
@@ -80,6 +101,7 @@ class UnitController extends Controller
      */
     public function destroy(Unit $unit)
     {
-        //
+        $unit->delete();
+        return redirect()->back();
     }
 }

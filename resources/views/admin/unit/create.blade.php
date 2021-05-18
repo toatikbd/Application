@@ -7,7 +7,7 @@
         <ol class="breadcrumb breadcrumb-col-pink breadcrumb-right-align">
             <li><a href="{{ url('/home') }}"><i class="material-icons">home</i> Dashboard</a></li>
             <li><a href="{{ route('procurement.index') }}"><i class="material-icons">gesture</i> Procurement</a></li>
-            <li class="active"><i class="material-icons">archive</i>Unit</li>
+            <li class="active"><i class="material-icons">archive</i>Units</li>
         </ol>
     </div>
     <div class="row clearfix">
@@ -23,10 +23,22 @@
                                     <input type="text" id="unit_name" name="name" autocomplete="off" class="form-control" placeholder="Unit Name">
                                 </div>
                             </div>
-                            <label for="note">Note</label>
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <textarea rows="4" id="note" name="note" autocomplete="off" class="form-control no-resize" placeholder="Note"></textarea>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="unit_symbol">Unit Symbol</label>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" id="unit_symbol" name="symbol" autocomplete="off" class="form-control" placeholder="Unit Symbol">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="unit_qty">Quantity Name</label>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" id="unit_qty" name="qty_name" autocomplete="off" class="form-control" placeholder="Unit QTY">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="text-center">
@@ -36,6 +48,42 @@
                     </div>
                 </div>
                 <!-- #END# Vertical Layout -->
+                <div class="card">
+                    <div class="header">
+                        <code>Notes</code>
+                        <span>Basic Example Units</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="body table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Unit Name</th>
+                                        <th>Unit Symbol</th>
+                                        <th>Quantity Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>metre</td>
+                                        <td>m</td>
+                                        <td>length</td>
+                                    </tr>
+                                    <tr>
+                                        <td>kilogram</td>
+                                        <td>kg</td>
+                                        <td>mass</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ampere</td>
+                                        <td>A</td>
+                                        <td>electric current</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="card">
@@ -49,7 +97,8 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Unit Name</th>
-                                        <th>Note</th>
+                                        <th>Unit Symbol</th>
+                                        <th>Quantity Name</th>
                                         <th class="text-right">Action</th>
                                     </tr>
                                 </thead>
@@ -58,7 +107,8 @@
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
                                             <td>{{ Str::limit($unit->name, 10) }}</td>
-                                            <td>{{ Str::limit($unit->note, 15) }}</td>
+                                            <td>{{ Str::limit($unit->symbol, 15) }}</td>
+                                            <td>{{ Str::limit($unit->qty_name, 15) }}</td>
                                             <td class="text-right">
 
                                                 <form action="{{ route('unit.destroy',$unit->id) }}" method="POST">

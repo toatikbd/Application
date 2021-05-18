@@ -6,6 +6,7 @@ use App\Models\Procurement;
 use App\Models\Country;
 use App\Models\RequisitionCategory;
 use App\Models\Requisition;
+use App\Models\Unit;
 use Illuminate\Http\Request;
 
 class ProcurementController extends Controller
@@ -20,7 +21,10 @@ class ProcurementController extends Controller
         $countries = Country::all()->count();
         $requisitionCategories = RequisitionCategory::all()->count();
         $requisitions = Requisition::all()->count();
-        return view('admin.procurement.index', compact('countries', 'requisitionCategories', 'requisitions'));
+        $units = Unit::all()->count();
+        return view('admin.procurement.index',
+            compact('countries', 'requisitionCategories', 'requisitions', 'units')
+        );
     }
 
     /**

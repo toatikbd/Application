@@ -44,7 +44,7 @@ Route::resource('/procurement', App\Http\Controllers\ProcurementController::clas
 Route::resource('/requisition', App\Http\Controllers\RequisitionController::class);
 Route::resource('/country', App\Http\Controllers\CountryController::class);
 Route::resource('/requisition-category', App\Http\Controllers\RequisitionCategoryController::class);
-
+Route::resource('/unit', App\Http\Controllers\UnitController::class);
 //Admin route
 
 

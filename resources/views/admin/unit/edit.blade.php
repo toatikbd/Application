@@ -19,12 +19,22 @@
                                         <input type="text" id="name" name="name" value="{{ $unit->name }}" class="form-control">
                                     </div>
                                 </div>
-                                <label for="note">Note</label>
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <textarea rows="4" id="note" name="note" class="form-control text-left no-resize">
-                                            {{ $unit->note }}
-                                        </textarea>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="unit_symbol">Unit Symbol</label>
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" id="unit_symbol" name="symbol" value="{{ $unit->symbol }}" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="unit_qty">Quantity Name</label>
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" id="unit_qty" name="qty_name" value="{{ $unit->qty_name }}" class="form-control">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="text-center">
@@ -40,7 +50,5 @@
         </div>
     </div>
 @endsection
-
 @push('js')
-
 @endpush
