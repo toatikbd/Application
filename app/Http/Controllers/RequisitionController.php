@@ -6,6 +6,7 @@ use App\Models\Country;
 use App\Models\Project;
 use App\Models\Requisition;
 use App\Models\RequisitionCategory;
+use App\Models\Unit;
 use App\Models\Worker;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
@@ -35,7 +36,8 @@ class RequisitionController extends Controller
         $projects = Project::latest()->get();
         $requisitionCategories = RequisitionCategory::latest()->get();
         $countries = Country::latest()->get();
-        return view('admin.requisition.create', compact('workers', 'projects', 'requisitionCategories', 'countries'));
+        $units = Unit::latest()->get();
+        return view('admin.requisition.create', compact('workers', 'projects', 'requisitionCategories', 'countries', 'units'));
     }
 
     /**
@@ -46,7 +48,7 @@ class RequisitionController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $this->validate($request, [
             'title' => 'required',
             'category_id' => 'required',
@@ -66,6 +68,8 @@ class RequisitionController extends Controller
         $requisition->country_id = $request->country_id;
         $requisition->description = $request->description;
         $requisition->price = $request->price;
+        $requisition->quantity = $request->quantity;
+        $requisition->symbol = $request->unit_id;
         $requisition->project_id = $request->project_id;
         $requisition->worker_id = $request->worker_id;
         $requisition->needed_date = Carbon::createFromFormat('d-m-Y', $request->needed_date);
@@ -97,7 +101,7 @@ class RequisitionController extends Controller
      */
     public function edit(Requisition $requisition)
     {
-        //
+        return view('admin.requisition.edit', compact('requisition'));
     }
 
     /**

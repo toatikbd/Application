@@ -74,6 +74,14 @@
                                                     <td>{{ $requisition->price }}</td>
                                                 </tr>
                                                 <tr>
+                                                    <th scope="row">Product Quantity</th>
+                                                    <td>{{ $requisition->quantity }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Unit Type</th>
+                                                    <td>{{ $requisition->unit->symbol }}</td>
+                                                </tr>
+                                                <tr>
                                                     <th scope="row">Needed Date</th>
                                                     <td>{{ \Carbon\Carbon::parse($requisition->needed_date)->format('d/m/Y')}}</td>
                                                 </tr>

@@ -34,10 +34,10 @@
                                     <th>Title</th>
                                     <th>Category</th>
                                     <th>Type</th>
-                                    <th>Manufacturer</th>
                                     <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Unit Type</th>
                                     <th>Needed Date</th>
-                                    <th>Status</th>
                                     <th class="text-right">Action</th>
                                 </tr>
                                 </thead>
@@ -48,16 +48,17 @@
                                     <td>{{ Str::limit($requisition->title, 10) }}</td>
                                     <td>{{ optional($requisition->requisitionCategory)->name }}</td>
                                     <td>{{ $requisition->requisition_type }}</td>
-                                    <td>{{ $requisition->manufacturer }}</td>
                                     <td>{{ $requisition->price }}</td>
+                                    <td>{{ $requisition->quantity }}</td>
+                                    <td>{{ optional($requisition->unit)->symbol }}</td>
                                     <td>{{ \Carbon\Carbon::parse($requisition->needed_date)->format('d/m/Y')}}</td>
-                                    <td>
-                                        @if($requisition->approved_by == true)
-                                            <span class="badge bg-blue">Approved</span>
-                                        @else
-                                            <span class="badge bg-pink">Unapproved</span>
-                                        @endif
-                                    </td>
+{{--                                    <td>--}}
+{{--                                        @if($requisition->approved_by == true)--}}
+{{--                                            <span class="badge bg-blue">Approved</span>--}}
+{{--                                        @else--}}
+{{--                                            <span class="badge bg-pink">Unapproved</span>--}}
+{{--                                        @endif--}}
+{{--                                    </td>--}}
                                     <td class="text-right">
                                         <a href="{{ route('requisition.show', $requisition->id) }}" class="btn btn-primary btn-xs waves-effect">
                                             <i class="material-icons">visibility</i>

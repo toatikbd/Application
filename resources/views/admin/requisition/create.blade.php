@@ -163,13 +163,13 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6">
-                                    <label for="select_worker">Select Unit</label>
-                                    <div class="form-group {{ $errors->has('projects') ? 'focused error' : '' }}">
+                                    <label for="select_unit">Unit Type</label>
+                                    <div class="form-group {{ $errors->has('units') ? 'focused error' : '' }}">
                                         <div class="form-line custom-live-search">
-                                            <select class="form-control show-tick" id="select_worker" name="project_id" data-live-search="true">
+                                            <select class="form-control show-tick" id="select_unit" name="unit_id" data-live-search="true">
                                                 <option selected disabled>-- Unit--</option>
-                                                @foreach($projects as $key => $project)
-                                                    <option value="{{ $project->id }}"> {{ $project->name }} </option>
+                                                @foreach($units as $key => $unit)
+                                                    <option value="{{ $unit->id }}"> {{ $unit->symbol }} </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -182,19 +182,19 @@
                                     <input type="text" name="needed_date" class="form-control" autocomplete="off" placeholder="Please choose a date...">
                                 </div>
                             </div>
-                            <label for="status">Status</label>
-                            <div class="form-check">
-                                <input class="form-check-input chk-col-green" type="radio" name="approved_by" value="1" id="approved">
-                                <label class="form-check-label" for="approved">
-                                    Approved
-                                </label>
-                                </div>
-                                <div class="form-check">
-                                <input class="form-check-input chk-col-red" type="radio" name="approved_by" value="2" id="unapproved" checked>
-                                <label class="form-check-label" for="unapproved">
-                                    Unapproved
-                                </label>
-                            </div>
+{{--                            <label for="status">Status</label>--}}
+{{--                            <div class="form-check">--}}
+{{--                                <input class="form-check-input chk-col-green" type="radio" name="approved_by" value="1" id="approved">--}}
+{{--                                <label class="form-check-label" for="approved">--}}
+{{--                                    Approved--}}
+{{--                                </label>--}}
+{{--                                </div>--}}
+{{--                                <div class="form-check">--}}
+{{--                                <input class="form-check-input chk-col-red" type="radio" name="approved_by" value="2" id="unapproved" checked>--}}
+{{--                                <label class="form-check-label" for="unapproved">--}}
+{{--                                    Unapproved--}}
+{{--                                </label>--}}
+{{--                            </div>--}}
                             <div class="text-center">
                                 <a href="{{ route('requisition.index') }}" class="btn btn-danger waves-effect">
                                     <i class="material-icons">settings_backup_restore</i>

@@ -24,4 +24,10 @@ class Requisition extends Model
     {
         return $this->belongsTo('App\Models\Project', 'project_id');
     }
+    public function unit()
+    {
+
+        return $this->belongsTo(Unit::class);
+//        return $this->belongsTo('App\Models\Unit', 'unit_id');
+    }
 }
