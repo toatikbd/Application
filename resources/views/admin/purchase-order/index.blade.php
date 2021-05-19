@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Requisition')
+@section('title', 'Purchase Order')
 @push('css')
     <!-- JQuery DataTable Css -->
     <link href="{{ asset('admin') }}/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
@@ -7,11 +7,11 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h2>Requisition <span class="badge bg-blue">{{ $requisitions->count() }}</span></h2>
+{{--            <h2>Purchase Order <span class="badge bg-blue">{{ $purchaseOrders->count() }}</span></h2>--}}
             <ol class="breadcrumb breadcrumb-col-pink breadcrumb-right-align">
                 <li><a href="{{ url('/home') }}"><i class="material-icons">home</i> Dashboard</a></li>
                 <li><a href="{{ route('procurement.index') }}"><i class="material-icons">library_books</i> Procurement</a></li>
-                <li class="active"><i class="material-icons">archive</i> Requisition</li>
+                <li class="active"><i class="material-icons">archive</i> Purchase Order</li>
             </ol>
         </div>
         <div class="row clearfix">
@@ -19,10 +19,10 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="card">
                     <div class="header">
-                        <h2>Requisition INFOS</h2>
-                        <a href="{{ route('requisition.create') }}" class="btn btn-success waves-effect right-align-task-btn">
+                        <h2>Purchase Order INFOS</h2>
+                        <a href="{{ route('purchase-order.create') }}" class="btn btn-success waves-effect right-align-task-btn">
                             <i class="material-icons">add</i>
-                            <span>Create a Requisition</span>
+                            <span>Create a Purchase Order</span>
                         </a>
                     </div>
                     <div class="body">
@@ -42,32 +42,25 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($requisitions as $key => $requisition)
-                                <tr>
-                                    <td>{{ $key + 1 }}</td>
-                                    <td>{{ Str::limit($requisition->title, 10) }}</td>
-                                    <td>{{ optional($requisition->requisitionCategory)->name }}</td>
-                                    <td>{{ $requisition->requisition_type }}</td>
-                                    <td>{{ $requisition->manufacturer }}</td>
-                                    <td>{{ $requisition->price }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($requisition->needed_date)->format('d/m/Y')}}</td>
-                                    <td>
-                                        @if($requisition->approved_by == true)
-                                            <span class="badge bg-blue">Approved</span>
-                                        @else
-                                            <span class="badge bg-pink">Unapproved</span>
-                                        @endif
-                                    </td>
-                                    <td class="text-right">
-                                        <a href="{{ route('requisition.show', $requisition->id) }}" class="btn btn-primary btn-xs waves-effect">
-                                            <i class="material-icons">visibility</i>
-                                        </a>
-                                        <a href="{{ route('requisition.edit', $requisition->id) }}" class="btn btn-warning btn-xs waves-effect">
-                                            <i class="material-icons">edit</i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                @endforeach
+{{--                                @foreach ($purchaseOrders as $key => $order)--}}
+{{--                                <tr>--}}
+{{--                                    <td>{{ $key + 1 }}</td>--}}
+{{--                                    <td>{{ Str::limit($order->title, 10) }}</td>--}}
+{{--                                    <td>{{ optional($order->requisitionCategory)->name }}</td>--}}
+{{--                                    <td>{{ $order->requisition_type }}</td>--}}
+{{--                                    <td>{{ $order->manufacturer }}</td>--}}
+{{--                                    <td>{{ $order->price }}</td>--}}
+{{--                                    <td>{{ \Carbon\Carbon::parse($order->needed_date)->format('d/m/Y')}}</td>--}}
+{{--                                    <td class="text-right">--}}
+{{--                                        <a href="{{ route('requisition.show', $order->id) }}" class="btn btn-primary btn-xs waves-effect">--}}
+{{--                                            <i class="material-icons">visibility</i>--}}
+{{--                                        </a>--}}
+{{--                                        <a href="{{ route('requisition.edit', $order->id) }}" class="btn btn-warning btn-xs waves-effect">--}}
+{{--                                            <i class="material-icons">edit</i>--}}
+{{--                                        </a>--}}
+{{--                                    </td>--}}
+{{--                                </tr>--}}
+{{--                                @endforeach--}}
                                 </tbody>
                             </table>
                         </div>

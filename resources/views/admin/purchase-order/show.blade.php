@@ -1,14 +1,14 @@
 @extends('layouts.app')
-@section('title', 'Requisition')
+@section('title', 'Purchase Order')
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h2>Requisition</h2>
+            <h2>Purchase Order</h2>
             <ol class="breadcrumb breadcrumb-col-pink breadcrumb-right-align">
                 <li><a href="{{ url('/home') }}"><i class="material-icons">home</i> Dashboard</a></li>
                 <li><a href="{{ route('procurement.index') }}"><i class="material-icons">library_books</i> Procurement</a></li>
-                <li><a href="{{ route('requisition.index') }}"><i class="material-icons">library_books</i> Requisition</a></li>
-                <li class="active"><i class="material-icons">archive</i> View Requisition</li>
+                <li><a href="{{ route('requisition.index') }}"><i class="material-icons">library_books</i> Purchase Order</a></li>
+                <li class="active"><i class="material-icons">archive</i> View Purchase Order</li>
             </ol>
         </div>
         <div class="row clearfix">
@@ -16,7 +16,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="card">
                     <div class="header">
-                        <h2>Requisition Details <span class="badge bg-green">{{ ($requisition->title) }}</span></h2>
+                        <h2>Purchase Order Details <span class="badge bg-green">{{ ($requisition->title) }}</span></h2>
                         <a href="{{ route('requisition.index') }}" class="btn btn-success waves-effect right-align-task-btn">
                             <i class="material-icons">visibility</i>
                             <span>View All</span>
@@ -38,7 +38,7 @@
                                                     <td>{{ $requisition->requisitionCategory->name }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row">Requisition Type</th>
+                                                    <th scope="row">Purchase Order Type</th>
                                                     <td>{{ $requisition->requisition_type }}</td>
                                                 </tr>
                                                 <tr>

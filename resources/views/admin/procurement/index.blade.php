@@ -21,7 +21,7 @@
                 </a>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <a href="" class="text-dec-none">
+                <a href="{{ route('purchase-order.index') }}" class="text-dec-none">
                     <div class="info-box bg-cyan hover-expand-effect cursor-pointer">
                         <div class="icon">
                             <i class="material-icons">help</i>

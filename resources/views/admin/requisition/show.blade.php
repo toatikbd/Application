@@ -79,7 +79,7 @@
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">Unit Type</th>
-                                                    <td>{{ $requisition->unit->symbol }}</td>
+                                                    <td>{{ optional($requisition->unit)->symbol }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">Needed Date</th>
