@@ -68,7 +68,7 @@
                                             </button>
                                         </span>
                                     </div>
-                                    <p class="text-center">There has no items to order <code>Please Select Requisition</code></p>
+                                    <p class="text-center"><code>Please Select Requisition for Purchase Order</code></p>
                                 </div>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th colspan="7">
+                                                <th colspan="5">
                                                     <div class="demo-google-material-icon">
                                                         <i class="material-icons text-success">shopping_basket</i>
                                                         <span class="icon-name">Purchase Order</span>
@@ -89,12 +89,10 @@
                                             </tr>
                                             <tr>
                                                 <th>Action</th>
-                                                <th>#</th>
                                                 <th>Product Name</th>
                                                 <th>Unit</th>
-                                                <th>Quantity</th>
-                                                <th>Unit Price</th>
-                                                <th>Total</th>
+                                                <th width="100px">Quantity</th>
+                                                <th width="120px">Unit Price</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -102,29 +100,18 @@
                                                 <th scope="row">
                                                     <a href="#"><i class="material-icons text-danger">delete_sweep</i></a>
                                                 </th>
-                                                <td>1</td>
                                                 <td>Otto</td>
                                                 <td>piece</td>
-                                                <td>10</td>
-                                                <td>200</td>
-                                                <td>2000</td>
+                                                <td><input type="number" class="form-control"></td>
+                                                <td><input type="number" class="form-control"></td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">
-                                                    <a href="#"><i class="material-icons text-danger">delete_sweep</i></a>
-                                                </th>
-                                                <td>2</td>
-                                                <td>Roekek</td>
-                                                <td>kg</td>
-                                                <td>5</td>
-                                                <td>60</td>
-                                                <td>300</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row" colspan="6" class="text-right">
+                                                <th scope="row" colspan="4" class="text-right">
                                                     Grand Total
                                                 </th>
-                                                <td>5000</td>
+                                                <td class="text-right">
+                                                    <strong>5000</strong>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -181,30 +168,30 @@
                                     </select>
                                 </div>
                             </div>
-                            <label for="requisition_type">Project</label>
+                            <label for="project">Project</label>
                             <div class="form-group">
                                 <div class="form-line custom-live-search">
-                                    <select class="form-control show-tick" id="requisition_type" name="requisition_type" data-live-search="true">
+                                    <select class="form-control show-tick" id="project" name="requisition_type" data-live-search="true">
                                         <option selected disabled>-- Please select --</option>
                                         <option name="requisition_type" value="Local">Local</option>
                                         <option name="requisition_type" value="Foreign">Foreign</option>
                                     </select>
                                 </div>
                             </div>
-                            <label for="requisition_type">Supervisor</label>
+                            <label for="supervisor">Supervisor</label>
                             <div class="form-group">
                                 <div class="form-line custom-live-search">
-                                    <select class="form-control show-tick" id="requisition_type" name="requisition_type" data-live-search="true">
+                                    <select class="form-control show-tick" id="supervisor" name="requisition_type" data-live-search="true">
                                         <option selected disabled>-- Please select --</option>
                                         <option name="requisition_type" value="Local">Local</option>
                                         <option name="requisition_type" value="Foreign">Foreign</option>
                                     </select>
                                 </div>
                             </div>
-                            <label for="order_date">Requisition Date</label>
+                            <label for="issue_date">Requisition Issue Date</label>
                             <div class="form-group">
                                 <div class="form-line" id="bs_datepicker_container">
-                                    <input type="text" name="order_date" class="form-control" autocomplete="off" placeholder="Please choose a date...">
+                                    <input type="text" name="issue_date" class="form-control" autocomplete="off" placeholder="Please choose a date...">
                                 </div>
                             </div>
                             <label for="order_date">Order Date</label>

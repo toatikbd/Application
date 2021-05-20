@@ -15,6 +15,18 @@ class CreatePurchaseOrdersTable extends Migration
     {
         Schema::create('purchase_orders', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('requisition_name');
+            $table->string('unit');
+            $table->integer('qty');
+            $table->integer('unit_price');
+            $table->integer('total_price');
+            $table->date('requisition_issue_date');
+            $table->integer('requisition_umber');
+            $table->date('order_date');
+            $table->string('requisition_type');
+            $table->unsignedBigInteger('project_name');
+            $table->unsignedBigInteger('supervisor_name');
+            $table->text('note');
             $table->timestamps();
         });
     }

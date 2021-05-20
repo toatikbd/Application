@@ -19,7 +19,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="card">
                     <div class="header">
-                        <h2>Purchase Order INFOS</h2>
+                        <h2>Purchase Order Invoice</h2>
                         <a href="{{ route('purchase-order.create') }}" class="btn btn-success waves-effect right-align-task-btn">
                             <i class="material-icons">add</i>
                             <span>Create a Purchase Order</span>
