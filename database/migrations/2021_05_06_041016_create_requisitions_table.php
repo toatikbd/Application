@@ -17,6 +17,7 @@ class CreateRequisitionsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
+            $table->string('requisition_no')->nullable();
             $table->unsignedBigInteger('category_id');
             $table->string('requisition_type');
             $table->string('manufacturer');

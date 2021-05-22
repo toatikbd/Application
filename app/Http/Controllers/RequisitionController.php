@@ -78,6 +78,7 @@ class RequisitionController extends Controller
         } else {
             $requisition->approved_by = false;
         }
+        $requisition->generateRequisitionNumber();
         $requisition->save();
         return redirect()->route('requisition.index');
     }

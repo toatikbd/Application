@@ -34,6 +34,10 @@
                                                     <td>{{ ($requisition->title) }}</td>
                                                 </tr>
                                                 <tr>
+                                                    <th scope="row">Requisition Number</th>
+                                                    <td>{{ ($requisition->requisition_no) }}</td>
+                                                </tr>
+                                                <tr>
                                                     <th scope="row">Category</th>
                                                     <td>{{ $requisition->requisitionCategory->name }}</td>
                                                 </tr>
