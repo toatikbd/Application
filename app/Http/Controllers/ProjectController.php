@@ -38,7 +38,7 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
+            'name' => 'required|unique:projects|max:255',
             'description' => 'required'
         ]);
         $project = new Project();

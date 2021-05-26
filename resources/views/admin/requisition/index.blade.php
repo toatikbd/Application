@@ -32,11 +32,12 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Title</th>
+                                    <th>Requisition Number</th>
                                     <th>Category</th>
                                     <th>Type</th>
                                     <th>Price</th>
                                     <th>Quantity</th>
-                                    <th>Unit Type</th>
+{{--                                    <th>Unit Type</th>--}}
                                     <th>Needed Date</th>
                                     <th class="text-right">Action</th>
                                 </tr>
@@ -46,11 +47,12 @@
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ Str::limit($requisition->title, 10) }}</td>
+                                    <td>{{ $requisition->requisition_no }}</td>
                                     <td>{{ optional($requisition->requisitionCategory)->name }}</td>
                                     <td>{{ $requisition->requisition_type }}</td>
                                     <td>{{ $requisition->price }}</td>
                                     <td>{{ $requisition->quantity }}</td>
-                                    <td>{{ optional($requisition->unit)->symbol }}</td>
+{{--                                    <td>{{ optional($requisition->unit)->symbol }}</td>--}}
                                     <td>{{ \Carbon\Carbon::parse($requisition->needed_date)->format('d/m/Y')}}</td>
 {{--                                    <td>--}}
 {{--                                        @if($requisition->approved_by == true)--}}

@@ -4,6 +4,15 @@
     <div class="container-fluid">
         <div class="block-header">
             <h2>All Projects <span class="badge bg-blue"></span></h2>
+{{--            @if ($errors->any())--}}
+{{--                <div class="alert alert-danger">--}}
+{{--                    <ul>--}}
+{{--                        @foreach ($errors->all() as $error)--}}
+{{--                            <li>{{ $error }}</li>--}}
+{{--                        @endforeach--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
+{{--            @endif--}}
         </div>
         <div class="row clearfix">
             <div class="row">
@@ -15,8 +24,11 @@
                                 <label for="project_title">Project Title</label>
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input type="text" id="project_title" name="name" autocomplete="off" class="form-control" placeholder="Enter your Project Title">
+                                        <input type="text" id="project_title" name="name" autocomplete="off" class="form-control @error('name') is-invalid @enderror" placeholder="Enter your Project Title">
                                     </div>
+                                    @error('name')
+                                    <label class="error">{{ $message }}</label>
+                                    @enderror
                                 </div>
                                 <label for="project_description">Project Description</label>
                                 <div class="form-group">
