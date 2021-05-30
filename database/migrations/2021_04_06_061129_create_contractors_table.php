@@ -20,6 +20,7 @@ class CreateContractorsTable extends Migration
             $table->integer('mobile')->unique();
             $table->string('email');
             $table->text('address');
+            $table->text('experience')->nullable();
             $table->string('photo')->nullable();
             $table->unsignedBigInteger('project_id');
             $table->timestamps();

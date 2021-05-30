@@ -30,7 +30,25 @@
                                     <label class="error">{{ $message }}</label>
                                     @enderror
                                 </div>
-                                <label for="project_description">Project Description</label>
+                                <label for="owner">Owner Name</label>
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="text" id="owner" name="owner" autocomplete="off" class="form-control @error('owner') is-invalid @enderror" placeholder="Enter Project Owner Name">
+                                    </div>
+                                    @error('owner')
+                                    <label class="error">{{ $message }}</label>
+                                    @enderror
+                                </div>
+                                <label for="location">Location</label>
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="text" id="location" name="location" autocomplete="off" class="form-control @error('location') is-invalid @enderror" placeholder="Enter Project Location">
+                                    </div>
+                                    @error('location')
+                                    <label class="error">{{ $message }}</label>
+                                    @enderror
+                                </div>
+                                <label for="project_description">Project Description/ Note</label>
                                 <div class="form-group">
                                     <div class="form-line">
                                         <textarea rows="4" id="project_description" name="description" autocomplete="off" class="form-control no-resize" placeholder="Please type your Project description in shorthand"></textarea>
@@ -56,8 +74,9 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Title</th>
-                                            <th>Description</th>
+                                            <th>Project Name</th>
+                                            <th>Owner</th>
+                                            <th>Location</th>
                                             <th class="text-right">Action</th>
                                         </tr>
                                     </thead>
@@ -66,20 +85,22 @@
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
                                                 <td>{{ Str::limit($project->name, 10) }}</td>
-                                                <td>{{ Str::limit($project->description, 15) }}</td>
+                                                <td>Atik</td>
+                                                <td>Dhanmondhi</td>
                                                 <td class="text-right">
-
                                                     <form action="{{ route('project.destroy',$project->id) }}" method="POST">
+                                                        <a href="{{ route('project.show', $project->id) }}" class="btn btn-primary btn-xs waves-effect">
+                                                            <i class="material-icons">visibility</i>
+                                                        </a>
                                                         <a href="{{ route('project.edit', $project->id) }}" class="btn btn-warning btn-xs waves-effect">
                                                             <i class="material-icons">edit</i>
                                                         </a>
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button class="btn  btn-xs btn-danger waves-effect" type="submit">
-                                                          <i class="material-icons">delete</i>
-                                                        </button>
-
-                                                        </form>
+{{--                                                        @csrf--}}
+{{--                                                        @method('DELETE')--}}
+{{--                                                        <button class="btn  btn-xs btn-danger waves-effect" type="submit">--}}
+{{--                                                          <i class="material-icons">delete</i>--}}
+{{--                                                        </button>--}}
+{{--                                                        </form>--}}
                                                     </td>
                                                 </tr>
                                             @endforeach

@@ -79,6 +79,12 @@
                                     <input type="text" id="address" name="address" value="{{ $contractor->address }}" class="form-control" placeholder="Home address">
                                 </div>
                             </div>
+                            <label for="experience">Experience</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <textarea id="experience" name="experience" cols="30" rows="5" class="form-control no-resize" aria-required="true">{{ $contractor->experience }}</textarea>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

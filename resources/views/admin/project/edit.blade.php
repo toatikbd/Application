@@ -16,15 +16,34 @@
                                 <label for="project_title">Project Title</label>
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input type="text" id="project_title" name="name" value="{{ $project->name }}" class="form-control" placeholder="Enter your Project Title">
+                                        <input type="text" id="project_title" name="name" value="{{ $project->name }}" class="form-control @error('name') is-invalid @enderror" placeholder="Enter your Project Title">
                                     </div>
+                                    @error('name')
+                                    <label class="error">{{ $message }}</label>
+                                    @enderror
+                                </div>
+                                <label for="owner">Owner Name</label>
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="text" id="owner" name="owner" autocomplete="off" class="form-control @error('owner') is-invalid @enderror" placeholder="Enter Project Owner Name">
+                                    </div>
+                                    @error('owner')
+                                    <label class="error">{{ $message }}</label>
+                                    @enderror
+                                </div>
+                                <label for="location">Location</label>
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="text" id="location" name="location" autocomplete="off" class="form-control @error('location') is-invalid @enderror" placeholder="Enter Project Location">
+                                    </div>
+                                    @error('location')
+                                    <label class="error">{{ $message }}</label>
+                                    @enderror
                                 </div>
                                 <label for="project_description">Project Description</label>
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <textarea rows="4" id="project_description" name="description" class="form-control no-resize" placeholder="Please type your Project description in shorthand">
-                                            {{ $project->description }}
-                                        </textarea>
+                                        <textarea id="project_description" name="project_description" cols="30" rows="5" class="form-control no-resize" aria-required="true">{{ $project->description }}</textarea>
                                     </div>
                                 </div>
                                 <div class="text-center">

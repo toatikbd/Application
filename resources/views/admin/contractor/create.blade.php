@@ -64,7 +64,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="task_file">Email Address</label>
+                                    <label for="email">Email Address</label>
                                     <div class="form-group">
                                         <div class="form-line">
                                             <input type="email" id="email" name="email" class="form-control" placeholder="xyz@gmail.com">
@@ -76,6 +76,12 @@
                             <div class="form-group">
                                 <div class="form-line">
                                     <input type="text" id="address" name="address" class="form-control" placeholder="Home address">
+                                </div>
+                            </div>
+                            <label for="experience">Experience</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <textarea id="experience" name="experience" cols="30" rows="5" class="form-control no-resize" aria-required="true"></textarea>
                                 </div>
                             </div>
                         </div>

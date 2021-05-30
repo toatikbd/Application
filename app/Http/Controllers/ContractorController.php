@@ -44,7 +44,6 @@ class ContractorController extends Controller
             'name' => 'required',
             'mobile' => 'required',
             'email' => 'required',
-            'address' => 'required',
         ]);
 
         $image = $request->file('photo');
@@ -58,6 +57,7 @@ class ContractorController extends Controller
         $contractor->mobile = $request->mobile;
         $contractor->email = $request->email;
         $contractor->address = $request->address;
+        $contractor->experience = $request->experience;
         $contractor->photo = $imageName;
         $contractor->save();
         return redirect()->route('contractor.index');
@@ -100,7 +100,7 @@ class ContractorController extends Controller
             'name' => 'required',
             'mobile' => 'required',
             'email' => 'required',
-            'address' => 'required',
+            'photo' => 'required|image|mimes:jpeg,png,jpg'
         ]);
 
         $image = $request->file('photo');
@@ -116,6 +116,7 @@ class ContractorController extends Controller
         $contractor->mobile = $request->mobile;
         $contractor->email = $request->email;
         $contractor->address = $request->address;
+        $contractor->experience = $request->experience;
         $contractor->update();
         return redirect()->route('contractor.index');
     }

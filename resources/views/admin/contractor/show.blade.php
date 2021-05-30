@@ -31,7 +31,7 @@
                     <div class="profile-header">&nbsp;</div>
                     <div class="profile-body">
                         <div class="image-area">
-                            <img src="{{ asset('contractors/'.$contractor->photo) }}" alt="{{ $contractor->name }}" style="width: 128px; height: 128px">
+                            <img src="{{ asset('contractors/'.$contractor->photo) }}" alt="{{ $contractor->name }}" style="width: 128px; height: 128px; object-fit: cover">
                         </div>
                         <div class="content-area">
                             <h3>{{ $contractor->name }}</h3>
@@ -46,30 +46,28 @@
                 </div>
             </div>
             <div class="col-xs-12 col-sm-9">
-                <div class="card">
-                    <div class="panel panel-default panel-post">
-                        <div class="panel-heading">
-                            <div class="media">
-                                <div class="media-body">
-                                    <h4 class="media-heading">
-                                        <a href="#">{{ $contractor->name }}</a>
-                                    </h4>
-                                    Shared publicly - 01 Oct 2018
-                                </div>
+                <div class="panel panel-default panel-post">
+                    <div class="panel-heading">
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="#">
+{{--                                    <img src="../../images/user-lg.jpg">--}}
+                                    <img src="{{ asset('contractors/'.$contractor->photo) }}" alt="{{ $contractor->name }}" style="width: 60px; height: 60px; object-fit: cover">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">
+                                    <a href="#">{{ $contractor->name }}</a>
+                                </h4>
+                                Created publicly - {{ $contractor->created_at }}
                             </div>
                         </div>
-                        <div class="panel-body">
-                            <div class="post">
-                                <div class="post-heading">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                </div>
-                                <div class="post-content">
-
-                                </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="post">
+                            <div class="post-heading">
+                                <p>{{ $contractor->experience }}</p>
                             </div>
-                        </div>
-                        <div class="panel-footer">
-
                         </div>
                     </div>
                 </div>
