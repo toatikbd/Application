@@ -32,22 +32,22 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @forelse($projects as $key => $project)
-                                    <tr>
-                                        <td>{{ $key + 1 }}</td>
-                                        <td>{{ Str::limit($project->name, 15) }}</td>
-                                        <td>{{ !empty($project->worker) ? $project->worker->name:'' }}</td>
-                                        <td class="text-right">
-                                            <a href="{{ route('project.show', $project->id) }}" class="btn btn-primary btn-xs waves-effect">
-                                                <i class="material-icons">visibility</i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="4" class="text-center text-danger">No Project Found</td>
-                                    </tr>
-                                @endforelse
+{{--                                @forelse($projects as $key => $project)--}}
+{{--                                    <tr>--}}
+{{--                                        <td>{{ $key + 1 }}</td>--}}
+{{--                                        <td>{{ Str::limit($project->name, 15) }}</td>--}}
+{{--                                        <td>{{ !empty($project->worker) ? $project->worker->name:'' }}</td>--}}
+{{--                                        <td class="text-right">--}}
+{{--                                            <a href="{{ route('project.show', $project->id) }}" class="btn btn-primary btn-xs waves-effect">--}}
+{{--                                                <i class="material-icons">visibility</i>--}}
+{{--                                            </a>--}}
+{{--                                        </td>--}}
+{{--                                    </tr>--}}
+{{--                                @empty--}}
+{{--                                    <tr>--}}
+{{--                                        <td colspan="4" class="text-center text-danger">No Project Found</td>--}}
+{{--                                    </tr>--}}
+{{--                                @endforelse--}}
                                 </tbody>
                             </table>
                         </div>

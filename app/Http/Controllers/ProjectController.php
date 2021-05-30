@@ -39,11 +39,14 @@ class ProjectController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|unique:projects|max:255',
-            'description' => 'required'
+            'owner' => 'required',
+            'location' => 'required'
         ]);
         $project = new Project();
         $project->name = $request->name;
         $project->slug = Str::slug($request-> name);
+        $project->owner = $request->owner;
+        $project->location = $request->location;
         $project->description = $request->description;
         $project->save();
 
@@ -82,9 +85,16 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'name' => 'required|unique:projects|max:255, $id',
+            'owner' => 'required',
+            'location' => 'required'
+        ]);
         $project = Project::find($id);
         $project->name = $request->name;
         $project->slug = Str::slug($request->name);
+        $project->owner = $request->owner;
+        $project->location = $request->location;
         $project->description = $request->description;
         $project->save();
         return redirect()->route('project.create');

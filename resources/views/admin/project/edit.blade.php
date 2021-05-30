@@ -25,7 +25,7 @@
                                 <label for="owner">Owner Name</label>
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input type="text" id="owner" name="owner" autocomplete="off" class="form-control @error('owner') is-invalid @enderror" placeholder="Enter Project Owner Name">
+                                        <input type="text" id="owner" name="owner" value="{{ $project->owner }}" autocomplete="off" class="form-control @error('owner') is-invalid @enderror" placeholder="Enter Project Owner Name">
                                     </div>
                                     @error('owner')
                                     <label class="error">{{ $message }}</label>
@@ -34,7 +34,7 @@
                                 <label for="location">Location</label>
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input type="text" id="location" name="location" autocomplete="off" class="form-control @error('location') is-invalid @enderror" placeholder="Enter Project Location">
+                                        <input type="text" id="location" name="location" value="{{ $project->location }}" autocomplete="off" class="form-control @error('location') is-invalid @enderror" placeholder="Enter Project Location">
                                     </div>
                                     @error('location')
                                     <label class="error">{{ $message }}</label>
