@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Models\SiteEvaluation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -15,7 +16,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return view('admin.project.index');
+        $projects = Project::latest()->get();
+        return view('admin.project.index', compact('projects'));
     }
 
     /**
@@ -61,7 +63,8 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+
+        return view('admin.project.show', compact('project'));
     }
 
     /**

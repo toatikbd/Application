@@ -85,8 +85,8 @@
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
                                                 <td>{{ Str::limit($project->name, 10) }}</td>
-                                                <td>Atik</td>
-                                                <td>Dhanmondhi</td>
+                                                <td>{{$project->owner}}</td>
+                                                <td>{{$project->location}}</td>
                                                 <td class="text-right">
                                                     <form action="{{ route('project.destroy',$project->id) }}" method="POST">
                                                         <a href="{{ route('project.show', $project->id) }}" class="btn btn-primary btn-xs waves-effect">

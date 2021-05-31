@@ -27,33 +27,35 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Project Name</th>
-                                        <th>Supervisor Name</th>
+                                        <th>Owner Name</th>
+                                        <th>Location</th>
                                         <th class="text-right">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-{{--                                @forelse($projects as $key => $project)--}}
-{{--                                    <tr>--}}
-{{--                                        <td>{{ $key + 1 }}</td>--}}
-{{--                                        <td>{{ Str::limit($project->name, 15) }}</td>--}}
-{{--                                        <td>{{ !empty($project->worker) ? $project->worker->name:'' }}</td>--}}
-{{--                                        <td class="text-right">--}}
-{{--                                            <a href="{{ route('project.show', $project->id) }}" class="btn btn-primary btn-xs waves-effect">--}}
-{{--                                                <i class="material-icons">visibility</i>--}}
-{{--                                            </a>--}}
-{{--                                        </td>--}}
-{{--                                    </tr>--}}
-{{--                                @empty--}}
-{{--                                    <tr>--}}
-{{--                                        <td colspan="4" class="text-center text-danger">No Project Found</td>--}}
-{{--                                    </tr>--}}
-{{--                                @endforelse--}}
+                                    @forelse($projects as $key => $project)
+                                        <tr>
+                                            <td>{{ $key + 1 }}</td>
+                                            <td>{{ Str::limit($project->name, 15) }}</td>
+                                            <td>{{ $project->owner }}</td>
+                                            <td>{{ $project->location }}</td>
+                                            <td class="text-right">
+                                                <a href="{{ route('project.show', $project->id) }}" class="btn btn-primary btn-xs waves-effect">
+                                                    <i class="material-icons">visibility</i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="4" class="text-center text-danger">No Project Found</td>
+                                        </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-            </div><!-- #END# Vertical Layout -->
+            </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="card">
                     <div class="header">
@@ -116,6 +118,8 @@
                     </div>
                 </div><!-- #END# Vertical Layout -->
             </div>
+        </div>
+        <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="card">
                     <div class="header">
@@ -189,33 +193,33 @@
                         <div class="table-responsive">
                             <table class="table table-hover dashboard-task-infos">
                                 <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Document Title</th>
-                                    <th>Project Name</th>
-                                    <th class="text-right">Action</th>
-                                </tr>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Document Title</th>
+                                        <th>Project Name</th>
+                                        <th class="text-right">Action</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                @forelse($documentations as $key => $documentation)
-                                    <tr>
-                                        <td>{{ $key + 1 }}</td>
-                                        <td>{{ Str::limit($documentation->task_title, 15) }}</td>
-                                        <td>{{ !empty($documentation->project) ? $documentation->project->name:'' }}</td>
-                                        <td class="text-right">
-                                            <a href="{{ route('documentation.show', $documentation->id) }}" class="btn btn-primary btn-xs waves-effect">
-                                                <i class="material-icons">visibility</i>
-                                            </a>
-                                            <a href="{{ route('documentation.edit', $documentation->id) }}" class="btn btn-warning btn-xs waves-effect">
-                                                <i class="material-icons">edit</i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="4" class="text-center text-danger">No Documentation Found</td>
-                                    </tr>
-                                @endforelse
+                                    @forelse($documentations as $key => $documentation)
+                                        <tr>
+                                            <td>{{ $key + 1 }}</td>
+                                            <td>{{ Str::limit($documentation->task_title, 15) }}</td>
+                                            <td>{{ !empty($documentation->project) ? $documentation->project->name:'' }}</td>
+                                            <td class="text-right">
+                                                <a href="{{ route('documentation.show', $documentation->id) }}" class="btn btn-primary btn-xs waves-effect">
+                                                    <i class="material-icons">visibility</i>
+                                                </a>
+                                                <a href="{{ route('documentation.edit', $documentation->id) }}" class="btn btn-warning btn-xs waves-effect">
+                                                    <i class="material-icons">edit</i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="4" class="text-center text-danger">No Documentation Found</td>
+                                        </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                         </div>

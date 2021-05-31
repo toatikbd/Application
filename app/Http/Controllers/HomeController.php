@@ -7,6 +7,7 @@ use App\Models\Documentation;
 use App\Models\InteriorDetail;
 use App\Models\MEP;
 use App\Models\Mobilization;
+use App\Models\Project;
 use App\Models\SiteClearance;
 use App\Models\SiteEvaluation;
 use App\Models\StructuralDesign;
@@ -39,6 +40,7 @@ class HomeController extends Controller
         $structuralDesigns = StructuralDesign::all()->count();
         $interiorDetails = InteriorDetail::all()->count();
         $mEPs = MEP::all()->count();
+        $projects = Project::latest()->get();
         return view('home',
             compact(
                 'siteEvaluations',
@@ -48,7 +50,8 @@ class HomeController extends Controller
                 'architecturalDrawings',
                 'structuralDesigns',
                 'interiorDetails',
-                'mEPs'
+                'mEPs',
+                'projects'
             )
         );
     }
