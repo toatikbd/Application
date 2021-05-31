@@ -63,7 +63,6 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-
         return view('admin.project.show', compact('project'));
     }
 
@@ -73,9 +72,8 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Project $project)
     {
-        $project = Project::find($id);
         return view('admin.project.edit',compact('project'));
     }
 
@@ -86,14 +84,13 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Project $project)
     {
         $this->validate($request, [
             'name' => 'required|unique:projects|max:255, $id',
             'owner' => 'required',
             'location' => 'required'
         ]);
-        $project = Project::find($id);
         $project->name = $request->name;
         $project->slug = Str::slug($request->name);
         $project->owner = $request->owner;
@@ -109,9 +106,9 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Project $project)
     {
-        Project::find($id)->delete();
+        $project->delete();
         return redirect()->back();
     }
 }
