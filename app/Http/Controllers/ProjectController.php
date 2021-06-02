@@ -85,14 +85,16 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $project)
+    public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'name' => 'required|unique:projects|max:255',
+        // dd();
+        $this->validate(request(), [
+            'name' => "required|unique:projects,name,{$id}",
             'owner' => 'required',
             'location' => 'required',
             'description' => 'required'
         ]);
+        $project = Project::find($id);
         $project->name = $request->name;
         $project->slug = Str::slug($request->name);
         $project->owner = $request->owner;
