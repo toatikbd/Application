@@ -9,4 +9,7 @@ class Project extends Model
 {
     use HasFactory;
     protected $guarded = ["created_at", "deleted_at", "updated_at"];
+    public function mobilizations(){
+        return $this->hasMany(Mobilization::class);
+    }
 }

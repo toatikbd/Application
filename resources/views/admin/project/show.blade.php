@@ -145,12 +145,14 @@
                                                 <div class="table-responsive">
                                                     <table class="table table-hover table-bordered dashboard-task-infos">
                                                         <tbody>
+                                                        @foreach($project->mobilizations as $mobilization)
                                                         <tr>
-                                                            <th scope="row">TaskTitle</th>
-                                                            <td>TableDate</td>
+                                                            <th scope="row">Title</th>
+                                                            <td>{{$mobilization->task_title}}</td>
                                                             <th scope="row">TaskStatus</th>
                                                             <td>TableDate</td>
                                                         </tr>
+                                                        @endforeach
                                                         <tr>
                                                             <th scope="row">TaskTitle</th>
                                                             <td>
