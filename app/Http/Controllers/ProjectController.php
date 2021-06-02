@@ -42,7 +42,8 @@ class ProjectController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:projects|max:255',
             'owner' => 'required',
-            'location' => 'required'
+            'location' => 'required',
+            'description' => 'required'
         ]);
         $project = new Project();
         $project->name = $request->name;
@@ -87,9 +88,10 @@ class ProjectController extends Controller
     public function update(Request $request, Project $project)
     {
         $this->validate($request, [
-            'name' => 'required|unique:projects|max:255, $id',
+            'name' => 'required|unique:projects|max:255',
             'owner' => 'required',
-            'location' => 'required'
+            'location' => 'required',
+            'description' => 'required'
         ]);
         $project->name = $request->name;
         $project->slug = Str::slug($request->name);

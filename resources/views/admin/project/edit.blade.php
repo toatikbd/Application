@@ -16,7 +16,7 @@
                                 <label for="project_title">Project Title</label>
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input type="text" id="project_title" name="name" value="{{ $project->name }}" class="form-control @error('name') is-invalid @enderror" placeholder="Enter your Project Title">
+                                        <input type="text" id="project_title" name="name" value="{{ $project->name  }}" class="form-control @error('name') is-invalid @enderror" placeholder="Enter your Project Title">
                                     </div>
                                     @error('name')
                                     <label class="error">{{ $message }}</label>
@@ -40,10 +40,10 @@
                                     <label class="error">{{ $message }}</label>
                                     @enderror
                                 </div>
-                                <label for="project_description">Project Description</label>
+                                <label for="description">Project Description</label>
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <textarea id="project_description" name="project_description" cols="30" rows="5" class="form-control no-resize" aria-required="true">{{ $project->description }}</textarea>
+                                        <textarea id="description" name="description" cols="30" rows="5" class="form-control no-resize" aria-required="true">{{ $project->description }}</textarea>
                                     </div>
                                 </div>
                                 <div class="text-center">

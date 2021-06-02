@@ -43,12 +43,12 @@
                                                     <a href="{{ route('project.edit', $project->id) }}" class="btn btn-warning btn-xs waves-effect">
                                                         <i class="material-icons">edit</i>
                                                     </a>
-                                                {{--                                                        @csrf--}}
-                                                {{--                                                        @method('DELETE')--}}
-                                                {{--                                                        <button class="btn  btn-xs btn-danger waves-effect" type="submit">--}}
-                                                {{--                                                          <i class="material-icons">delete</i>--}}
-                                                {{--                                                        </button>--}}
-                                                {{--                                                        </form>--}}
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn  btn-xs btn-danger waves-effect" type="submit">
+                                                      <i class="material-icons">delete</i>
+                                                    </button>
+                                                    </form>
                                             </td>
                                         </tr>
                                     @endforeach

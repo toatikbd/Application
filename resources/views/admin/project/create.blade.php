@@ -48,10 +48,10 @@
                                     <label class="error">{{ $message }}</label>
                                     @enderror
                                 </div>
-                                <label for="project_description">Project Description/ Note</label>
+                                <label for="description">Project Description/ Note</label>
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <textarea rows="4" id="project_description" name="description" autocomplete="off" class="form-control no-resize" placeholder="Please type your Project description in shorthand"></textarea>
+                                        <textarea rows="4" id="description" name="description" autocomplete="off" class="form-control no-resize" placeholder="Please type your Project description in shorthand"></textarea>
                                     </div>
                                 </div>
                                 <div class="text-center">
@@ -95,12 +95,12 @@
                                                         <a href="{{ route('project.edit', $project->id) }}" class="btn btn-warning btn-xs waves-effect">
                                                             <i class="material-icons">edit</i>
                                                         </a>
-{{--                                                        @csrf--}}
-{{--                                                        @method('DELETE')--}}
-{{--                                                        <button class="btn  btn-xs btn-danger waves-effect" type="submit">--}}
-{{--                                                          <i class="material-icons">delete</i>--}}
-{{--                                                        </button>--}}
-{{--                                                        </form>--}}
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button class="btn  btn-xs btn-danger waves-effect" type="submit">
+                                                          <i class="material-icons">delete</i>
+                                                        </button>
+                                                        </form>
                                                     </td>
                                                 </tr>
                                             @endforeach
