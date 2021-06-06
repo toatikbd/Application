@@ -60,7 +60,7 @@
 
         </div>
         <div class="row clearfix">
-            <!-- Colorful Panel Items With Icon -->
+            <!-- Preliminary Work Panel Items -->
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="header">
@@ -322,7 +322,272 @@
                     </div>
                 </div>
             </div>
-            <!-- #END# Colorful Panel Items With Icon -->
+            <!-- #END# Preliminary Work Panel Items -->
+        </div>
+        <div class="row clearfix">
+            <!-- Design and Drawing Panel Items -->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            Design and Drawing
+                        </h2>
+                    </div>
+                    <div class="body">
+                        <div class="row clearfix">
+                            <div class="col-xs-12 ol-sm-12 col-md-12 col-lg-12">
+                                <div class="panel-group" id="accordion_18" role="tablist" aria-multiselectable="true">
+                                    <div class="panel panel-col-pink">
+                                        <div class="panel-heading" role="tab" id="headingOne_18">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_18" href="#collapseOne_18" aria-expanded="false">
+                                                    <i class="material-icons">perm_contact_calendar</i> Architectural Drawing
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseOne_18" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne_18">
+                                            <div class="panel-body">
+                                                <div class="table-responsive">
+                                                    @forelse($project->architecturalDrawings as $architecturalDrawing)
+                                                        <table class="table table-hover table-bordered dashboard-task-infos">
+                                                            <tbody>
+                                                            <tr>
+                                                                <th scope="row">TaskTitle</th>
+                                                                <td>{{ ($architecturalDrawing->task_title) }}</td>
+                                                                <th scope="row">Task Status</th>
+                                                                <td>
+                                                                    @if($architecturalDrawing->status == true)
+                                                                        <span class="badge bg-blue">The End</span>
+                                                                    @else
+                                                                        <span class="badge bg-pink">Doing</span>
+                                                                    @endif
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Description</th>
+                                                                <td>{{ ($architecturalDrawing->task_description) }}</td>
+                                                                <th scope="row">Supervisor</th>
+                                                                <td>{{ $architecturalDrawing->worker->name }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Progress</th>
+                                                                <td>
+                                                                    <div class="progress">
+                                                                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="{{ $architecturalDrawing->task_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $architecturalDrawing->task_progress }}%"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <th scope="row">Start Date</th>
+                                                                <td>{{ \Carbon\Carbon::parse($architecturalDrawing->start_date)->format('d/m/Y')}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Attachment File</th>
+                                                                <td>
+                                                                    <button type="button" class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float" data-toggle="modal" data-target="#architecturalDrawing">
+                                                                        <i class="material-icons">attachment</i>
+                                                                    </button>
+                                                                </td>
+                                                                <th scope="row">End Date</th>
+                                                                <td>{{ \Carbon\Carbon::parse($architecturalDrawing->end_date)->format('d/m/Y')}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row" colspan="2"></th>
+                                                                <th scope="row">Day Total</th>
+                                                                <td>
+                                                                    <span class="label bg-red">{{ \App\Classes\DayCount::days( $architecturalDrawing->start_date, $architecturalDrawing->end_date) }} Days</span>
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                            <!-- Modal Dialogs ======== -->
+                                                            <!-- Default Size -->
+                                                            <div class="modal fade" id="architecturalDrawing" tabindex="-1" role="dialog">
+                                                                <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-body">
+                                                                            <button class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float modal-close-btn-init" data-dismiss="modal"><i class="material-icons">cancel</i></button>
+                                                                            Lorem ipsum
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </table>
+                                                    @empty
+                                                        <p class="text-center text-danger">Architectural Drawing Date not Found</p>
+                                                    @endforelse
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-col-cyan">
+                                        <div class="panel-heading" role="tab" id="headingTwo_18">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_18" href="#collapseTwo_18" aria-expanded="false"
+                                                   aria-controls="collapseTwo_18">
+                                                    <i class="material-icons">cloud_download</i> Structural Design
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseTwo_18" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo_18">
+                                            <div class="panel-body">
+                                                <div class="table-responsive">
+                                                    @forelse($project->structuralDesigns as $structuralDesign)
+                                                        <table class="table table-hover table-bordered dashboard-task-infos">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th scope="row">Title</th>
+                                                                    <td>{{$structuralDesign->task_title}}</td>
+                                                                    <th scope="row">Task Status</th>
+                                                                    <td>
+                                                                        @if($structuralDesign->status == true)
+                                                                            <span class="badge bg-blue">The End</span>
+                                                                        @else
+                                                                            <span class="badge bg-pink">Doing</span>
+                                                                        @endif
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">Description</th>
+                                                                    <td>{{$structuralDesign->task_description}}</td>
+                                                                    <th scope="row">Supervisor</th>
+                                                                    <td>{{ $structuralDesign->worker->name }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">Progress</th>
+                                                                    <td>
+                                                                        <div class="progress">
+                                                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="{{ $structuralDesign->task_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $structuralDesign->task_progress }}%"></div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <th scope="row">Start Date</th>
+                                                                    <td>{{ \Carbon\Carbon::parse($structuralDesign->start_date)->format('d/m/Y')}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">Attached File</th>
+                                                                    <td>
+                                                                        <button type="button" class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float" data-toggle="modal" data-target="#structuralDesign">
+                                                                            <i class="material-icons">attachment</i>
+                                                                        </button>
+                                                                    </td>
+                                                                    <th scope="row">End Date</th>
+                                                                    <td>{{ \Carbon\Carbon::parse($structuralDesign->end_date)->format('d/m/Y')}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row" colspan="2"></th>
+                                                                    <th scope="row">Day Total</th>
+                                                                    <td>
+                                                                        <span class="label bg-red">{{ \App\Classes\DayCount::days( $structuralDesign->start_date, $structuralDesign->end_date) }} Days</span>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+
+                                                            <!-- Modal Dialogs ======== -->
+                                                            <!-- Default Size -->
+                                                            <div class="modal fade" id="structuralDesign" tabindex="-1" role="dialog">
+                                                                <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-body">
+                                                                            <button class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float modal-close-btn-init" data-dismiss="modal"><i class="material-icons">cancel</i></button>
+                                                                            Lorem ipsum
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </table>
+                                                    @empty
+                                                        <p class="text-center text-danger">Structural Design Date Not Found</p>
+                                                    @endforelse
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-col-teal">
+                                        <div class="panel-heading" role="tab" id="headingThree_18">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_18" href="#collapseThree_18" aria-expanded="false"
+                                                   aria-controls="collapseThree_18">
+                                                    <i class="material-icons">contact_phone</i> Interior Full Details
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseThree_18" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree_18">
+                                            <div class="panel-body">
+                                                <div class="table-responsive">
+                                                    @forelse($project->interiorDetails as $interiorDetail)
+                                                        <table class="table table-hover table-bordered dashboard-task-infos">
+                                                            <tbody>
+                                                            <tr>
+                                                                <th scope="row">TaskTitle</th>
+                                                                <td>{{ ($interiorDetail->task_title) }}</td>
+                                                                <th scope="row">Task Status</th>
+                                                                <td>
+                                                                    @if($interiorDetail->status == true)
+                                                                        <span class="badge bg-blue">The End</span>
+                                                                    @else
+                                                                        <span class="badge bg-pink">Doing</span>
+                                                                    @endif
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Description</th>
+                                                                <td>{{ ($interiorDetail->task_description) }}</td>
+                                                                <th scope="row">Supervisor</th>
+                                                                <td>{{ $interiorDetail->worker->name }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Progress</th>
+                                                                <td>
+                                                                    <div class="progress">
+                                                                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="{{ $interiorDetail->task_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $interiorDetail->task_progress }}%"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <th scope="row">Start Date</th>
+                                                                <td>{{ \Carbon\Carbon::parse($interiorDetail->start_date)->format('d/m/Y')}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Attachment File</th>
+                                                                <td>
+                                                                    <button type="button" class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float" data-toggle="modal" data-target="#interiorDetails">
+                                                                        <i class="material-icons">attachment</i>
+                                                                    </button>
+                                                                </td>
+                                                                <th scope="row">End Date</th>
+                                                                <td>{{ \Carbon\Carbon::parse($interiorDetail->end_date)->format('d/m/Y')}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row" colspan="2"></th>
+                                                                <th scope="row">Day Total</th>
+                                                                <td>
+                                                                    <span class="label bg-red">{{ \App\Classes\DayCount::days( $interiorDetail->start_date, $interiorDetail->end_date) }} Days</span>
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                            <!-- Modal Dialogs ======== -->
+                                                            <!-- Default Size -->
+                                                            <div class="modal fade" id="interiorDetails" tabindex="-1" role="dialog">
+                                                                <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-body">
+                                                                            <button class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float modal-close-btn-init" data-dismiss="modal"><i class="material-icons">cancel</i></button>
+                                                                            Lorem ipsum
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </table>
+                                                    @empty
+                                                        <p class="text-center text-danger">Interior Detail Date Not Found</p>
+                                                    @endforelse
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Design and Drawing Panel Items -->
         </div>
     </div>
 @endsection

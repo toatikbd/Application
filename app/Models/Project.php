@@ -21,4 +21,16 @@ class Project extends Model
     {
         return $this->hasMany(SiteClearance::class);
     }
+    public function architecturalDrawings()
+    {
+        return $this->hasMany(ArchitecturalDrawing::class);
+    }
+    public function  structuralDesigns()
+    {
+        return $this->hasMany(StructuralDesign::class);
+    }
+    public function interiorDetails()
+    {
+        return $this->hasMany(InteriorDetail::class);
+    }
 }
