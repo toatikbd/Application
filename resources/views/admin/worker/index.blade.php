@@ -8,6 +8,9 @@
     <div class="container-fluid">
         <div class="block-header">
             <h2>All Supervisor <span class="badge bg-blue">{{ $workers->count() }}</span></h2>
+            <ol class="breadcrumb breadcrumb-col-pink breadcrumb-right-align">
+                <li><a href="{{ url('/home') }}"><i class="material-icons">home</i> Dashboard</a></li>
+            </ol>
         </div>
         <div class="row clearfix">
             <!-- Task Info -->
@@ -27,6 +30,8 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Mobile</th>
                                         <th>Photo</th>
                                         <th>Job Title</th>
                                         <th>Department</th>
@@ -38,6 +43,8 @@
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
                                             <td>{{ Str::limit($worker->name, 10) }}</td>
+                                            <td>{{ $worker->email }}</td>
+                                            <td>{{ $worker->mobile }}</td>
                                             <td>
                                                 <img class="img-responsive thumbnail" width="50" height="auto" src="{{ asset('uploaded/supervisor/'.$worker->image) }}" alt="{{ $worker->name }}">
                                             </td>

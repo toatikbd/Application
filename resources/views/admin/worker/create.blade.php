@@ -6,7 +6,7 @@
             <h2>Site Supervisor</h2>
             <ol class="breadcrumb breadcrumb-col-pink breadcrumb-right-align">
                 <li><a href="{{ url('/home') }}"><i class="material-icons">home</i> Dashboard</a></li>
-                <li><a href="{{ route('worker.index') }}"><i class="material-icons">library_books</i>Site Supervisor</a></li>
+                <li><a href="{{ route('worker.index') }}"><i class="material-icons">library_books</i>All Supervisor</a></li>
                 <li class="active"><i class="material-icons">archive</i> Add Supervisor</li>
             </ol>
         </div>
@@ -49,6 +49,18 @@
                             <div class="form-group">
                                 <div class="form-line">
                                     <input type="text" id="name" name="name" autocomplete="off" class="form-control" placeholder="Enter Full Name">
+                                </div>
+                            </div>
+                            <label for="email">E-mail Address</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="email" id="email" name="email" autocomplete="off" class="form-control" placeholder="Enter email">
+                                </div>
+                            </div>
+                            <label for="mobile">Mobile Number</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="number" id="mobile" name="mobile" autocomplete="off" class="form-control" placeholder="Enter Mobile Number">
                                 </div>
                             </div>
                             <label for="job_title">Job Title</label>

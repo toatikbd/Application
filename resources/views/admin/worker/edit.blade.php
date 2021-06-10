@@ -3,7 +3,12 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h2 class="text-center">Edit Supervisor</h2>
+            <h2>Edit Supervisor</h2>
+            <ol class="breadcrumb breadcrumb-col-pink breadcrumb-right-align">
+                <li><a href="{{ url('/home') }}"><i class="material-icons">home</i> Dashboard</a></li>
+                <li><a href="{{ route('worker.index') }}"><i class="material-icons">library_books</i>All Supervisor</a></li>
+                <li class="active"><i class="material-icons">archive</i> Edit Supervisor</li>
+            </ol>
         </div>
 
         <div class="row clearfix">
@@ -11,7 +16,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="card">
                     <div class="header">
-                        <h2>Add Supervisor</h2>
+                        <h2>Edit Supervisor</h2>
                         <a href="{{ route('worker.index') }}" class="btn btn-success waves-effect right-align-task-btn">
                             <i class="material-icons">visibility</i>
                             <span>View All Supervisor</span>
@@ -45,6 +50,18 @@
                             <div class="form-group">
                                 <div class="form-line">
                                     <input type="text" id="name" name="name" value="{{ $worker->name }}" class="form-control" placeholder="Enter Full Name">
+                                </div>
+                            </div>
+                            <label for="email">E-mail Address</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="email" id="email" name="email" value="{{ $worker->email }}" class="form-control" placeholder="email address">
+                                </div>
+                            </div>
+                            <label for="mobile">Mobile Number</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="number" id="mobile" name="mobile" value="{{ $worker->mobile }}" class="form-control" placeholder="Mobile Number">
                                 </div>
                             </div>
                             <label for="job_title">Job Title</label>
