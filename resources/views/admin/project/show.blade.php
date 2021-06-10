@@ -589,6 +589,315 @@
             </div>
             <!-- #END# Design and Drawing Panel Items -->
         </div>
+        <div class="row clearfix">
+            <!-- Documentation Panel Items -->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            Documentation
+                        </h2>
+                    </div>
+                    <div class="body">
+                        <div class="row clearfix">
+                            <div class="col-xs-12 ol-sm-12 col-md-12 col-lg-12">
+                                <div class="panel-group" id="accordion_19" role="tablist" aria-multiselectable="true">
+                                    <div class="panel panel-col-pink">
+                                        <div class="panel-heading" role="tab" id="headingOne_19">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_19" href="#collapseOne_19" aria-expanded="false">
+                                                    <i class="material-icons">perm_contact_calendar</i> Documentation
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseOne_19" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne_19">
+                                            <div class="panel-body">
+                                                <div class="table-responsive">
+                                                    @forelse($project->documentations as $documentation)
+                                                        <table class="table table-hover table-bordered dashboard-task-infos">
+                                                            <tbody>
+                                                            <tr>
+                                                                <th scope="row">TaskTitle</th>
+                                                                <td>{{ ($documentation->task_title) }}</td>
+                                                                <th scope="row">Task Status</th>
+                                                                <td>
+                                                                    @if($documentation->status == true)
+                                                                        <span class="badge bg-blue">The End</span>
+                                                                    @else
+                                                                        <span class="badge bg-pink">Doing</span>
+                                                                    @endif
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Description</th>
+                                                                <td>{{ ($documentation->task_description) }}</td>
+                                                                <th scope="row">Supervisor</th>
+                                                                <td>{{ $documentation->worker->name }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Progress</th>
+                                                                <td>
+                                                                    <div class="progress">
+                                                                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="{{ $documentation->task_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $documentation->task_progress }}%"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <th scope="row">Start Date</th>
+                                                                <td>{{ \Carbon\Carbon::parse($documentation->start_date)->format('d/m/Y')}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Attachment File</th>
+                                                                <td>
+                                                                    <button type="button" class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float" data-toggle="modal" data-target="#documentation">
+                                                                        <i class="material-icons">attachment</i>
+                                                                    </button>
+                                                                </td>
+                                                                <th scope="row">End Date</th>
+                                                                <td>{{ \Carbon\Carbon::parse($documentation->end_date)->format('d/m/Y')}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row" colspan="2"></th>
+                                                                <th scope="row">Day Total</th>
+                                                                <td>
+                                                                    <span class="label bg-red">{{ \App\Classes\DayCount::days( $documentation->start_date, $documentation->end_date) }} Days</span>
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                            <!-- Modal Dialogs ======== -->
+                                                            <!-- Default Size -->
+                                                            <div class="modal fade" id="documentation" tabindex="-1" role="dialog">
+                                                                <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-body">
+                                                                            <button class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float modal-close-btn-init" data-dismiss="modal"><i class="material-icons">cancel</i></button>
+                                                                            Lorem ipsum
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </table>
+                                                    @empty
+                                                        <p class="text-center text-danger">Documentation Date not Found</p>
+                                                    @endforelse
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Documentation Panel Items -->
+        </div>
+        <div class="row clearfix">
+            <!-- Contractor Panel Items -->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            Contractor
+                        </h2>
+                    </div>
+                    <div class="body">
+                        <div class="row clearfix">
+                            <div class="col-xs-12 ol-sm-12 col-md-12 col-lg-12">
+                                <div class="panel-group" id="accordion_20" role="tablist" aria-multiselectable="true">
+                                    <div class="panel panel-col-pink">
+                                        <div class="panel-heading" role="tab" id="headingOne_20">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_20" href="#collapseOne_20" aria-expanded="false">
+                                                    <i class="material-icons">perm_contact_calendar</i> Contractor
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseOne_20" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne_20">
+                                            <div class="panel-body">
+                                                <div class="table-responsive">
+                                                    @forelse($project->contractors as $contractor)
+                                                        <table class="table table-hover table-bordered dashboard-task-infos">
+                                                            <tbody>
+                                                            <tr>
+                                                                <th scope="row">Contractor Name</th>
+                                                                <td>{{ ($contractor->name) }}</td>
+                                                                <td rowspan="3">
+                                                                    <h5>Contractor Photo</h5>
+                                                                    <img src="{{ asset('contractors/'.$contractor->photo) }}" alt="{{ $contractor->name }}" width="120px" height="auto">
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Email Address</th>
+                                                                <td>{{ ($contractor->email) }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Mobile Number</th>
+                                                                <td>{{ $contractor->mobile }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Address</th>
+                                                                <td colspan="2">{{ $contractor->address }}</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    @empty
+                                                        <p class="text-center text-danger">Contractor Date not Found</p>
+                                                    @endforelse
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Contractor Panel Items -->
+        </div>
+        <div class="row clearfix">
+            <!-- Procurement Panel Items -->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            Procurement
+                        </h2>
+                    </div>
+                    <div class="body">
+                        <div class="row clearfix">
+                            <div class="col-xs-12 ol-sm-12 col-md-12 col-lg-12">
+                                <div class="panel-group" id="accordion_21" role="tablist" aria-multiselectable="true">
+                                    <div class="panel panel-col-pink">
+                                        <div class="panel-heading" role="tab" id="headingOne_21">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_21" href="#collapseOne_21" aria-expanded="false">
+                                                    <i class="material-icons">perm_contact_calendar</i> Requisition
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseOne_21" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne_21">
+                                            <div class="panel-body">
+                                                <div class="table-responsive">
+                                                    @forelse($project->requisitions as $requisition)
+                                                        <table class="table table-hover table-bordered dashboard-task-infos">
+                                                            <tbody>
+                                                            <tr>
+                                                                <th scope="row">Title</th>
+                                                                <td>{{ ($requisition->title) }}</td>
+                                                                <th scope="row">Status</th>
+                                                                <td>
+                                                                    @if($requisition->approved_by == true)
+                                                                        <span class="badge bg-blue">Approved</span>
+                                                                    @else
+                                                                        <span class="badge bg-pink">Unapproved</span>
+                                                                    @endif
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Requisition Number</th>
+                                                                <td>{{ ($requisition->requisition_no) }}</td>
+                                                                <th scope="row">Product Price</th>
+                                                                <td>{{ $requisition->price }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Category</th>
+                                                                <td>{{ $requisition->requisitionCategory->name }}</td>
+                                                                <th scope="row">Product Quantity</th>
+                                                                <td>{{ $requisition->quantity }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Requisition Type</th>
+                                                                <td>{{ $requisition->requisition_type }}</td>
+                                                                <th scope="row">Unit Type</th>
+                                                                <td>{{ optional($requisition->unit)->symbol }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Manufacturer</th>
+                                                                <td>{{ $requisition->manufacturer }}</td>
+                                                                <th scope="row">Needed Date</th>
+                                                                <td>{{ \Carbon\Carbon::parse($requisition->needed_date)->format('d/m/Y')}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Country of Origin</th>
+                                                                <td>{{ $requisition->requisitionCountry->name }}</td>
+                                                                <th scope="row">Project Name</th>
+                                                                <td>{{ $requisition->project->name }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Description</th>
+                                                                <td>{{ $requisition->description }}</td>
+                                                                <th scope="row">Supervisor</th>
+                                                                <td>{{ $requisition->worker->name }}</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    @empty
+                                                        <p class="text-center text-danger">Requisition Date not Found</p>
+                                                    @endforelse
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-col-cyan">
+                                        <div class="panel-heading" role="tab" id="headingTwo_22">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_22" href="#collapseTwo_22" aria-expanded="false"
+                                                   aria-controls="collapseTwo_22">
+                                                    <i class="material-icons">cloud_download</i> Purchase Order
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseTwo_22" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo_22">
+                                            <div class="panel-body">
+                                                <div class="table-responsive">
+                                                    @forelse($project->requisitions as $requisition)
+                                                        <table class="table table-hover table-bordered dashboard-task-infos">
+                                                            <tbody>
+                                                            <tr>
+                                                                <th scope="row">Title</th>
+                                                                <td>{{ ($requisition->title) }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Requisition Number</th>
+                                                                <td>{{ ($requisition->requisition_no) }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Category</th>
+                                                                <td>{{ $requisition->requisitionCategory->name }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Requisition Type</th>
+                                                                <td>{{ $requisition->requisition_type }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Manufacturer</th>
+                                                                <td>{{ $requisition->manufacturer }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Country of Origin</th>
+                                                                <td>{{ $requisition->requisitionCountry->name }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Description</th>
+                                                                <td>{{ $requisition->description }}</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    @empty
+                                                        <p class="text-center text-danger">Purchase Order Date Not Found</p>
+                                                    @endforelse
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Procurement Panel Items -->
+        </div>
     </div>
 @endsection
 

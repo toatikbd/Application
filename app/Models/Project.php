@@ -33,4 +33,20 @@ class Project extends Model
     {
         return $this->hasMany(InteriorDetail::class);
     }
+    public function documentations()
+    {
+        return $this->hasMany(Documentation::class);
+    }
+    public function contractors()
+    {
+        return $this->hasMany(Contractor::class);
+    }
+    public function requisitions()
+    {
+        return $this->hasMany(Requisition::class);
+    }
+    public function purchaseOrders()
+    {
+        return $this->hasMany(PurchaseOrder::class);
+    }
 }
