@@ -42,9 +42,11 @@ class WorkerController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'email' => 'required|unique:workers|max:255',
+            'mobile' => 'required|unique:workers|max:255',
             'job_title' => 'required',
             'department' => 'required',
-            'image' =>  'required|image|mimes:jpeg,png,jpg,svg'
+            'image' =>  'required|image|mimes:jpeg,png,jpg'
         ]);
 
         $image = $request->file('image');
@@ -54,6 +56,8 @@ class WorkerController extends Controller
         $worker = new Worker();
         $worker->name = $request->name;
         $worker->slug = Str::slug($request-> name);
+        $worker->email = $request->email;
+        $worker->mobile = $request->mobile;
         $worker->job_title = $request->job_title;
         $worker->department = $request->department;
         $worker->image = $imageName;
@@ -94,6 +98,8 @@ class WorkerController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'email' => 'required',
+            'mobile' => 'required',
             'job_title' => 'required',
             'department' => 'required'
         ]);
@@ -112,6 +118,8 @@ class WorkerController extends Controller
 
         $worker->name = $request->name;
         $worker->slug = Str::slug($request-> name);
+        $worker->email = $request->email;
+        $worker->mobile = $request->mobile;
         $worker->job_title = $request->job_title;
         $worker->department = $request->department;
         $worker->save();
