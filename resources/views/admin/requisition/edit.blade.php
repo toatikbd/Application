@@ -180,7 +180,7 @@
                             <label for="needed_date">Needed Date</label>
                             <div class="form-group">
                                 <div class="form-line" id="bs_datepicker_container">
-                                    <input type="text" name="needed_date" value="{{ $requisition->needed_date }}" class="form-control" autocomplete="off" placeholder="Please choose a date...">
+                                    <input type="text" name="needed_date" value="{{ \Carbon\Carbon::parse($requisition->needed_date)->format('d-m-Y')}}" class="form-control" autocomplete="off" placeholder="Please choose a date...">
                                 </div>
                             </div>
                             {{-- <label for="status">Status</label>--}}

@@ -113,7 +113,7 @@
                                 <div class="form-line">
                                     <div class="input-daterange input-group" id="bs_datepicker_range_container">
                                         <div class="form-line">
-                                            <input type="text" name="start_date" value="{{ \Carbon\Carbon::parse($siteEvaluation->start_date)->format('d-m-Y')}}" class="form-control" placeholder="Date start..." au>
+                                            <input type="text" name="start_date" value="{{ \Carbon\Carbon::parse($siteEvaluation->start_date)->format('d-m-Y')}}" class="form-control" placeholder="Date start..." autocomplete="off">
                                         </div>
                                         <span class="input-group-addon">to</span>
                                         <div class="form-line">
