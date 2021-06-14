@@ -169,7 +169,7 @@
                                             <select class="form-control show-tick" id="select_unit" name="unit_id" data-live-search="true">
                                                 <option selected disabled>-- Unit--</option>
                                                 @foreach($units as $key => $unit)
-                                                    <option value="{{ $unit->id }}"> {{ $unit->symbol }} </option>
+                                                    <option value="{{ $unit->id }}"> {{ $unit->name }} </option>
                                                 @endforeach
                                             </select>
                                         </div>

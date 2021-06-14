@@ -25,7 +25,7 @@ class CreateRequisitionsTable extends Migration
             $table->text('description')->nullable();
             $table->integer('price');
             $table->integer('quantity');
-            $table->unsignedBigInteger('symbol');
+            $table->unsignedBigInteger('unit_id');
             $table->date('needed_date');
             $table->unsignedBigInteger('project_id');
             $table->unsignedBigInteger('worker_id');

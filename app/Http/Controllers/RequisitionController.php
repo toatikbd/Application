@@ -69,7 +69,7 @@ class RequisitionController extends Controller
         $requisition->description = $request->description;
         $requisition->price = $request->price;
         $requisition->quantity = $request->quantity;
-        $requisition->symbol = $request->unit_id;
+        $requisition->unit_id = $request->unit_id;
         $requisition->project_id = $request->project_id;
         $requisition->worker_id = $request->worker_id;
         $requisition->needed_date = Carbon::createFromFormat('d-m-Y', $request->needed_date);
@@ -102,7 +102,13 @@ class RequisitionController extends Controller
      */
     public function edit(Requisition $requisition)
     {
-        return view('admin.requisition.edit', compact('requisition'));
+        $workers = Worker::latest()->get();
+        $projects = Project::latest()->get();
+        $requisitionCategories = RequisitionCategory::latest()->get();
+        $countries = Country::latest()->get();
+        $units = Unit::latest()->get();
+        return view('admin.requisition.edit',
+            compact('requisition', 'workers', 'projects', 'requisitionCategories', 'countries', 'units'));
     }
 
     /**
@@ -114,7 +120,37 @@ class RequisitionController extends Controller
      */
     public function update(Request $request, Requisition $requisition)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'category_id' => 'required',
+            'requisition_type' => 'required',
+            'manufacturer' => 'required',
+            'country_id' => 'required',
+            'project_id' => 'required',
+            'worker_id' => 'required',
+            'unit_id' => 'required'
+        ]);
+
+        $requisition->title = $request->title;
+        $requisition->slug = Str::slug($request->title);
+        $requisition->category_id = $request->category_id;
+        $requisition->requisition_type = $request->requisition_type;
+        $requisition->manufacturer = $request->manufacturer;
+        $requisition->country_id = $request->country_id;
+        $requisition->description = $request->description;
+        $requisition->price = $request->price;
+        $requisition->quantity = $request->quantity;
+        $requisition->unit_id = $request->unit_id;
+        $requisition->project_id = $request->project_id;
+        $requisition->worker_id = $request->worker_id;
+        $requisition->needed_date = Carbon::createFromFormat('d-m-Y', $request->needed_date);
+        if (isset($request->approved_by)) {
+            $requisition->approved_by = true;
+        } else {
+            $requisition->approved_by = false;
+        }
+        $requisition->update();
+        return redirect()->route('requisition.index');
     }
 
     /**

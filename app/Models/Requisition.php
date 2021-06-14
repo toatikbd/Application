@@ -24,10 +24,11 @@ class Requisition extends Model
     {
         return $this->belongsTo('App\Models\Project', 'project_id');
     }
+
     public function unit()
     {
-        return $this->belongsTo(Unit::class);
-//        return $this->belongsTo('App\Models\Unit', 'unit_id');
+//        return $this->belongsTo(Unit::class);
+        return $this->belongsTo('App\Models\Unit', 'unit_id');
     }
     public function generateRequisitionNumber(){
         $serial = $this->count_last_serial() + 1;

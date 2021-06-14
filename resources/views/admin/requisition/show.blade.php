@@ -63,16 +63,16 @@
                                     <td>
                                         <table class="table table-hover table-bordered dashboard-task-infos">
                                             <tbody>
-                                                <tr>
-                                                    <th scope="row">Status</th>
-                                                    <td>
-                                                        @if($requisition->approved_by == true)
-                                                            <span class="badge bg-blue">Approved</span>
-                                                        @else
-                                                            <span class="badge bg-pink">Unapproved</span>
-                                                        @endif
-                                                    </td>
-                                                </tr>
+{{--                                                <tr>--}}
+{{--                                                    <th scope="row">Status</th>--}}
+{{--                                                    <td>--}}
+{{--                                                        @if($requisition->approved_by == true)--}}
+{{--                                                            <span class="badge bg-blue">Approved</span>--}}
+{{--                                                        @else--}}
+{{--                                                            <span class="badge bg-pink">Unapproved</span>--}}
+{{--                                                        @endif--}}
+{{--                                                    </td>--}}
+{{--                                                </tr>--}}
                                                 <tr>
                                                     <th scope="row">Product Price</th>
                                                     <td>{{ $requisition->price }}</td>
@@ -83,7 +83,7 @@
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">Unit Type</th>
-                                                    <td>{{ optional($requisition->unit)->symbol }}</td>
+                                                    <td>{{ $requisition->unit->symbol }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">Needed Date</th>
