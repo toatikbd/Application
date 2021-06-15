@@ -118,10 +118,12 @@ class SiteEvaluationController extends Controller
             'end_date' => 'required',
         ]);
 
+        // return $pdfFile = $request->file('file');
 
         if ($pdfFile = $request->file('file'))
         {
             $oldFile = public_path(). "/site-evaluation-file/". $siteEvaluation->file;
+            // dd($oldFile);
             if (file_exists($oldFile))
             {
                 unlink($oldFile);

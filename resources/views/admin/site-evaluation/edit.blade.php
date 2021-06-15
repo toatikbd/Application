@@ -55,7 +55,7 @@
                     </div>
                 @endif
             </div>
-            <form action="{{ route('site-evaluation.update', $siteEvaluation->id) }}" method="POST">
+            <form action="{{ route('site-evaluation.update', $siteEvaluation->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('put')
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
