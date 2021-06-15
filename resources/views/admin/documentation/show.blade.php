@@ -2,7 +2,7 @@
 @section('title', 'Documentation')
 @push('css')
     <style>
-        #viewpdf{
+        .viewpdf{
             width: 100%;
             height: 400px;
             border: 1px solid rgba(0,0,0,.2);
@@ -56,7 +56,7 @@
                                                 <tr>
                                                     <th scope="row">File</th>
                                                     <td>
-                                                        <div id="viewpdf"></div>
+                                                        <div class="viewpdf"></div>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -113,9 +113,8 @@
 @endsection
 
 @push('js')
-    <script src="{{ asset('admin') }}/js/pdfobject.min.js"></script>
     <script type="text/javascript">
-        var viewer = $("#viewpdf");
+        var viewer = $(".viewpdf");
         PDFObject.embed("{{ asset('documentation-file/'.$documentation->file) }}", viewer);
     </script>
 @endpush

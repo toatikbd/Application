@@ -14,6 +14,11 @@
             margin-left: 1px!important;
             padding-left: 35px!important;
         }
+        .viewpdf{
+            width: 100%;
+            height: 400px;
+            border: 1px solid rgba(0,0,0,.2);
+        }
     </style>
 @endpush
 @section('content')
@@ -82,11 +87,17 @@
                                 </div>
                                 <div class="col-md-8">
                                     <label for="task_file">File Upload</label>
+{{--                                    <div class="form-group">--}}
+{{--                                        <div>--}}
+{{--                                            <input type="file" id="task_file" name="file" class="btn btn-primary btn-lg waves-effect" onchange="previewFiles()"/>--}}
+{{--                                            <div class="preview"></div>--}}
+{{--                                            <img src="{{ asset('files/'.$siteEvaluation->file) }}" alt="{{ $siteEvaluation->task_title }}" style="max-width:130px; margin-top: 20px">--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
                                     <div class="form-group">
                                         <div>
-                                            <input type="file" id="task_file" name="file" class="btn btn-primary btn-lg waves-effect" onchange="previewFiles()"/>
-                                            <div class="preview"></div>
-                                            <img src="{{ asset('files/'.$siteEvaluation->file) }}" alt="{{ $siteEvaluation->task_title }}" style="max-width:130px; margin-top: 20px">
+                                            <input type="file" id="task_file" name="file" class="btn btn-primary btn-lg waves-effect"/>
+                                            <div class="viewpdf"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -168,4 +179,8 @@
     <script src="{{ asset('admin') }}/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
     <!-- Bootstrap Datepicker Plugin Js -->
     <script src="{{ asset('admin') }}/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript">
+        var viewer = $(".viewpdf");
+        PDFObject.embed("{{ asset('site-evaluation-file/'.$siteEvaluation->file) }}", viewer);
+    </script>
 @endpush

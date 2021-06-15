@@ -98,6 +98,8 @@
 <script src="{{ asset('admin') }}/plugins/node-waves/waves.js"></script>
 <!-- Jquery CountTo Plugin Js -->
 <script src="{{ asset('admin') }}/plugins/jquery-countto/jquery.countTo.js"></script>
+<!-- pdf object -->
+<script src="{{ asset('admin') }}/js/pdfobject.min.js"></script>
 <!-- Custom Js -->
 <script src="{{ asset('admin') }}/js/admin.js"></script>
 <!-- Demo Js -->
@@ -106,9 +108,6 @@
 <!-- developer custom js -->
 <script src="{{ asset('admin') }}/js/dev-init.js"></script>
 
-<script>
-
-</script>
 
 </body>
 </html>

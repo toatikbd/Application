@@ -87,7 +87,7 @@
                                     <div class="form-group">
                                         <div>
                                             <input type="file" id="task_file" name="file" class="btn btn-primary btn-lg waves-effect"/>
-                                            <div id="viewpdf"></div>
+                                            <div class="viewpdf"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -167,10 +167,8 @@
     <script src="{{ asset('admin') }}/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
     <!-- Bootstrap Datepicker Plugin Js -->
     <script src="{{ asset('admin') }}/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-
-    <script src="{{ asset('admin') }}/js/pdfobject.min.js"></script>
     <script type="text/javascript">
-        var viewer = $("#viewpdf");
+        var viewer = $(".viewpdf");
         PDFObject.embed("{{ asset('documentation-file/'.$documentation->file) }}", viewer);
     </script>
 @endpush

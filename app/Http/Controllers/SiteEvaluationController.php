@@ -51,9 +51,9 @@ class SiteEvaluationController extends Controller
             'end_date' => 'required',
         ]);
 
-        $image = $request->file('file');
-        $imageName = time() . '.' . $image->extension();
-        $image->move(public_path('files'), $imageName);
+        $pdfFile = $request->file('file');
+        $pdfName = time() . '.' . $pdfFile->extension();
+        $pdfFile->move(public_path('site-evaluation-file'), $pdfName);
 
         $siteEvaluation = new SiteEvaluation();
         $siteEvaluation->project_id = $request->project_id;
@@ -64,7 +64,7 @@ class SiteEvaluationController extends Controller
         $siteEvaluation->task_progress = $request->task_progress;
         $siteEvaluation->start_date = Carbon::createFromFormat('d-m-Y',$request->start_date);
         $siteEvaluation->end_date = Carbon::createFromFormat('d-m-Y',$request->end_date);
-        $siteEvaluation->file = $imageName;
+        $siteEvaluation->file = $pdfName;
         if (isset($request->status)) {
             $siteEvaluation->status = true;
         } else {
@@ -118,11 +118,17 @@ class SiteEvaluationController extends Controller
             'end_date' => 'required',
         ]);
 
-        $image = $request->file('file');
-        if($image){
-            $imageName = time() . '.' . $image->extension();
-            $image->move(public_path('files'), $imageName);
-            $siteEvaluation->file = $imageName;
+
+        if ($pdfFile = $request->file('file'))
+        {
+            $oldFile = public_path(). "/site-evaluation-file/". $siteEvaluation->file;
+            if (file_exists($oldFile))
+            {
+                unlink($oldFile);
+            }
+            $pdfName = time() . '.' . $pdfFile->extension();
+            $pdfFile->move(public_path('site-evaluation-file'), $pdfName);
+            $siteEvaluation->file = $pdfName;
         }
 
         $siteEvaluation->project_id = $request->project_id;
