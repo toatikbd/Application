@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\ArchitecturalDrawing;
 use App\Models\DesignDrawing;
+use App\Models\InteriorDetail;
+use App\Models\MEP;
 use App\Models\StructuralDesign;
 use Illuminate\Http\Request;
 
@@ -18,7 +20,9 @@ class DesignDrawingController extends Controller
     {
         $structuralDesigns = StructuralDesign::all()->count();
         $architecturalDrawings = ArchitecturalDrawing::all()->count();
-        return view('admin.design-drawing.index', compact('architecturalDrawings', 'structuralDesigns'));
+        $interiorDetails = InteriorDetail::all()->count();
+        $mEPs = MEP::all()->count();
+        return view('admin.design-drawing.index', compact('architecturalDrawings', 'structuralDesigns', 'interiorDetails', 'mEPs'));
     }
 
     /**

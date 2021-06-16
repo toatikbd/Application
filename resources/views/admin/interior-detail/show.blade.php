@@ -113,9 +113,8 @@
 @endsection
 
 @push('js')
-    <script src="{{ asset('admin') }}/js/pdfobject.min.js"></script>
     <script type="text/javascript">
         var viewer = $("#viewpdf");
-        PDFObject.embed("{{ asset('structural_design/'.$interiorDetail->file) }}", viewer);
+        PDFObject.embed("{{ asset('interior-detail-file/'.$interiorDetail->file) }}", viewer);
     </script>
 @endpush

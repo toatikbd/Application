@@ -51,9 +51,9 @@ class ArchitecturalDrawingController extends Controller
             'end_date' => 'required',
         ]);
 
-        $image = $request->file('file');
-        $imageName = time() . '.' . $image->getClientOriginalExtension();
-        $image->move(public_path('architectural_drawing'), $imageName);
+        $pdfFile = $request->file('file');
+        $pdfName = time() . '.' . $pdfFile->extension();
+        $pdfFile->move(public_path('architectural-drawing-file'), $pdfName);
 
         $architecturalDrawing = new ArchitecturalDrawing();
         $architecturalDrawing->project_id = $request->project_id;
@@ -64,7 +64,7 @@ class ArchitecturalDrawingController extends Controller
         $architecturalDrawing->task_progress = $request->task_progress;
         $architecturalDrawing->start_date = Carbon::createFromFormat('d-m-Y',$request->start_date);
         $architecturalDrawing->end_date = Carbon::createFromFormat('d-m-Y',$request->end_date);
-        $architecturalDrawing->file = $imageName;
+        $architecturalDrawing->file = $pdfName;
         if (isset($request->status)) {
             $architecturalDrawing->status = true;
         } else {
@@ -118,11 +118,16 @@ class ArchitecturalDrawingController extends Controller
             'end_date' => 'required',
         ]);
 
-        $image = $request->file('file');
-        if($image){
-            $imageName = time() . '.' . $image->extension();
-            $image->move(public_path('architectural_drawing'), $imageName);
-            $architecturalDrawing->file = $imageName;
+        if ($pdfFile = $request->file('file'))
+        {
+            $oldFile = public_path(). "/architectural-drawing-file/". $architecturalDrawing->file;
+            if (file_exists($oldFile))
+            {
+                unlink($oldFile);
+            }
+            $pdfName = time() . '.' . $pdfFile->extension();
+            $pdfFile->move(public_path('architectural-drawing-file'), $pdfName);
+            $architecturalDrawing->file = $pdfName;
         }
 
         $architecturalDrawing->project_id = $request->project_id;

@@ -70,7 +70,7 @@
                                         <a href="{{ route('structural-design.show', $structuralDesign->id) }}" class="btn btn-primary btn-xs waves-effect">
                                             <i class="material-icons">visibility</i>
                                         </a>
-                                        <a href="{{ route('architectural-drawing.edit', $structuralDesign->id) }}" class="btn btn-warning btn-xs waves-effect">
+                                        <a href="{{ route('structural-design.edit', $structuralDesign->id) }}" class="btn btn-warning btn-xs waves-effect">
                                             <i class="material-icons">edit</i>
                                         </a>
                                     </td>

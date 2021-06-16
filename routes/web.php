@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/architectural-drawing', App\Http\Controllers\ArchitecturalDrawingController::class);
     Route::resource('/structural-design', App\Http\Controllers\StructuralDesignController::class);
     Route::resource('/interior-detail', App\Http\Controllers\InteriorDetailController::class);
-    Route::resource('/design-mep', App\Http\Controllers\MEPController::class);
+    Route::resource('/m-e-p', App\Http\Controllers\MEPController::class);
     Route::resource('/procurement', App\Http\Controllers\ProcurementController::class);
     Route::resource('/requisition', App\Http\Controllers\RequisitionController::class);
     Route::resource('/country', App\Http\Controllers\CountryController::class);

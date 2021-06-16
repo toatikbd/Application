@@ -2,7 +2,7 @@
 @section('title', 'Architectural Drawing')
 @push('css')
     <style>
-        #viewpdf{
+        .architectural-drawing{
             width: 100%;
             height: 400px;
             border: 1px solid rgba(0,0,0,.2);
@@ -57,7 +57,7 @@
                                                 <tr>
                                                     <th scope="row">File</th>
                                                     <td>
-                                                        <div id="viewpdf"></div>
+                                                        <div class="architectural-drawing"></div>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -113,9 +113,8 @@
 @endsection
 
 @push('js')
-    <script src="{{ asset('admin') }}/js/pdfobject.min.js"></script>
     <script type="text/javascript">
-        var viewer = $("#viewpdf");
-        PDFObject.embed("{{ asset('architectural_drawing/'.$architecturalDrawing->file) }}", viewer);
+        var viewer = $(".architectural-drawing");
+        PDFObject.embed("{{ asset('architectural-drawing-file/'.$architecturalDrawing->file) }}", viewer);
     </script>
 @endpush
