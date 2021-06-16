@@ -123,7 +123,6 @@ class SiteEvaluationController extends Controller
         if ($pdfFile = $request->file('file'))
         {
             $oldFile = public_path(). "/site-evaluation-file/". $siteEvaluation->file;
-            // dd($oldFile);
             if (file_exists($oldFile))
             {
                 unlink($oldFile);

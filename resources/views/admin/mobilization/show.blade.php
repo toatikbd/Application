@@ -1,5 +1,14 @@
 @extends('layouts.app')
 @section('title', 'Mobilization')
+@push('css')
+    <style>
+        .mobilization{
+            width: 100%;
+            height: 400px;
+            border: 1px solid rgba(0,0,0,.2);
+        }
+    </style>
+@endpush
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
@@ -48,7 +57,7 @@
                                                 <tr>
                                                     <th scope="row">File</th>
                                                     <td>
-                                                        <img class="img-responsive thumbnail" width="50" height="auto" src="{{ asset('files/'.$mobilization->file) }}" alt="{{ $mobilization->task_title }}">
+                                                        <div class="mobilization"></div>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -105,5 +114,8 @@
 @endsection
 
 @push('js')
-
+    <script type="text/javascript">
+        var viewer = $(".mobilization");
+        PDFObject.embed("{{ asset('mobilization-file/'.$mobilization->file) }}", viewer);
+    </script>
 @endpush

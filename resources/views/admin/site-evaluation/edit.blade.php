@@ -87,13 +87,6 @@
                                 </div>
                                 <div class="col-md-8">
                                     <label for="task_file">File Upload</label>
-{{--                                    <div class="form-group">--}}
-{{--                                        <div>--}}
-{{--                                            <input type="file" id="task_file" name="file" class="btn btn-primary btn-lg waves-effect" onchange="previewFiles()"/>--}}
-{{--                                            <div class="preview"></div>--}}
-{{--                                            <img src="{{ asset('files/'.$siteEvaluation->file) }}" alt="{{ $siteEvaluation->task_title }}" style="max-width:130px; margin-top: 20px">--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
                                     <div class="form-group">
                                         <div>
                                             <input type="file" id="task_file" name="file" class="btn btn-primary btn-lg waves-effect"/>

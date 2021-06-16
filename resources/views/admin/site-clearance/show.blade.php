@@ -1,5 +1,12 @@
 @extends('layouts.app')
 @section('title', 'Site Clearance')
+<style>
+    .site-clearance{
+        width: 100%;
+        height: 400px;
+        border: 1px solid rgba(0,0,0,.2);
+    }
+</style>
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
@@ -48,7 +55,7 @@
                                                 <tr>
                                                     <th scope="row">File</th>
                                                     <td>
-                                                        <img class="img-responsive thumbnail" width="50" height="auto" src="{{ asset('files/'.$siteClearance->file) }}" alt="{{ $siteClearance->task_title }}">
+                                                        <div class="site-clearance"></div>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -105,5 +112,8 @@
 @endsection
 
 @push('js')
-
+    <script type="text/javascript">
+        var viewer = $(".site-clearance");
+        PDFObject.embed("{{ asset('site-clearance-file/'.$siteClearance->file) }}", viewer);
+    </script>
 @endpush

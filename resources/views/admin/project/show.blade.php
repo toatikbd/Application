@@ -2,11 +2,11 @@
 @section('title', 'Project')
 @push('css')
     <style>
-        /*#viewpdf{*/
-        /*    width: 100%;*/
-        /*    height: 400px;*/
-        /*    border: 1px solid rgba(0,0,0,.2);*/
-        /*}*/
+        .site-valuation, .mobilization{
+            width: 100%;
+            height: 400px;
+            border: 1px solid rgba(0,0,0,.2);
+        }
     </style>
 @endpush
 @section('content')
@@ -57,7 +57,6 @@
                 </div>
             </div>
             <!-- #END# Task Info -->
-
         </div>
         <div class="row clearfix">
             <!-- Preliminary Work Panel Items -->
@@ -139,7 +138,7 @@
                                                                     <div class="modal-content">
                                                                         <div class="modal-body">
                                                                             <button class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float modal-close-btn-init" data-dismiss="modal"><i class="material-icons">cancel</i></button>
-                                                                            Lorem ipsum
+                                                                            <div class="site-valuation"></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -223,7 +222,7 @@
                                                                 <div class="modal-content">
                                                                     <div class="modal-body">
                                                                         <button class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float modal-close-btn-init" data-dismiss="modal"><i class="material-icons">cancel</i></button>
-                                                                        Lorem ipsum
+                                                                        <div class="mobilization"></div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -902,9 +901,10 @@
 @endsection
 
 @push('js')
-{{--    <script src="{{ asset('admin') }}/js/pdfobject.min.js"></script>--}}
-{{--    <script type="text/javascript">--}}
-{{--        var viewer = $("#viewpdf");--}}
-{{--        PDFObject.embed("{{ asset('documentation-file/'.$documentation->file) }}", viewer);--}}
-{{--    </script>--}}
+    <script type="text/javascript">
+        var viewer = $(".site-valuation");
+        // var viewer = $(".mobilization");
+        PDFObject.embed("{{ asset('site-evaluation-file/'.$siteEvaluation->file) }}", viewer);
+        {{--PDFObject.embed("{{ asset('files/'.$mobilization->file) }}", viewer);--}}
+    </script>
 @endpush

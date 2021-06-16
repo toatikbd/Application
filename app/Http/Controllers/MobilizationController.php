@@ -51,9 +51,9 @@ class MobilizationController extends Controller
             'end_date' => 'required',
         ]);
 
-        $image = $request->file('file');
-        $imageName = time() . '.' . $image->extension();
-        $image->move(public_path('files'), $imageName);
+        $pdfFile = $request->file('file');
+        $pdfName = time() . '.' . $pdfFile->extension();
+        $pdfFile->move(public_path('mobilization-file'), $pdfName);
 
         $mobilization = new Mobilization();
         $mobilization->project_id = $request->project_id;
@@ -64,7 +64,7 @@ class MobilizationController extends Controller
         $mobilization->task_progress = $request->task_progress;
         $mobilization->start_date = Carbon::createFromFormat('d-m-Y',$request->start_date);
         $mobilization->end_date = Carbon::createFromFormat('d-m-Y',$request->end_date);
-        $mobilization->file = $imageName;
+        $mobilization->file = $pdfName;
         if (isset($request->status)) {
             $mobilization->status = true;
         } else {
@@ -116,11 +116,16 @@ class MobilizationController extends Controller
             'end_date' => 'required',
         ]);
 
-        $image = $request->file('file');
-        if($image){
-            $imageName = time() . '.' . $image->extension();
-            $image->move(public_path('files'), $imageName);
-            $mobilization->file = $imageName;
+        if ($pdfFile = $request->file('file'))
+        {
+            $oldFile = public_path(). "/mobilization-file/". $mobilization->file;
+            if (file_exists($oldFile))
+            {
+                unlink($oldFile);
+            }
+            $pdfName = time() . '.' . $pdfFile->extension();
+            $pdfFile->move(public_path('mobilization-file'), $pdfName);
+            $mobilization->file = $pdfName;
         }
 
         $mobilization->project_id = $request->project_id;

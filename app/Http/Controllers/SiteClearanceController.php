@@ -51,9 +51,9 @@ class SiteClearanceController extends Controller
             'end_date' => 'required',
         ]);
 
-        $image = $request->file('file');
-        $imageName = time() . '.' . $image->extension();
-        $image->move(public_path('files'), $imageName);
+        $pdfFile = $request->file('file');
+        $pdfName = time() . '.' . $pdfFile->extension();
+        $pdfFile->move(public_path('site-clearance-file'), $pdfName);
 
         $siteClearance = new SiteClearance();
         $siteClearance->project_id = $request->project_id;
@@ -64,7 +64,7 @@ class SiteClearanceController extends Controller
         $siteClearance->task_progress = $request->task_progress;
         $siteClearance->start_date = Carbon::createFromFormat('d-m-Y',$request->start_date);
         $siteClearance->end_date = Carbon::createFromFormat('d-m-Y',$request->end_date);
-        $siteClearance->file = $imageName;
+        $siteClearance->file = $pdfName;
         if (isset($request->status)) {
             $siteClearance->status = true;
         } else {
@@ -116,11 +116,17 @@ class SiteClearanceController extends Controller
             'end_date' => 'required',
         ]);
 
-        $image = $request->file('file');
-        if($image){
-            $imageName = time() . '.' . $image->extension();
-            $image->move(public_path('files'), $imageName);
-            $siteClearance->file = $imageName;
+
+        if ($pdfFile = $request->file('file'))
+        {
+            $oldFile = public_path(). "/site-clearance-file/". $siteClearance->file;
+            if (file_exists($oldFile))
+            {
+                unlink($oldFile);
+            }
+            $pdfName = time() . '.' . $pdfFile->extension();
+            $pdfFile->move(public_path('site-clearance-file'), $pdfName);
+            $siteClearance->file = $pdfName;
         }
 
         $siteClearance->project_id = $request->project_id;

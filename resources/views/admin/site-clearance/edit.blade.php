@@ -12,6 +12,11 @@
             margin-left: 1px!important;
             padding-left: 35px!important;
         }
+        .site-clearance{
+            width: 100%;
+            height: 400px;
+            border: 1px solid rgba(0,0,0,.2);
+        }
     </style>
 @endpush
 @section('content')
@@ -48,7 +53,7 @@
                     </div>
                 @endif
             </div>
-            <form action="{{ route('site-clearance.update', $siteClearance->id) }}" method="POST">
+            <form action="{{ route('site-clearance.update', $siteClearance->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('put')
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
@@ -83,8 +88,7 @@
                                     <div class="form-group">
                                         <div>
                                             <input type="file" id="task_file" name="file" class="btn btn-primary btn-lg waves-effect" onchange="previewFiles()"/>
-                                            <div class="preview"></div>
-                                            <img src="{{ asset('files/'.$siteClearance->file) }}" alt="{{ $siteClearance->task_title }}" style="max-width:130px; margin-top: 20px">
+                                            <div class="site-clearance"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -164,4 +168,8 @@
     <script src="{{ asset('admin') }}/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
     <!-- Bootstrap Datepicker Plugin Js -->
     <script src="{{ asset('admin') }}/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript">
+        var viewer = $(".site-clearance");
+        PDFObject.embed("{{ asset('site-clearance-file/'.$siteClearance->file) }}", viewer);
+    </script>
 @endpush
