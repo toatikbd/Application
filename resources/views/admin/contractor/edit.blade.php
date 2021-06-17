@@ -96,7 +96,7 @@
                                 <div>
                                     <input type="file" id="photo" name="photo" class="btn btn-primary btn-lg waves-effect" onchange="previewFiles()"/>
                                     <div class="preview"></div>
-                                    <img src="{{ asset('contractors/'.$contractor->photo) }}" alt="{{ $contractor->name }}" style="max-width:130px; margin-top: 20px">
+                                    <img src="{{ asset('uploaded/contractor/'.$contractor->photo) }}" alt="{{ $contractor->name }}" style="max-width:130px; margin-top: 20px">
                                 </div>
                             </div>
                             <label for="select_worker">Select Project</label>

@@ -46,9 +46,13 @@ class ContractorController extends Controller
             'email' => 'required',
         ]);
 
+//        $image = $request->file('photo');
+//        $imageName = time() . '.' . $image->extension();
+//        $image->move(public_path('contractors'), $imageName);
+
         $image = $request->file('photo');
         $imageName = time() . '.' . $image->extension();
-        $image->move(public_path('contractors'), $imageName);
+        $image->move(public_path('uploaded/contractor'), $imageName);
 
         $contractor = new Contractor();
         $contractor->project_id = $request->project_id;
@@ -103,10 +107,22 @@ class ContractorController extends Controller
             'photo' => 'required|image|mimes:jpeg,png,jpg'
         ]);
 
-        $image = $request->file('photo');
-        if($image){
-            $imageName = time() . '.' . $image->extension();
-            $image->move(public_path('contractors'), $imageName);
+//        $image = $request->file('photo');
+//        if($image){
+//            $imageName = time() . '.' . $image->extension();
+//            $image->move(public_path('contractors'), $imageName);
+//            $contractor->photo = $imageName;
+//        }
+
+        if ($imageFile = $request->file('photo'))
+        {
+            $oldImage = public_path(). "/uploaded/contractor/". $contractor->photo;
+            if (file_exists($oldImage))
+            {
+                unlink($oldImage);
+            }
+            $imageName = time() . '.' . $imageFile->extension();
+            $imageFile->move(public_path('uploaded/contractor'), $imageName);
             $contractor->photo = $imageName;
         }
 

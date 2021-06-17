@@ -31,7 +31,7 @@
                     <div class="profile-header">&nbsp;</div>
                     <div class="profile-body">
                         <div class="image-area">
-                            <img src="{{ asset('contractors/'.$contractor->photo) }}" alt="{{ $contractor->name }}" style="width: 128px; height: 128px; object-fit: cover">
+                            <img src="{{ asset('uploaded/contractor/'.$contractor->photo) }}" alt="{{ $contractor->name }}" style="width: 128px; height: 128px; object-fit: cover">
                         </div>
                         <div class="content-area">
                             <h3>{{ $contractor->name }}</h3>
@@ -51,8 +51,7 @@
                         <div class="media">
                             <div class="media-left">
                                 <a href="#">
-{{--                                    <img src="../../images/user-lg.jpg">--}}
-                                    <img src="{{ asset('contractors/'.$contractor->photo) }}" alt="{{ $contractor->name }}" style="width: 60px; height: 60px; object-fit: cover">
+                                    <img src="{{ asset('uploaded/contractor/'.$contractor->photo) }}" alt="{{ $contractor->name }}" style="width: 60px; height: 60px; object-fit: cover">
                                 </a>
                             </div>
                             <div class="media-body">
