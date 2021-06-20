@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Purchase Order')
+@section('title', 'Make a Purchase Order')
 @push('css')
     <!-- Bootstrap Select Css -->
     <link href="{{ asset('admin') }}/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
@@ -17,7 +17,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h2>Purchase Order</h2>
+            <h2>Make a Purchase Order</h2>
             <ol class="breadcrumb breadcrumb-col-pink breadcrumb-right-align">
                 <li><a href="{{ url('/home') }}"><i class="material-icons">home</i> Dashboard</a></li>
                 <li><a href="{{ route('procurement.index') }}"><i class="material-icons">library_books</i> Procurement</a></li>
@@ -30,7 +30,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="card">
                     <div class="header">
-                        <h2>TASK INFOS</h2>
+                        <h2>Make a Purchase Order</h2>
                         <a href="{{ route('requisition.index') }}" class="btn btn-success waves-effect right-align-task-btn">
                             <i class="material-icons">visibility</i>
                             <span>View All Purchase Order</span>
@@ -59,8 +59,18 @@
                                         <span class="input-group-addon bg-success">
                                             <i class="material-icons">search</i>
                                         </span>
-                                        <div class="form-line">
-                                            <input type="text" class="form-control date" placeholder="Search Requisition Number">
+{{--                                        <div class="form-line">--}}
+{{--                                            <input type="text" class="form-control date" placeholder="Search Requisition Number">--}}
+{{--                                        </div>--}}
+                                        <div class="form-group {{ $errors->has('requisitions') ? 'focused error' : '' }}">
+                                            <div class="form-line custom-live-search">
+                                                <select class="form-control show-tick" id="select_worker" name="requisition_id" data-live-search="true">
+                                                    <option selected disabled value="">-- Please select requisitions --</option>
+                                                    @foreach($requisitions as $key => $requisition)
+                                                        <option value="{{ $requisition->id }}"> {{ $requisition->requisition_no }} </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
                                         <span class="input-group-addon">
                                             <button type="button" class="btn btn-primary  waves-effect">

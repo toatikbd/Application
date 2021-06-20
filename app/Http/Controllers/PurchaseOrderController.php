@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PurchaseOrder;
+use App\Models\Requisition;
 use Illuminate\Http\Request;
 
 class PurchaseOrderController extends Controller
@@ -24,7 +25,8 @@ class PurchaseOrderController extends Controller
      */
     public function create()
     {
-        return view('admin.purchase-order.create');
+        $requisitions = Requisition::latest()->get();
+        return view('admin.purchase-order.create', compact('requisitions'));
     }
 
     /**

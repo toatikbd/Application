@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class PurchaseOrder extends Model
 {
     use HasFactory;
+
+    public function requisitions()
+    {
+        return $this->hasMany(Requisition::class);
+    }
 }
