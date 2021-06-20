@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Make a Purchase Order')
+@section('title', 'Create a Purchase Order')
 @push('css')
     <!-- Bootstrap Select Css -->
     <link href="{{ asset('admin') }}/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
@@ -17,7 +17,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h2>Make a Purchase Order</h2>
+            <h2>Purchase Order</h2>
             <ol class="breadcrumb breadcrumb-col-pink breadcrumb-right-align">
                 <li><a href="{{ url('/home') }}"><i class="material-icons">home</i> Dashboard</a></li>
                 <li><a href="{{ route('procurement.index') }}"><i class="material-icons">library_books</i> Procurement</a></li>
@@ -30,8 +30,8 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="card">
                     <div class="header">
-                        <h2>Make a Purchase Order</h2>
-                        <a href="{{ route('requisition.index') }}" class="btn btn-success waves-effect right-align-task-btn">
+                        <h2>TASK INFOS</h2>
+                        <a href="{{ route('purchase-order.index') }}" class="btn btn-success waves-effect right-align-task-btn">
                             <i class="material-icons">visibility</i>
                             <span>View All Purchase Order</span>
                         </a>
@@ -48,145 +48,167 @@
                     </div>
                 @endif
             </div>
-            <form action="{{ route('requisition.store') }}" method="POST">
+            <form action="{{ route('purchase-order.store') }}" method="POST">
                 @csrf
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                    <div class="row clearfix">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="card">
-                                <div class="body table-responsive">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th colspan="5">
-                                                    <div class="demo-google-material-icon">
-                                                        <i class="material-icons text-success">shopping_basket</i>
-                                                        <span class="icon-name">Purchase Order</span>
-                                                    </div>
-                                                </th>
-                                            </tr>
-                                            <tr>
-                                                <th>Action</th>
-                                                <th>Product Name</th>
-                                                <th>Unit</th>
-                                                <th width="100px">Quantity</th>
-                                                <th width="120px">Unit Price</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row">
-                                                    <a href="#"><i class="material-icons text-danger">delete_sweep</i></a>
-                                                </th>
-                                                <td>Otto</td>
-                                                <td>piece</td>
-                                                <td><input type="number" class="form-control"></td>
-                                                <td><input type="number" class="form-control"></td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row" colspan="4" class="text-right">
-                                                    Grand Total
-                                                </th>
-                                                <td class="text-right">
-                                                    <strong>5000</strong>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="alert bg-green alert-dismissible" role="alert">
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                                    <h2 class="text-center">Empty Orders</h2>
-                                    <p class="text-center">There has no items to order <code>Please Select Requisition</code></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="card">
                         <div class="body">
+                            <label for="title">Requisition Title</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" id="title" name="title" value="{{$requisition->title}}" autocomplete="off" class="form-control" placeholder="Enter Title">
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-md-6">
+                                    <label for="requisition_category">Category</label>
+                                    <div class="form-group {{ $errors->has('requisitionCategories') ? 'focused error' : '' }}">
+                                        <div class="form-line custom-live-search">
+                                            <select class="form-control show-tick" id="requisition_category" name="category_id" data-live-search="true">
+                                                <option selected disabled>-- Please select project--</option>
+                                                @foreach($requisitionCategories as $key => $category)
+                                                    <option {{ $category->id == $requisition->category_id ? 'selected' : '' }} value="{{ $category->id }}"> {{ $category->name }} </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="requisition_type">Requisition Type</label>
+                                    <div class="form-group">
+                                        <div class="form-line custom-live-search">
+                                            <select class="form-control show-tick" id="requisition_type" name="requisition_type" data-live-search="true">
+                                                <option selected disabled>-- Please select --</option>
+                                                <option name="requisition_type" value="Local" {{ $requisition->requisition_type == 'Local' ? 'selected' : '' }}>Local</option>
+                                                <option name="requisition_type" value="Foreign" {{ $requisition->requisition_type == 'Foreign' ? 'selected' : '' }}>Foreign</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row clearfix">
                                 <div class="col-md-6">
                                     <label for="title">Manufacturer/ Company Name</label>
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" id="manufacturer" name="manufacturer" autocomplete="off" class="form-control" placeholder="Enter Title">
+                                            <input type="text" id="manufacturer" name="manufacturer" value="{{$requisition->manufacturer}}" autocomplete="off" class="form-control" placeholder="Enter Title">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="country_id">Country of Origin</label>
-
+                                    <div class="form-group {{ $errors->has('countries') ? 'focused error' : '' }}">
+                                        <div class="form-line custom-live-search">
+                                            <select class="form-control show-tick" id="country_id" name="country_id" data-live-search="true">
+                                                <option selected disabled>-- Please select project--</option>
+                                                @foreach($countries as $key => $country)
+                                                    <option {{ $country->id == $requisition->country_id ? 'selected' : '' }} value="{{ $country->id }}"> {{ $country->name }} </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="select_worker">Select Project</label>
+                                    <div class="form-group {{ $errors->has('projects') ? 'focused error' : '' }}">
+                                        <div class="form-line custom-live-search">
+                                            <select class="form-control show-tick" id="select_project" name="project_id" data-live-search="true">
+                                                <option selected disabled>-- Please select project--</option>
+                                                @foreach($projects as $key => $project)
+                                                    <option {{ $project->id == $requisition->project_id ? 'selected' : '' }} value="{{ $project->id }}"> {{ $project->name }} </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="select_worker">Select Supervisor</label>
+                                    <div class="form-group {{ $errors->has('workers') ? 'focused error' : '' }}">
+                                        <div class="form-line custom-live-search">
+                                            <select class="form-control show-tick" id="select_worker" name="worker_id" data-live-search="true">
+                                                <option selected disabled>-- Please select --</option>
+                                                @foreach($workers as $key => $worker)
+                                                    <option {{ $worker->id == $requisition->worker_id ? 'selected' : '' }} value="{{$worker->id}}"> {{ $worker->name }} </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <label for="description">Order Description</label>
+                            <label for="description">Requisition Remarks</label>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <textarea rows="4" id="description" name="description" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                    <textarea rows="4" id="description" name="description" class="form-control no-resize" placeholder="Please type what you want...">{{$requisition->description}}</textarea>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                {{-- {{$requisition}} --}}
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                     <div class="card">
                         <div class="body">
-                            <label for="requisition_number">Requisition Number</label>
+                            <label for="requisition_no">Requisition No</label>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <input type="text" id="requisition_number" value="{{ $requisition->requisition_no }}" name="requisition_number" autocomplete="off" class="form-control" placeholder="Enter ***">
+                                    <input type="text" id="requisition_no" readonly name="requisition_no" value="{{ $requisition->requisition_no }}" autocomplete="off" class="form-control" placeholder="requisition no">
+                                    <input type="hidden" name="requisition_id" value="{{$requisition->id}}">
                                 </div>
                             </div>
-                            <label for="requisition_type">Order Type</label>
-                            <div class="form-group">
-                                <div class="form-line custom-live-search">
-                                    <select class="form-control show-tick" id="requisition_type" name="requisition_type" data-live-search="true">
-                                        <option selected disabled>-- Please select --</option>
-                                        <option name="requisition_type" value="Local">Local</option>
-                                        <option name="requisition_type" value="Foreign">Foreign</option>
-                                    </select>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <label for="product_price">Unit Price</label>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="number" id="product_price" name="price" value="{{$requisition->price}}" autocomplete="off" class="form-control" placeholder="Enter Price">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <label for="select_unit">Unit Type</label>
+                                    <div class="form-group {{ $errors->has('units') ? 'focused error' : '' }}">
+                                        <div class="form-line custom-live-search">
+                                            <select class="form-control show-tick" id="select_unit" name="unit_id" data-live-search="true">
+                                                <option selected disabled>-- Unit--</option>
+                                                @foreach($units as $key => $unit)
+                                                    <option {{ $unit->id == $requisition->unit_id ? 'selected' : '' }} value="{{ $unit->id }}"> {{ $unit->symbol }} </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <label for="project">Project</label>
-                            <div class="form-group">
-                                <div class="form-line custom-live-search">
-                                    <select class="form-control show-tick" id="project" name="requisition_type" data-live-search="true">
-                                        <option selected disabled>-- Please select --</option>
-                                        <option name="requisition_type" value="Local">Local</option>
-                                        <option name="requisition_type" value="Foreign">Foreign</option>
-                                    </select>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <label for="quantity">Quantity</label>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="number" id="quantity" name="quantity" value="{{$requisition->quantity}}" autocomplete="off" class="form-control" placeholder="Enter Quantity">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <label for="total_price">Total Price</label>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="number" id="total_price" name="total_price" value="{{$requisition->price * $requisition->quantity}}" autocomplete="off" class="form-control" placeholder="Total Price">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <label for="supervisor">Supervisor</label>
-                            <div class="form-group">
-                                <div class="form-line custom-live-search">
-                                    <select class="form-control show-tick" id="supervisor" name="requisition_type" data-live-search="true">
-                                        <option selected disabled>-- Please select --</option>
-                                        <option name="requisition_type" value="Local">Local</option>
-                                        <option name="requisition_type" value="Foreign">Foreign</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <label for="issue_date">Requisition Issue Date</label>
+                            <label for="needed_date">Issue Date</label>
                             <div class="form-group">
                                 <div class="form-line" id="bs_datepicker_container">
-                                    <input type="text" name="issue_date" class="form-control" autocomplete="off" placeholder="Please choose a date...">
-                                </div>
-                            </div>
-                            <label for="order_date">Order Date</label>
-                            <div class="form-group">
-                                <div class="form-line" id="bs_datepicker_container">
-                                    <input type="text" name="order_date" class="form-control" autocomplete="off" placeholder="Please choose a date...">
+                                    <input type="text" name="needed_date" value="{{ \Carbon\Carbon::parse($requisition->needed_date)->format('d-m-Y')}}" class="form-control" autocomplete="off" placeholder="Please choose a date...">
                                 </div>
                             </div>
                             <div class="text-center">
-                                <a href="{{ route('purchase-order.create') }}" class="btn btn-danger waves-effect">
+                                <a href="{{ route('purchase-order.index') }}" class="btn btn-danger waves-effect">
                                     <i class="material-icons">settings_backup_restore</i>
-                                    <span>REFRESH</span>
+                                    <span>BACK</span>
                                 </a>
                                 <button type="submit"  class="btn btn-success waves-effect">
                                     <i class="material-icons">save</i>
-                                    <span>ORDER</span>
+                                    <span>SAVE</span>
                                 </button>
                             </div>
                         </div>

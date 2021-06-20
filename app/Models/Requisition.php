@@ -31,12 +31,13 @@ class Requisition extends Model
         return $this->belongsTo('App\Models\Unit', 'unit_id');
     }
     public function generateRequisitionNumber(){
-        $serial = $this->count_last_serial() + 1;
-        $this->requisition_no = 'R-' . date('Y-m-') . str_pad($serial, 4, '0', STR_PAD_LEFT);
+//        $serial = $this->count_last_serial() + 1;
+//        $this->requisition_no = 'R-' . date('Y-m-') . str_pad($serial, 4, '0', STR_PAD_LEFT);
+        $this->requisition_no = 'RQ-' . str_pad(auth()->id(), 4, '0', STR_PAD_LEFT) . time();
     }
-    private function count_last_serial(){
-        return Requisition::whereYear('created_at', date('Y'))
-            ->whereMonth('created_at', date('m'))
-            ->count();
-    }
+//    private function count_last_serial(){
+//        return Requisition::whereYear('created_at', date('Y'))
+//            ->whereMonth('created_at', date('m'))
+//            ->count();
+//    }
 }
