@@ -11,6 +11,6 @@ class PurchaseOrder extends Model
 
     public function requisitions()
     {
-        return $this->hasMany(Requisition::class);
+        return $this->belongsTo(Requisition::class);
     }
 }

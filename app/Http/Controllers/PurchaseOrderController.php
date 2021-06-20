@@ -15,7 +15,8 @@ class PurchaseOrderController extends Controller
      */
     public function index()
     {
-        return view('admin.purchase-order.index');
+        $requisitions = Requisition::latest()->get();
+        return view('admin.purchase-order.index', compact('requisitions'));
     }
 
     /**
@@ -25,8 +26,7 @@ class PurchaseOrderController extends Controller
      */
     public function create()
     {
-        $requisitions = Requisition::latest()->get();
-        return view('admin.purchase-order.create', compact('requisitions'));
+        return view('admin.purchase-order.create');
     }
 
     /**
@@ -83,5 +83,12 @@ class PurchaseOrderController extends Controller
     public function destroy(PurchaseOrder $purchaseOrder)
     {
         //
+    }
+    public function getPurchaseOrderForm(Request $request){
+        // dd($request->all());
+        $requisition = Requisition::findOrFail($request->requisition_id);
+        $view = view('admin.purchase-order.create');
+        $view->with('requisition', $requisition);
+        return $view;
     }
 }

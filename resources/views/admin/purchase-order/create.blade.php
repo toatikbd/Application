@@ -51,38 +51,6 @@
             <form action="{{ route('requisition.store') }}" method="POST">
                 @csrf
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                    <div class="card">
-                        <div class="body">
-                            <div class="row clearfix">
-                                <div class="col-lg-12">
-                                    <div class="input-group">
-                                        <span class="input-group-addon bg-success">
-                                            <i class="material-icons">search</i>
-                                        </span>
-{{--                                        <div class="form-line">--}}
-{{--                                            <input type="text" class="form-control date" placeholder="Search Requisition Number">--}}
-{{--                                        </div>--}}
-                                        <div class="form-group {{ $errors->has('requisitions') ? 'focused error' : '' }}">
-                                            <div class="form-line custom-live-search">
-                                                <select class="form-control show-tick" id="select_worker" name="requisition_id" data-live-search="true">
-                                                    <option selected disabled value="">-- Please select requisitions --</option>
-                                                    @foreach($requisitions as $key => $requisition)
-                                                        <option value="{{ $requisition->id }}"> {{ $requisition->requisition_no }} </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <span class="input-group-addon">
-                                            <button type="button" class="btn btn-primary  waves-effect">
-                                                <i class="material-icons" style="color: white">add_circle_outline</i> Add
-                                            </button>
-                                        </span>
-                                    </div>
-                                    <p class="text-center"><code>Please Select Requisition for Purchase Order</code></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="row clearfix">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="card">
@@ -159,13 +127,14 @@
                         </div>
                     </div>
                 </div>
+                {{-- {{$requisition}} --}}
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                     <div class="card">
                         <div class="body">
                             <label for="requisition_number">Requisition Number</label>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <input type="number" id="requisition_number" name="requisition_number" autocomplete="off" class="form-control" placeholder="Enter ***">
+                                    <input type="text" id="requisition_number" value="{{ $requisition->requisition_no }}" name="requisition_number" autocomplete="off" class="form-control" placeholder="Enter ***">
                                 </div>
                             </div>
                             <label for="requisition_type">Order Type</label>
