@@ -55,7 +55,7 @@
                                     <td>{{ $requisition->unit->name }}</td>
                                     <td>{{ \Carbon\Carbon::parse($requisition->needed_date)->format('d/m/Y')}}</td>
                                     <td class="text-right">
-                                        <form action="{{route('getPurchaseOrderForm')}}" method="GET">
+                                        <form action="{{ route('purchase-order.create') }}" method="GET">
                                             <input type="hidden" value="{{ $requisition->id }}" name="requisition_id">
                                             <button class="btn btn-primary btn-xs waves-effect">
                                                 Make a PO

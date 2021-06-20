@@ -24,9 +24,12 @@ class PurchaseOrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('admin.purchase-order.create');
+        $requisition = Requisition::findOrFail($request->requisition_id);
+        $view = view('admin.purchase-order.create');
+        $view->with('requisition', $requisition);
+        return $view;
     }
 
     /**
@@ -83,12 +86,5 @@ class PurchaseOrderController extends Controller
     public function destroy(PurchaseOrder $purchaseOrder)
     {
         //
-    }
-    public function getPurchaseOrderForm(Request $request){
-        // dd($request->all());
-        $requisition = Requisition::findOrFail($request->requisition_id);
-        $view = view('admin.purchase-order.create');
-        $view->with('requisition', $requisition);
-        return $view;
     }
 }

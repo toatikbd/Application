@@ -24,7 +24,7 @@
         </div>
         <div class="row clearfix">
             <div class="col-md-12">
-                
+
             </div>
             <!-- Task Info -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -37,7 +37,7 @@
                         </a>
                     </div>
                     <div class="body">
-                        <form action="{{route('getPurchaseOrderForm')}}" method="GET">
+                        <form action="{{ route('purchase-order.create') }}" method="GET">
                             <div class="input-group">
                                 <span class="input-group-addon bg-success">
                                     <i class="material-icons">search</i>
