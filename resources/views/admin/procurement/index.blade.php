@@ -28,7 +28,7 @@
                         </div>
                         <div class="content">
                             <div class="text">Purchase Order</div>
-                            <div class="number count-to" data-from="0" data-to="" data-speed="1000" data-fresh-interval="20"></div>
+                            <div class="number count-to" data-from="0" data-to="{{ $purchaseOrders }}" data-speed="1000" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </a>
@@ -53,17 +53,6 @@
                     </div>
                     <div class="content">
                         <div class="text">Receive Goods</div>
-                        <div class="number count-to" data-from="0" data-to="0" data-speed="1000" data-fresh-interval="20"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="info-box bg-blue-grey hover-expand-effect">
-                    <div class="icon">
-                        <i class="material-icons">gps_fixed</i>
-                    </div>
-                    <div class="content">
-                        <div class="text">Inventory</div>
                         <div class="number count-to" data-from="0" data-to="0" data-speed="1000" data-fresh-interval="20"></div>
                     </div>
                 </div>

@@ -23,7 +23,8 @@ class PurchaseOrderController extends Controller
     public function index()
     {
         $requisitions = Requisition::latest()->get();
-        return view('admin.purchase-order.index', compact('requisitions'));
+        $purchaseOrders = PurchaseOrder::latest()->get();
+        return view('admin.purchase-order.index', compact('requisitions', 'purchaseOrders'));
     }
 
     /**
@@ -99,7 +100,7 @@ class PurchaseOrderController extends Controller
      */
     public function show(PurchaseOrder $purchaseOrder)
     {
-        //
+        return view ('admin.purchase-order.show', compact('purchaseOrder'));
     }
 
     /**

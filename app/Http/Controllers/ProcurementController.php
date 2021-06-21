@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Procurement;
 use App\Models\Country;
+use App\Models\PurchaseOrder;
 use App\Models\RequisitionCategory;
 use App\Models\Requisition;
 use App\Models\Unit;
@@ -22,8 +23,9 @@ class ProcurementController extends Controller
         $requisitionCategories = RequisitionCategory::all()->count();
         $requisitions = Requisition::all()->count();
         $units = Unit::all()->count();
+        $purchaseOrders = PurchaseOrder::all()->count();
         return view('admin.procurement.index',
-            compact('countries', 'requisitionCategories', 'requisitions', 'units')
+            compact('countries', 'requisitionCategories', 'requisitions', 'units', 'purchaseOrders')
         );
     }
 
