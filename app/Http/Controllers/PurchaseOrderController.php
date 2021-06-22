@@ -9,7 +9,9 @@ use App\Models\Requisition;
 use App\Models\RequisitionCategory;
 use App\Models\Unit;
 use App\Models\Worker;
+//use Barryvdh\DomPDF\PDF;
 use Carbon\Carbon;
+use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -136,4 +138,12 @@ class PurchaseOrderController extends Controller
     {
         //
     }
+
+    public function invoice()
+    {
+        return view('admin.invoice');
+
+        
+    }
+
 }

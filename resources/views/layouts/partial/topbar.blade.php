@@ -3,7 +3,8 @@
         <div class="navbar-header">
             <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
             <a href="javascript:void(0);" class="bars"></a>
-            <a class="navbar-brand" href="{{ url('/') }}">MATERIAL DESIGN</a>
+{{--            <a class="navbar-brand" href="{{ url('/') }}">MATERIAL DESIGN</a>--}}
+            <a class="navbar-brand" href="{{ url('/') }}">APPLICATION</a>
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'TZ Admin') }}
             </a>
