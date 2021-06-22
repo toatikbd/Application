@@ -9,9 +9,8 @@ use App\Models\Requisition;
 use App\Models\RequisitionCategory;
 use App\Models\Unit;
 use App\Models\Worker;
-//use Barryvdh\DomPDF\PDF;
 use Carbon\Carbon;
-use PDF;
+use niklasravnsborg\LaravelPdf\Facades\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -57,6 +56,7 @@ class PurchaseOrderController extends Controller
      */
     public function store(Request $request)
     {
+       // dd($request->all());
         $this->validate($request, [
             'title' => 'required',
             'category_id' => 'required',
@@ -139,10 +139,21 @@ class PurchaseOrderController extends Controller
         //
     }
 
-    public function invoice()
+    public function invoice($id)
     {
-        return view('admin.invoice');
+        $order = PurchaseOrder::find($id);
+       
+        $data = ['order' => $order];
 
+        $pdf = PDF::loadView('admin.purchase-order.invoice',
+            $data,
+            [],
+            [
+                'format' => 'A4-P',
+                'orientation' => 'P',
+            ]);
+       
+        return $pdf->download('invoice' . '.pdf');
 
     }
 

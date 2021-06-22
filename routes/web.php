@@ -48,7 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/unit', App\Http\Controllers\UnitController::class);
     Route::resource('/purchase-order', App\Http\Controllers\PurchaseOrderController::class);
 
-    Route::get('/invoice', [App\Http\Controllers\PurchaseOrderController::class, 'invoice'] );
+    Route::get('/invoice/{id}', [App\Http\Controllers\PurchaseOrderController::class, 'invoice'] );
 });
 
 //Admin route

@@ -82,7 +82,7 @@
                                         <a href="{{ route('purchase-order.show', $order->id) }}" class="btn btn-primary btn-xs waves-effect">
                                             <i class="material-icons">visibility</i>
                                         </a>
-                                        <a href="{{ route('purchase-order.show', $order->id) }}" class="btn btn-warning btn-xs waves-effect">
+                                        <a href="{{ url('invoice', $order->id) }}" class="btn btn-warning btn-xs waves-effect">
                                             <i class="material-icons">print</i>
                                         </a>
                                     </td>
