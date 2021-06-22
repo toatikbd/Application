@@ -143,7 +143,7 @@ class PurchaseOrderController extends Controller
     {
         return view('admin.invoice');
 
-        
+
     }
 
 }
