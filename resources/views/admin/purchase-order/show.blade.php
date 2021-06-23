@@ -30,6 +30,9 @@
                                 <span>View All</span>
                             </a>
                             <button type="button" onclick="printDiv('printableArea')" class="btn bg-warning waves-effect"><i class="material-icons">print</i></button>
+                            <a href="{{ url('invoice', $purchaseOrder->id) }}" class="btn btn-warning waves-effect">
+                                <i class="material-icons">picture_as_pdf</i>
+                            </a>
                         </div>
                     </div>
                     <div class="body">
@@ -91,10 +94,12 @@
                                             <td colspan="4">Basic Information</td>
                                         </tr>
                                         <tr>
-                                            <td>Country of Origin: {{ $purchaseOrder->requisitionCountry->name }}</th>
-                                            <td>Manufacturer: {{ $purchaseOrder->manufacturer }}</td>
-                                            <td>Purchase Order Type: {{ $purchaseOrder->requisition_type }}</td>
-                                            <td>Category: {{ $purchaseOrder->requisitionCategory->name }}</td>
+                                            <td colspan="2">Country of Origin: {{ $purchaseOrder->requisitionCountry->name }}</th>
+                                            <td colspan="2">Manufacturer: {{ $purchaseOrder->manufacturer }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">Purchase Order Type: {{ $purchaseOrder->requisition_type }}</td>
+                                            <td colspan="2">Category: {{ $purchaseOrder->requisitionCategory->name }}</td>
                                         </tr>
                                         <tr>
                                             <td>Supervisor: {{ $purchaseOrder->worker->name }}</td>
@@ -119,7 +124,7 @@
             var originalContents = document.body.innerHTML;
 
             document.body.innerHTML = printContents;
-            
+
             window.print();
 
             document.body.innerHTML = originalContents;

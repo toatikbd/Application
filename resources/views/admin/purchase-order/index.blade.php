@@ -83,7 +83,7 @@
                                             <i class="material-icons">visibility</i>
                                         </a>
                                         <a href="{{ url('invoice', $order->id) }}" class="btn btn-warning btn-xs waves-effect">
-                                            <i class="material-icons">print</i>
+                                            <i class="material-icons">picture_as_pdf</i>
                                         </a>
                                     </td>
                                 </tr>
