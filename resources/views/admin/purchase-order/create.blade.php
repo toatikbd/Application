@@ -156,10 +156,10 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
-                                    <label for="product_price">Unit Price</label>
+                                    <label for="price">Unit Price</label>
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="number" id="product_price" name="price" value="{{$requisition->price}}" autocomplete="off" class="form-control" placeholder="Enter Price">
+                                            <input type="number" id="price" name="price" value="{{$requisition->price}}" autocomplete="off" class="form-control" placeholder="Enter Price">
                                         </div>
                                     </div>
                                 </div>
@@ -190,7 +190,7 @@
                                     <label for="total_price">Total Price</label>
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="number" id="total_price" name="total_price" value="{{$requisition->price * $requisition->quantity}}" autocomplete="off" class="form-control" placeholder="Total Price">
+                                            <input type="number" id="total_price" name="total_price" value="{{$requisition->price * $requisition->quantity}}" readonly autocomplete="off" class="form-control" placeholder="Total Price">
                                         </div>
                                     </div>
                                 </div>
@@ -227,4 +227,15 @@
     <script src="{{ asset('admin') }}/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
     <!-- Bootstrap Datepicker Plugin Js -->
     <script src="{{ asset('admin') }}/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script>
+        jQuery(function($) {
+            var $price = $('input[name="price"]');
+            var $quantity = $('input[name="quantity"]');
+            var $total_price = $('input[name="total_price"]');
+
+            $price.add($quantity).keyup(function() {
+                $total_price.val($price.val()*$quantity.val());
+            });
+        });
+    </script>
 @endpush

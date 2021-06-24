@@ -2,7 +2,7 @@
 @section('title', 'Project')
 @push('css')
     <style>
-        .site-valuation, .mobilization{
+        .dev_modal{
             width: 100%;
             height: 400px;
             border: 1px solid rgba(0,0,0,.2);
@@ -138,7 +138,7 @@
                                                                     <div class="modal-content">
                                                                         <div class="modal-body">
                                                                             <button class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float modal-close-btn-init" data-dismiss="modal"><i class="material-icons">cancel</i></button>
-                                                                            <div class="site-valuation"></div>
+                                                                            <div class="dev_modal {{ ($siteEvaluation->id) }}"></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -902,7 +902,7 @@
 
 @push('js')
     <script type="text/javascript">
-        var viewer = $(".site-valuation");
+        var viewer = $(".{{ ($siteEvaluation->id) }}");
         // var viewer = $(".mobilization");
         PDFObject.embed("{{ asset('site-evaluation-file/'.$siteEvaluation->file) }}", viewer);
         {{--PDFObject.embed("{{ asset('files/'.$mobilization->file) }}", viewer);--}}

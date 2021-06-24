@@ -82,6 +82,10 @@
                                                     <td>{{ $requisition->quantity }}</td>
                                                 </tr>
                                                 <tr>
+                                                    <th scope="row">Total Price</th>
+                                                    <td>{{$requisition->price * $requisition->quantity}}</td>
+                                                </tr>
+                                                <tr>
                                                     <th scope="row">Unit Type</th>
                                                     <td>{{ $requisition->unit->symbol }}</td>
                                                 </tr>
