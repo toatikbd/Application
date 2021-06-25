@@ -66,6 +66,7 @@
                         <h2>
                             Preliminary Work
                         </h2>
+                        <div class="dev_modal sddfgdfg"></div>
                     </div>
                     <div class="body">
                         <div class="row clearfix">
@@ -902,7 +903,7 @@
 
 @push('js')
     <script type="text/javascript">
-        var viewer = $(".{{ ($siteEvaluation->id) }}");
+        var viewer = $(".sddfgdfg");
         // var viewer = $(".mobilization");
         PDFObject.embed("{{ asset('site-evaluation-file/'.$siteEvaluation->file) }}", viewer);
         {{--PDFObject.embed("{{ asset('files/'.$mobilization->file) }}", viewer);--}}
