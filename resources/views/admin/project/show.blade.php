@@ -51,7 +51,6 @@
                                     </tr>
                                 </tbody>
                             </table>
-
                         </div>
                     </div>
                 </div>
@@ -66,7 +65,6 @@
                         <h2>
                             Preliminary Work
                         </h2>
-                        <div class="dev_modal sddfgdfg"></div>
                     </div>
                     <div class="body">
                         <div class="row clearfix">
@@ -117,7 +115,7 @@
                                                             <tr>
                                                                 <th scope="row">Attachment File</th>
                                                                 <td>
-                                                                    <button type="button" class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float" data-toggle="modal" data-target="#siteEvaluation">
+                                                                    <button type="button"  data-toggle="modal" data-target="#data_darget_file" onclick="openFile(this)" data-file="{{ asset('site-evaluation-file/'.$siteEvaluation->file) }}" class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float">
                                                                         <i class="material-icons">attachment</i>
                                                                     </button>
                                                                 </td>
@@ -132,18 +130,6 @@
                                                                 </td>
                                                             </tr>
                                                             </tbody>
-                                                            <!-- Modal Dialogs ======== -->
-                                                            <!-- Default Size -->
-                                                            <div class="modal fade" id="siteEvaluation" tabindex="-1" role="dialog">
-                                                                <div class="modal-dialog" role="document">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-body">
-                                                                            <button class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float modal-close-btn-init" data-dismiss="modal"><i class="material-icons">cancel</i></button>
-                                                                            <div class="dev_modal {{ ($siteEvaluation->id) }}"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
                                                         </table>
                                                     @empty
                                                         <p class="text-center text-danger">No Site Evaluation Date Found</p>
@@ -165,9 +151,8 @@
                                             <div class="panel-body">
 
                                                 <div class="table-responsive">
-                                                    @foreach($project->mobilizations as $mobilization)
+                                                    @forelse($project->mobilizations as $mobilization)
                                                     <table class="table table-hover table-bordered dashboard-task-infos">
-
                                                         <tbody>
                                                             <tr>
                                                                 <th scope="row">Title</th>
@@ -200,7 +185,7 @@
                                                             <tr>
                                                                 <th scope="row">Attached File</th>
                                                                 <td>
-                                                                    <button type="button" class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float" data-toggle="modal" data-target="#mobilization">
+                                                                    <button type="button" data-toggle="modal" data-target="#data_darget_file" onclick="openFile(this)" data-file="{{ asset('mobilization-file/'.$mobilization->file) }}" class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float">
                                                                         <i class="material-icons">attachment</i>
                                                                     </button>
                                                                 </td>
@@ -215,21 +200,10 @@
                                                                 </td>
                                                             </tr>
                                                         </tbody>
-
-                                                        <!-- Modal Dialogs ======== -->
-                                                        <!-- Default Size -->
-                                                        <div class="modal fade" id="mobilization" tabindex="-1" role="dialog">
-                                                            <div class="modal-dialog" role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-body">
-                                                                        <button class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float modal-close-btn-init" data-dismiss="modal"><i class="material-icons">cancel</i></button>
-                                                                        <div class="mobilization"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                     </table>
-                                                    @endforeach
+                                                    @empty
+                                                        <p class="text-center text-danger">No mobilization Date Found</p>
+                                                    @endforelse
                                                 </div>
                                             </div>
                                         </div>
@@ -280,7 +254,7 @@
                                                             <tr>
                                                                 <th scope="row">Attachment File</th>
                                                                 <td>
-                                                                    <button type="button" class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float" data-toggle="modal" data-target="#siteClearance">
+                                                                    <button type="button" data-toggle="modal" data-target="#data_darget_file" onclick="openFile(this)" data-file="{{ asset('site-clearance-file/'.$siteClearance->file) }}" class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float">
                                                                         <i class="material-icons">attachment</i>
                                                                     </button>
                                                                 </td>
@@ -295,18 +269,6 @@
                                                                 </td>
                                                             </tr>
                                                             </tbody>
-                                                            <!-- Modal Dialogs ======== -->
-                                                            <!-- Default Size -->
-                                                            <div class="modal fade" id="siteClearance" tabindex="-1" role="dialog">
-                                                                <div class="modal-dialog" role="document">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-body">
-                                                                            <button class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float modal-close-btn-init" data-dismiss="modal"><i class="material-icons">cancel</i></button>
-                                                                            Lorem ipsum
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
                                                         </table>
                                                     @empty
                                                         <p class="text-center text-danger">Site Clearance Date Not Found</p>
@@ -898,14 +860,28 @@
             </div>
             <!-- #END# Procurement Panel Items -->
         </div>
+        <!-- Modal Dialogs ======== -->
+        <!-- Default Size -->
+        <div class="modal fade" id="data_darget_file" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float modal-close-btn-init" data-dismiss="modal"><i class="material-icons">cancel</i></button>
+                        <div class="dev_modal" id="file-viewer"></div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- Modal Dialogs ======== -->
     </div>
 @endsection
 
 @push('js')
     <script type="text/javascript">
-        var viewer = $(".sddfgdfg");
-        // var viewer = $(".mobilization");
-        PDFObject.embed("{{ asset('site-evaluation-file/'.$siteEvaluation->file) }}", viewer);
-        {{--PDFObject.embed("{{ asset('files/'.$mobilization->file) }}", viewer);--}}
+        function openFile(el){
+            var viewer = $("#file-viewer");
+            var fileUrl = $(el).data('file');
+            // console.log(fileUrl);
+            PDFObject.embed(fileUrl, viewer);
+        }
     </script>
 @endpush
