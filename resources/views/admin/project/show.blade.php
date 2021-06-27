@@ -273,7 +273,6 @@
                                                     @empty
                                                         <p class="text-center text-danger">Site Clearance Date Not Found</p>
                                                     @endforelse
-
                                                 </div>
                                             </div>
                                         </div>
@@ -344,7 +343,7 @@
                                                             <tr>
                                                                 <th scope="row">Attachment File</th>
                                                                 <td>
-                                                                    <button type="button" class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float" data-toggle="modal" data-target="#architecturalDrawing">
+                                                                    <button type="button" data-toggle="modal" data-target="#data_darget_file" onclick="openFile(this)" data-file="{{ asset('architectural-drawing-file/'.$architecturalDrawing->file) }}" class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float">
                                                                         <i class="material-icons">attachment</i>
                                                                     </button>
                                                                 </td>
@@ -359,18 +358,6 @@
                                                                 </td>
                                                             </tr>
                                                             </tbody>
-                                                            <!-- Modal Dialogs ======== -->
-                                                            <!-- Default Size -->
-                                                            <div class="modal fade" id="architecturalDrawing" tabindex="-1" role="dialog">
-                                                                <div class="modal-dialog" role="document">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-body">
-                                                                            <button class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float modal-close-btn-init" data-dismiss="modal"><i class="material-icons">cancel</i></button>
-                                                                            Lorem ipsum
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
                                                         </table>
                                                     @empty
                                                         <p class="text-center text-danger">Architectural Drawing Date not Found</p>
@@ -425,7 +412,7 @@
                                                                 <tr>
                                                                     <th scope="row">Attached File</th>
                                                                     <td>
-                                                                        <button type="button" class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float" data-toggle="modal" data-target="#structuralDesign">
+                                                                        <button type="button" data-toggle="modal" data-target="#data_darget_file" onclick="openFile(this)" data-file="{{ asset('structural-design-file/'.$structuralDesign->file) }}" class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float">
                                                                             <i class="material-icons">attachment</i>
                                                                         </button>
                                                                     </td>
@@ -440,19 +427,6 @@
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
-
-                                                            <!-- Modal Dialogs ======== -->
-                                                            <!-- Default Size -->
-                                                            <div class="modal fade" id="structuralDesign" tabindex="-1" role="dialog">
-                                                                <div class="modal-dialog" role="document">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-body">
-                                                                            <button class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float modal-close-btn-init" data-dismiss="modal"><i class="material-icons">cancel</i></button>
-                                                                            Lorem ipsum
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
                                                         </table>
                                                     @empty
                                                         <p class="text-center text-danger">Structural Design Date Not Found</p>
@@ -507,7 +481,7 @@
                                                             <tr>
                                                                 <th scope="row">Attachment File</th>
                                                                 <td>
-                                                                    <button type="button" class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float" data-toggle="modal" data-target="#interiorDetails">
+                                                                    <button type="button" data-toggle="modal" data-target="#data_darget_file" onclick="openFile(this)" data-file="{{ asset('interior-detail-file/'.$interiorDetail->file) }}" class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float">
                                                                         <i class="material-icons">attachment</i>
                                                                     </button>
                                                                 </td>
@@ -522,23 +496,79 @@
                                                                 </td>
                                                             </tr>
                                                             </tbody>
-                                                            <!-- Modal Dialogs ======== -->
-                                                            <!-- Default Size -->
-                                                            <div class="modal fade" id="interiorDetails" tabindex="-1" role="dialog">
-                                                                <div class="modal-dialog" role="document">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-body">
-                                                                            <button class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float modal-close-btn-init" data-dismiss="modal"><i class="material-icons">cancel</i></button>
-                                                                            Lorem ipsum
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
                                                         </table>
                                                     @empty
                                                         <p class="text-center text-danger">Interior Detail Date Not Found</p>
                                                     @endforelse
-
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-col-light-green">
+                                        <div class="panel-heading" role="tab" id="headingThree_23">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_23" href="#collapseThree_23" aria-expanded="false"
+                                                   aria-controls="collapseThree_23">
+                                                    <i class="material-icons">contact_phone</i> MEP
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseThree_23" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree_23">
+                                            <div class="panel-body">
+                                                <div class="table-responsive">
+                                                    @forelse($project->mEPs as $mEP)
+                                                        <table class="table table-hover table-bordered dashboard-task-infos">
+                                                            <tbody>
+                                                            <tr>
+                                                                <th scope="row">TaskTitle</th>
+                                                                <td>{{ ($mEP->task_title) }}</td>
+                                                                <th scope="row">Task Status</th>
+                                                                <td>
+                                                                    @if($mEP->status == true)
+                                                                        <span class="badge bg-blue">The End</span>
+                                                                    @else
+                                                                        <span class="badge bg-pink">Doing</span>
+                                                                    @endif
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Description</th>
+                                                                <td>{{ ($mEP->task_description) }}</td>
+                                                                <th scope="row">Supervisor</th>
+                                                                <td>{{ $mEP->worker->name }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Progress</th>
+                                                                <td>
+                                                                    <div class="progress">
+                                                                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="{{ $mEP->task_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $mEP->task_progress }}%"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <th scope="row">Start Date</th>
+                                                                <td>{{ \Carbon\Carbon::parse($mEP->start_date)->format('d/m/Y')}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Attachment File</th>
+                                                                <td>
+                                                                    <button type="button" data-toggle="modal" data-target="#data_darget_file" onclick="openFile(this)" data-file="{{ asset('m-e-p-file/'.$mEP->file) }}" class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float">
+                                                                        <i class="material-icons">attachment</i>
+                                                                    </button>
+                                                                </td>
+                                                                <th scope="row">End Date</th>
+                                                                <td>{{ \Carbon\Carbon::parse($mEP->end_date)->format('d/m/Y')}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row" colspan="2"></th>
+                                                                <th scope="row">Day Total</th>
+                                                                <td>
+                                                                    <span class="label bg-red">{{ \App\Classes\DayCount::days( $mEP->start_date, $mEP->end_date) }} Days</span>
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    @empty
+                                                        <p class="text-center text-danger">MEPs Date Not Found</p>
+                                                    @endforelse
                                                 </div>
                                             </div>
                                         </div>
@@ -609,7 +639,7 @@
                                                             <tr>
                                                                 <th scope="row">Attachment File</th>
                                                                 <td>
-                                                                    <button type="button" class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float" data-toggle="modal" data-target="#documentation">
+                                                                    <button type="button" data-toggle="modal" data-target="#data_darget_file" onclick="openFile(this)" data-file="{{ asset('documentation-file/'.$documentation->file) }}" class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float">
                                                                         <i class="material-icons">attachment</i>
                                                                     </button>
                                                                 </td>
@@ -624,18 +654,6 @@
                                                                 </td>
                                                             </tr>
                                                             </tbody>
-                                                            <!-- Modal Dialogs ======== -->
-                                                            <!-- Default Size -->
-                                                            <div class="modal fade" id="documentation" tabindex="-1" role="dialog">
-                                                                <div class="modal-dialog" role="document">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-body">
-                                                                            <button class="btn bg-blue btn-circle waves-effect waves-circle waves-light waves-float modal-close-btn-init" data-dismiss="modal"><i class="material-icons">cancel</i></button>
-                                                                            Lorem ipsum
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
                                                         </table>
                                                     @empty
                                                         <p class="text-center text-danger">Documentation Date not Found</p>

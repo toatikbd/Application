@@ -33,6 +33,10 @@ class Project extends Model
     {
         return $this->hasMany(InteriorDetail::class);
     }
+    public function MEPs()
+    {
+        return $this->hasMany(MEP::class);
+    }
     public function documentations()
     {
         return $this->hasMany(Documentation::class);

@@ -22,8 +22,6 @@
     <!--===============================================================================================-->
 </head>
 <body>
-
-
 <div class="bg-img1 size1 overlay1 p-t-24" style="background-image: url('{{ asset('website') }}/images/bg01.jpg');">
     <div class="flex-w flex-sb-m p-l-80 p-r-74 respon5">
         <div class="wrappic1 m-r-30 m-t-10 m-b-10">
@@ -41,7 +39,6 @@
                     <a href="{{ route('login') }}" class="size3 flex-c-m how-social trans-04 m-r-6">
                         <i class="fa fa-sign-in"></i>
                     </a>
-
                     @if (Route::has('register'))
                         <a href="{{ route('register') }}" class="size3 flex-c-m how-social trans-04 m-r-6">
                             <i class="fa fa-lock"></i>
@@ -50,21 +47,16 @@
                 @endauth
             </div>
         @endif
-
     </div>
-
     <div class="flex-w flex-sa p-r-200 respon1">
         <div class="p-b-60 respon3">
             <p class="l1-txt1 p-b-10 respon2">
-                Our website is
+                Our Application
             </p>
-
             <h3 class="l1-txt2 p-b-45 respon2 respon4">
                 Coming Soon
             </h3>
-
             <div class="cd100"></div>
-
         </div>
     </div>
 </div>

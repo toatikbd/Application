@@ -7,12 +7,13 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>@yield('title') - {{ config('app.name', 'TZ Admin') }}</title>
-
-
     <!-- Favicon-->
-    <link rel="icon" href="{{ asset('admin') }}/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/x-icon" href="{{ asset('admin') }}/favicon-ico/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('admin') }}/favicon-ico/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('admin') }}/favicon-ico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('admin') }}/favicon-ico/favicon-16x16.png">
+    <link rel="manifest" href="{{ asset('admin') }}/favicon-ico/site.webmanifest">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -20,23 +21,18 @@
 
     <!-- Bootstrap Core Css -->
     <link href="{{ asset('admin') }}/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
-
     <!-- Waves Effect Css -->
     <link href="{{ asset('admin') }}/plugins/node-waves/waves.css" rel="stylesheet" />
-
     <!-- Animation Css -->
     <link href="{{ asset('admin') }}/plugins/animate-css/animate.css" rel="stylesheet" />
     @stack('css')
     <!-- Custom Css -->
     <link href="{{ asset('admin') }}/css/style.css" rel="stylesheet">
-
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{ asset('admin') }}/css/themes/all-themes.css" rel="stylesheet" />
-
 </head>
 <body>
 <div id="app" class="theme-red">
-
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
@@ -79,13 +75,10 @@
     @include('layouts.partial.rightsidebar')
     <!-- #END# Right Sidebar -->
     </section>
-
     <section class="content">
         @yield('content')
     </section>
 </div>
-
-
 <!-- Jquery Core Js -->
 <script src="{{ asset('admin') }}/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap Core Js -->
@@ -107,8 +100,6 @@
 @stack('js')
 <!-- developer custom js -->
 <script src="{{ asset('admin') }}/js/dev-init.js"></script>
-
-
 </body>
 </html>
 
