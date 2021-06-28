@@ -16,7 +16,7 @@ class CreateDocumentationsTable extends Migration
         Schema::create('documentations', function (Blueprint $table) {
             $table->id();
             $table->string('task_title');
-            $table->string('slug')->unique();
+            $table->string('slug');
             $table->string('task_description');
             $table->integer('task_progress');
             $table->string('file')->nullable();

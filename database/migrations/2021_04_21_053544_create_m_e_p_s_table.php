@@ -15,7 +15,7 @@ class CreateMEPSTable extends Migration
     {
         Schema::create('m_e_p_s', function (Blueprint $table) {
             $table->id();
-            $table->string('task_title')->unique();
+            $table->string('task_title');
             $table->string('slug');
             $table->string('task_description');
             $table->integer('task_progress');

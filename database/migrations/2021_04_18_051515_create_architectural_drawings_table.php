@@ -15,7 +15,7 @@ class CreateArchitecturalDrawingsTable extends Migration
     {
         Schema::create('architectural_drawings', function (Blueprint $table) {
             $table->id();
-            $table->string('task_title')->unique();
+            $table->string('task_title');
             $table->string('slug');
             $table->string('task_description');
             $table->integer('task_progress');
