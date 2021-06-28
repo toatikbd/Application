@@ -10,10 +10,10 @@
             <div class="col-md-9">
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Admin
+                        TZ
                     </div>
                     <div class="email">
-                        Admin@gmail.com
+                        admin@tz.com
                     </div>
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
