@@ -1,70 +1,67 @@
 @extends('layouts.app')
-@section('title', 'Preliminary Work')
+@section('title', 'Financial Plan')
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h2>Preliminary Work <span class="badge bg-blue"></span></h2>
+            <h2>Financial Plan <span class="badge bg-blue"></span></h2>
+            <ol class="breadcrumb breadcrumb-col-pink breadcrumb-right-align">
+                <li><a href="{{ url('/home') }}"><i class="material-icons">home</i> Dashboard</a></li>
+                <li class="active"><i class="material-icons">archive</i> Financial Plan</li>
+            </ol>
         </div>
         <!-- Widgets -->
         <div class="row clearfix">
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <a href="{{ route('site-evaluation.index') }}" class="text-dec-none">
-                    <div class="info-box bg-pink hover-expand-effect cursor-pointer">
-                        <div class="icon">
-                            <i class="material-icons">playlist_add_check</i>
-                        </div>
-                        <div class="content">
-                            <div class="text">Site Evaluation</div>
-                            <div class="number count-to" data-from="0" data-to="{{ $siteEvaluations }}" data-speed="15" data-fresh-interval="20"></div>
-                        </div>
+            <!-- Task Info -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>Purchase Order</h2>
                     </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <a href="{{ route('mobilization.index') }}" class="text-dec-none">
-                    <div class="info-box bg-cyan hover-expand-effect cursor-pointer">
-                        <div class="icon">
-                            <i class="material-icons">help</i>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-bordered dashboard-task-infos table-striped dataTable js-basic-example">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Title</th>
+                                    <th>Purchase No</th>
+                                    <th>For Project</th>
+                                    <th>QTY</th>
+                                    <th>Total Price</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse ($purchaseOrders as $key => $order)
+                                        <tr>
+                                            <td>{{ $key + 1 }}</td>
+                                            <td>{{ Str::limit($order->title, 15) }}</td>
+                                            <td>{{ $order->po_no }}</td>
+                                            <td>{{ $order->project->name }}</td>
+                                            <td>{{ $order->quantity }}</td>
+                                            <td>{{ $order->total_price }}</td>
+                                        </tr>
+                                    @empty
+                                        <tr class="text-center text-danger">
+                                            <td colspan="6">Date Not Found</td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="5" class="text-right">Grand Total Amount</th>
+{{--                                        <th>{{ $purchaseOrders->count() }}</th>--}}
+                                        <th>{{$order->sum('total_price')}}</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
                         </div>
-                        <div class="content">
-                            <div class="text">Mobilization</div>
-                            <div class="number count-to" data-from="0" data-to="{{ $mobilizations }}" data-speed="1000" data-fresh-interval="20"></div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <a href="{{ route('site-clearance.index') }}" class="text-dec-none">
-                    <div class="info-box bg-blue hover-expand-effect cursor-pointer">
-                        <div class="icon">
-                            <i class="material-icons">forum</i>
-                        </div>
-                        <div class="content">
-                            <div class="text">Site Clearance </div>
-                            <div class="number count-to" data-from="0" data-to="{{ $siteClearances }}" data-speed="1000" data-fresh-interval="20"></div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="info-box bg-blue-grey hover-expand-effect">
-                    <div class="icon">
-                        <i class="material-icons">gps_fixed</i>
-                    </div>
-                    <div class="content">
-                        <div class="text">Upcoming</div>
-                        <div class="number count-to" data-from="0" data-to="0" data-speed="1000" data-fresh-interval="20"></div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- #END# Widgets -->
     </div>
-
 @endsection
-
 @push('js')
-    <script>
-
-    </script>
+    <script></script>
 @endpush

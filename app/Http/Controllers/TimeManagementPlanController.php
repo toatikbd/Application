@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\FinancialPlan;
-use App\Models\PurchaseOrder;
+use App\Models\TimeManagementPlan;
 use Illuminate\Http\Request;
 
-class FinancialPlanController extends Controller
+class TimeManagementPlanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class FinancialPlanController extends Controller
      */
     public function index()
     {
-        $purchaseOrders = PurchaseOrder::all();
-        return view('admin.financial-plan.index', compact('purchaseOrders'));
+        return view('admin.time-management-plan.index');
     }
 
     /**
@@ -43,10 +41,10 @@ class FinancialPlanController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\FinancialPlan  $financialPlan
+     * @param  \App\Models\TimeManagementPlan  $timeManagementPlan
      * @return \Illuminate\Http\Response
      */
-    public function show(FinancialPlan $financialPlan)
+    public function show(TimeManagementPlan $timeManagementPlan)
     {
         //
     }
@@ -54,10 +52,10 @@ class FinancialPlanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\FinancialPlan  $financialPlan
+     * @param  \App\Models\TimeManagementPlan  $timeManagementPlan
      * @return \Illuminate\Http\Response
      */
-    public function edit(FinancialPlan $financialPlan)
+    public function edit(TimeManagementPlan $timeManagementPlan)
     {
         //
     }
@@ -66,10 +64,10 @@ class FinancialPlanController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\FinancialPlan  $financialPlan
+     * @param  \App\Models\TimeManagementPlan  $timeManagementPlan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FinancialPlan $financialPlan)
+    public function update(Request $request, TimeManagementPlan $timeManagementPlan)
     {
         //
     }
@@ -77,10 +75,10 @@ class FinancialPlanController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\FinancialPlan  $financialPlan
+     * @param  \App\Models\TimeManagementPlan  $timeManagementPlan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(FinancialPlan $financialPlan)
+    public function destroy(TimeManagementPlan $timeManagementPlan)
     {
         //
     }

@@ -47,8 +47,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('/requisition-category', App\Http\Controllers\RequisitionCategoryController::class);
     Route::resource('/unit', App\Http\Controllers\UnitController::class);
     Route::resource('/purchase-order', App\Http\Controllers\PurchaseOrderController::class);
-
     Route::get('/invoice/{id}', [App\Http\Controllers\PurchaseOrderController::class, 'invoice'] );
+    Route::resource('/financial-plan', \App\Http\Controllers\FinancialPlanController::class);
+    Route::resource('/time-management-plan', \App\Http\Controllers\TimeManagementPlanController::class);
 });
 
 //Admin route
