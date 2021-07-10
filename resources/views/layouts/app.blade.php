@@ -32,74 +32,74 @@
     <link href="{{ asset('admin') }}/css/themes/all-themes.css" rel="stylesheet" />
 </head>
 <body>
-<div id="app" class="theme-red">
-    <!-- Page Loader -->
-    <div class="page-loader-wrapper">
-        <div class="loader">
-            <div class="preloader">
-                <div class="spinner-layer pl-red">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="circle-clipper right">
-                        <div class="circle"></div>
+    <div id="app" class="theme-red">
+        <!-- Page Loader -->
+        <div class="page-loader-wrapper">
+            <div class="loader">
+                <div class="preloader">
+                    <div class="spinner-layer pl-red">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
                     </div>
                 </div>
+                <p>Please wait...</p>
             </div>
-            <p>Please wait...</p>
         </div>
+        <!-- #END# Page Loader -->
+        <!-- Overlay For Sidebars -->
+        <div class="overlay"></div>
+        <!-- #END# Overlay For Sidebars -->
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <div class="search-icon">
+                <i class="material-icons">search</i>
+            </div>
+            <input type="text" placeholder="START TYPING...">
+            <div class="close-search">
+                <i class="material-icons">close</i>
+            </div>
+        </div>
+        <!-- #END# Search Bar -->
+        <!-- Top Bar -->
+        @include('layouts.partial.topbar')
+        <!-- #Top Bar -->
+        <section>
+            <!-- Left Sidebar -->
+        @include('layouts.partial.leftsidebar')
+        <!-- #END# Left Sidebar -->
+            <!-- Right Sidebar -->
+        @include('layouts.partial.rightsidebar')
+        <!-- #END# Right Sidebar -->
+        </section>
+        <section class="content">
+            @yield('content')
+        </section>
     </div>
-    <!-- #END# Page Loader -->
-    <!-- Overlay For Sidebars -->
-    <div class="overlay"></div>
-    <!-- #END# Overlay For Sidebars -->
-    <!-- Search Bar -->
-    <div class="search-bar">
-        <div class="search-icon">
-            <i class="material-icons">search</i>
-        </div>
-        <input type="text" placeholder="START TYPING...">
-        <div class="close-search">
-            <i class="material-icons">close</i>
-        </div>
-    </div>
-    <!-- #END# Search Bar -->
-    <!-- Top Bar -->
-    @include('layouts.partial.topbar')
-    <!-- #Top Bar -->
-    <section>
-        <!-- Left Sidebar -->
-    @include('layouts.partial.leftsidebar')
-    <!-- #END# Left Sidebar -->
-        <!-- Right Sidebar -->
-    @include('layouts.partial.rightsidebar')
-    <!-- #END# Right Sidebar -->
-    </section>
-    <section class="content">
-        @yield('content')
-    </section>
-</div>
-<!-- Jquery Core Js -->
-<script src="{{ asset('admin') }}/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap Core Js -->
-<script src="{{ asset('admin') }}/plugins/bootstrap/js/bootstrap.js"></script>
-<!-- Select Plugin Js -->
-<script src="{{ asset('admin') }}/plugins/bootstrap-select/js/bootstrap-select.js"></script>
-<!-- Slimscroll Plugin Js -->
-<script src="{{ asset('admin') }}/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-<!-- Waves Effect Plugin Js -->
-<script src="{{ asset('admin') }}/plugins/node-waves/waves.js"></script>
-<!-- Jquery CountTo Plugin Js -->
-<script src="{{ asset('admin') }}/plugins/jquery-countto/jquery.countTo.js"></script>
-<!-- pdf object -->
-<script src="{{ asset('admin') }}/js/pdfobject.min.js"></script>
-<!-- Custom Js -->
-<script src="{{ asset('admin') }}/js/admin.js"></script>
-<!-- Demo Js -->
-<script src="{{ asset('admin') }}/js/demo.js"></script>
-@stack('js')
-<!-- developer custom js -->
-<script src="{{ asset('admin') }}/js/dev-init.js"></script>
+    <!-- Jquery Core Js -->
+    <script src="{{ asset('admin') }}/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap Core Js -->
+    <script src="{{ asset('admin') }}/plugins/bootstrap/js/bootstrap.js"></script>
+    <!-- Select Plugin Js -->
+    <script src="{{ asset('admin') }}/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+    <!-- Slimscroll Plugin Js -->
+    <script src="{{ asset('admin') }}/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <!-- Waves Effect Plugin Js -->
+    <script src="{{ asset('admin') }}/plugins/node-waves/waves.js"></script>
+    <!-- Jquery CountTo Plugin Js -->
+    <script src="{{ asset('admin') }}/plugins/jquery-countto/jquery.countTo.js"></script>
+    <!-- pdf object -->
+    <script src="{{ asset('admin') }}/js/pdfobject.min.js"></script>
+    <!-- Custom Js -->
+    <script src="{{ asset('admin') }}/js/admin.js"></script>
+    <!-- Demo Js -->
+    <script src="{{ asset('admin') }}/js/demo.js"></script>
+    @stack('js')
+    <!-- developer custom js -->
+    <script src="{{ asset('admin') }}/js/dev-init.js"></script>
 </body>
 </html>
 

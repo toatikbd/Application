@@ -51,8 +51,8 @@ class ProjectController extends Controller
         $project->location = $request->location;
         $project->description = $request->description;
         $project->save();
-
         return redirect()->route('project.create');
+
     }
 
     /**

@@ -14,109 +14,34 @@
         </div>
         <!-- Widgets -->
         <div class="row clearfix">
-            <!-- Preliminary Work -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="card">
-                    <div class="header">
-                        <h2>Preliminary Work</h2>
-                    </div>
-                    <div class="body">
-                        <div class="table-responsive">
-                            <table class="table table-hover table-bordered dashboard-task-infos table-striped dataTable js-exportable">
-                                <thead>
-                                <tr>
-                                    <th width="40">#</th>
-                                    <th width="200">Project Name</th>
-                                    <th>Progress<span class="badge bg-pink">%</span></th>
-                                    <th class="text-center" width="100">Total Time</th>
-                                    <th class="text-right" width="50">Action</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($projects as $key => $project)
-                                        <tr>
-                                            <td>1</td>
-                                            <td>{{ $project->name }}</td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-green" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%"></div>
-                                                </div>
-                                            </td>
-                                            <td class="text-center">20 day</td>
-                                            <td class="text-right">
-                                                <a href="{{ route('project.show', $project->id) }}" class="btn btn-primary btn-xs waves-effect">
-                                                    <i class="material-icons">visibility</i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Design and Drawing -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="card">
-                    <div class="header">
-                        <h2>Design and Drawing</h2>
-                    </div>
-                    <div class="body">
-                        <div class="table-responsive">
-                            <table class="table table-hover table-bordered dashboard-task-infos table-striped dataTable js-exportable">
-                                <thead>
-                                <tr>
-                                    <th width="40">#</th>
-                                    <th width="200">Project Name</th>
-                                    <th>Progress<span class="badge bg-pink">%</span></th>
-                                    <th class="text-center" width="100">Total Time</th>
-                                    <th class="text-right" width="50">Action</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach ($siteEvaluations as $key => $siteEvaluation)
-                                    <tr>
-                                        <td>{{ $key + 1 }}</td>
-                                        <td>{{ Str::limit($siteEvaluation->task_title, 10) }}</td>
-                                        <td>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="{{ $siteEvaluation->task_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $siteEvaluation->task_progress }}%"></div>
-                                            </div>
-                                        </td>
-{{--                                        <td class="text-center">30</td>--}}
-                                        <td>
-                                            <span class="label bg-red">{{ \App\Classes\DayCount::days( $siteEvaluation->start_date, $siteEvaluation->end_date) }} Days</span>
-                                        </td>
-                                        <td class="text-right">
-                                            <a href="{{ route('project.show', $project->id) }}" class="btn btn-primary btn-xs waves-effect">
-                                                <i class="material-icons">visibility</i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Documentation -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="card">
-                    <div class="header">
-                        <h2>Documentation</h2>
-                    </div>
-                    <div class="body">
+            <!-- Badges -->
 
-                    </div>
+            @foreach ($projects as $key => $project)
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <ul class="list-group">
+                    <li class="list-group-item text-center bg-blue">{{ $project->name }}</li>
+                    <li class="list-group-item">Approximate Time <span class="badge bg-green">20</span></li>
+                    <li class="list-group-item">Leave Time <span class="badge bg-pink">15</span></li>
+                    <li class="list-group-item">Total Task <span class="badge bg-teal">99</span></li>
+                    <li class="list-group-item">Done Task <span class="badge bg-orange">21</span></li>
+                    <li class="list-group-item">
+                        <div class="progress">
+                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%"></div>
+                        </div>
+                    </li>
+                    <a href="#">
+                        <li class="text-center bg-blue">View Details</li>
+                    </a>
+                </ul>
                 </div>
-            </div>
+            @endforeach
 
         </div>
         <!-- #END# Widgets -->
     </div>
 @endsection
 @push('js')
-    <script></script>
+    <script>
+
+    </script>
 @endpush

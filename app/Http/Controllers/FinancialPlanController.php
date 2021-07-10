@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\FinancialPlan;
+use App\Models\Project;
 use App\Models\PurchaseOrder;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,8 @@ class FinancialPlanController extends Controller
      */
     public function index()
     {
-        $purchaseOrders = PurchaseOrder::all();
-        return view('admin.financial-plan.index', compact('purchaseOrders'));
+        $projects = Project::all();
+        return view('admin.financial-plan.index', compact('projects'));
     }
 
     /**

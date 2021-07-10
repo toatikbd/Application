@@ -12,52 +12,19 @@
         <!-- Widgets -->
         <div class="row clearfix">
             <!-- Task Info -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="card">
-                    <div class="header">
-                        <h2>Purchase Order</h2>
-                    </div>
-                    <div class="body">
-                        <div class="table-responsive">
-                            <table class="table table-hover table-bordered dashboard-task-infos table-striped dataTable js-basic-example">
-                                <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Title</th>
-                                    <th>Purchase No</th>
-                                    <th>For Project</th>
-                                    <th>QTY</th>
-                                    <th>Total Price</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                    @forelse ($purchaseOrders as $key => $order)
-                                        <tr>
-                                            <td>{{ $key + 1 }}</td>
-                                            <td>{{ Str::limit($order->title, 15) }}</td>
-                                            <td>{{ $order->po_no }}</td>
-                                            <td>{{ $order->project->name }}</td>
-                                            <td>{{ $order->quantity }}</td>
-                                            <td>{{ $order->total_price }}</td>
-                                        </tr>
-                                    @empty
-                                        <tr class="text-center text-danger">
-                                            <td colspan="6">Date Not Found</td>
-                                        </tr>
-                                    @endforelse
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th colspan="5" class="text-right">Grand Total Amount</th>
-{{--                                        <th>{{ $purchaseOrders->count() }}</th>--}}
-                                        <th>{{$order->sum('total_price')}}</th>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
-                    </div>
+            @foreach ($projects as $key => $project)
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <ul class="list-group">
+                        <li class="list-group-item text-center bg-blue">{{ $project->name }}</li>
+                        <li class="list-group-item">Estimate Amount <span class="badge bg-green">20</span></li>
+                        <li class="list-group-item">Expense Amount <span class="badge bg-pink">15</span></li>
+                        <li class="list-group-item">Balance Amount <span class="badge bg-teal">99</span></li>
+                        <a href="#">
+                            <li class="text-center bg-blue">View Details</li>
+                        </a>
+                    </ul>
                 </div>
-            </div>
+            @endforeach
         </div>
         <!-- #END# Widgets -->
     </div>

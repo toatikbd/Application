@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mobilization;
 use App\Models\Project;
-use App\Models\SiteClearance;
-use App\Models\SiteEvaluation;
 use App\Models\TimeManagementPlan;
 use Illuminate\Http\Request;
 
@@ -19,10 +16,7 @@ class TimeManagementPlanController extends Controller
     public function index()
     {
         $projects = Project::all();
-        $siteClearances = SiteClearance::all();
-        $mobilizations = Mobilization::all();
-        $siteEvaluations = SiteEvaluation::all();
-        return view('admin.time-management-plan.index', compact('projects','siteClearances', 'mobilizations', 'siteEvaluations'));
+        return view('admin.time-management-plan.index', compact('projects'));
     }
 
     /**
