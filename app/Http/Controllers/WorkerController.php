@@ -51,7 +51,7 @@ class WorkerController extends Controller
 
         $image = $request->file('image');
         $imageName = time() . '.' . $image->extension();
-        $image->move(public_path('uploaded/supervisor'), $imageName);
+        $image->move(public_path('uploaded/worker'), $imageName);
 
         $worker = new Worker();
         $worker->name = $request->name;
@@ -106,13 +106,13 @@ class WorkerController extends Controller
 
         if ($imageFile = $request->file('image'))
         {
-            $oldImage = public_path(). "/uploaded/supervisor/". $worker->image;
+            $oldImage = public_path(). "/uploaded/worker/". $worker->image;
             if (file_exists($oldImage))
             {
                 unlink($oldImage);
             }
             $imageName = time() . '.' . $imageFile->extension();
-            $imageFile->move(public_path('uploaded/supervisor'), $imageName);
+            $imageFile->move(public_path('uploaded/worker'), $imageName);
             $worker->image = $imageName;
         }
 
@@ -134,7 +134,7 @@ class WorkerController extends Controller
      */
     public function destroy(Worker $worker)
     {
-        $oldImage = public_path(). "/uploaded/supervisor/". $worker->image;
+        $oldImage = public_path(). "/uploaded/worker/". $worker->image;
         if (file_exists($oldImage))
         {
             unlink($oldImage);

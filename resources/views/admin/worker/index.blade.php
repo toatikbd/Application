@@ -46,7 +46,7 @@
                                             <td>{{ $worker->email }}</td>
                                             <td>{{ $worker->mobile }}</td>
                                             <td>
-                                                <img class="img-responsive thumbnail" width="50" height="auto" src="{{ asset('uploaded/supervisor/'.$worker->image) }}" alt="{{ $worker->name }}">
+                                                <img class="img-responsive thumbnail" width="50" height="auto" src="{{ asset('uploaded/worker/'.$worker->image) }}" alt="{{ $worker->name }}">
                                             </td>
                                             <td>{{ Str::limit($worker->job_title, 10) }}</td>
                                             <td>{{ Str::limit($worker->department, 10) }}</td>

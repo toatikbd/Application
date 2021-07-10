@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Expense;
+use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ExpenseController extends Controller
 {
@@ -14,7 +16,8 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-        //
+        $expenses = Expense::latest()->get();
+        return view('admin.expense.index', compact('expenses'));
     }
 
     /**
@@ -24,7 +27,8 @@ class ExpenseController extends Controller
      */
     public function create()
     {
-        //
+        $projects = Project::latest()->get();
+        return view('admin.expense.create', compact('projects'));
     }
 
     /**
@@ -35,7 +39,20 @@ class ExpenseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'amount' => 'required',
+        ]);
+
+        $expense = new Expense();
+        $expense->title = $request->title;
+        $expense->slug = Str::slug($request-> title);
+        $expense->amount = $request->amount;
+        $expense->project_id = $request->project_id;
+        $expense->employee_id = $request->employee_id;
+        $expense->note = $request->note;
+        $expense->save();
+        return redirect()->route('expense.index');
     }
 
     /**
@@ -57,7 +74,7 @@ class ExpenseController extends Controller
      */
     public function edit(Expense $expense)
     {
-        //
+        return view('admin.expense.edit', compact('expense'));
     }
 
     /**
@@ -69,7 +86,19 @@ class ExpenseController extends Controller
      */
     public function update(Request $request, Expense $expense)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'amount' => 'required',
+        ]);
+
+        $expense->title = $request->title;
+        $expense->slug = Str::slug($request-> title);
+        $expense->amount = $request->amount;
+        $expense->project_id = $request->project_id;
+        $expense->employee_id = $request->employee_id;
+        $expense->note = $request->note;
+        $expense->save();
+        return redirect()->route('expense.index');
     }
 
     /**
@@ -80,6 +109,7 @@ class ExpenseController extends Controller
      */
     public function destroy(Expense $expense)
     {
-        //
+        $expense->delete();
+        return redirect()->back();
     }
 }

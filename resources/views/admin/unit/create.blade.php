@@ -110,7 +110,6 @@
                                             <td>{{ Str::limit($unit->symbol, 15) }}</td>
                                             <td>{{ Str::limit($unit->qty_name, 15) }}</td>
                                             <td class="text-right">
-
                                                 <form action="{{ route('unit.destroy',$unit->id) }}" method="POST">
                                                     <a href="{{ route('unit.edit', $unit->id) }}" class="btn btn-warning btn-xs waves-effect">
                                                         <i class="material-icons">edit</i>
@@ -120,14 +119,12 @@
                                                     <button class="btn  btn-xs btn-danger waves-effect" type="submit">
                                                       <i class="material-icons">delete</i>
                                                     </button>
-
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

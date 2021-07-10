@@ -79,12 +79,6 @@
                     <span>Documentation</span>
                 </a>
             </li>
-            <li class="{{ Request::is('financial-plan*') ? 'active' : '' }}">
-                <a href="{{ route('financial-plan.index') }}">
-                    <i class="material-icons">attach_money</i>
-                    <span>Financial Plan</span>
-                </a>
-            </li>
             <li class="{{ Request::is('contractor*') ? 'active' : '' }}">
                 <a href="{{ route('contractor.index') }}">
                     <i class="material-icons">content_paste</i>
@@ -97,12 +91,27 @@
                     <span>Time Management Plan</span>
                 </a>
             </li>
+            <li>
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">attach_money</i>
+                    <span>Financial Maps</span>
+                </a>
+                <ul class="ml-menu">
+                    <li {{ Request::is('financial-plan*') ? 'active' : '' }}>
+                        <a href="{{ route('financial-plan.index') }}">Financial Plan</a>
+                    </li>
+                    <li {{ Request::is('expense*') ? 'active' : '' }}>
+                        <a href="{{ route('expense.index') }}">Expense</a>
+                    </li>
+                </ul>
+            </li>
             <li class="{{ Request::is('procurement*') ? 'active' : '' }}">
                 <a href="{{ route('procurement.index') }}">
                     <i class="material-icons">import_export</i>
                     <span>Procurement Plan</span>
                 </a>
             </li>
+
         </ul>
     </div>
     <!-- #Menu -->
