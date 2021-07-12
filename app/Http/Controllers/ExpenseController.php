@@ -74,7 +74,8 @@ class ExpenseController extends Controller
      */
     public function edit(Expense $expense)
     {
-        return view('admin.expense.edit', compact('expense'));
+        $projects = Project::latest()->get();
+        return view('admin.expense.edit', compact('expense', 'projects'));
     }
 
     /**

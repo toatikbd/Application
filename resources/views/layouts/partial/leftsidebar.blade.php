@@ -111,7 +111,17 @@
                     <span>Procurement Plan</span>
                 </a>
             </li>
-
+            <li>
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">manage_accounts</i>
+                    <span>Setting</span>
+                </a>
+                <ul class="ml-menu">
+                    <li {{ Request::is('financial-plan*') ? 'active' : '' }}>
+                        <a href="{{ route('financial-plan.index') }}">Employee</a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </div>
     <!-- #Menu -->
