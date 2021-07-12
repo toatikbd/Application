@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class EmployeeController extends Controller
 {
@@ -25,7 +26,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.employee.create');
     }
 
     /**
@@ -36,7 +37,29 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|unique:employees|max:255',
+            'mobile' => 'required|unique:employees|max:255',
+            'job_title' => 'required',
+            'department' => 'required',
+            'image' =>  'required|image|mimes:jpeg,png,jpg'
+        ]);
+
+        $image = $request->file('image');
+        $imageName = time() . '.' . $image->extension();
+        $image->move(public_path('uploaded/employee'), $imageName);
+
+        $employee = new Employee();
+        $employee->name = $request->name;
+        $employee->slug = Str::slug($request-> name);
+        $employee->email = $request->email;
+        $employee->mobile = $request->mobile;
+        $employee->job_title = $request->job_title;
+        $employee->department = $request->department;
+        $employee->image = $imageName;
+        $employee->save();
+        return redirect()->route('employee.index');
     }
 
     /**
@@ -58,7 +81,7 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        //
+        return view('admin.employee.edit', compact('employee'));
     }
 
     /**
@@ -70,7 +93,34 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'mobile' => 'required',
+            'job_title' => 'required',
+            'department' => 'required'
+        ]);
+
+        if ($imageFile = $request->file('image'))
+        {
+            $oldImage = public_path(). "/uploaded/employee/". $employee->image;
+            if (file_exists($oldImage))
+            {
+                unlink($oldImage);
+            }
+            $imageName = time() . '.' . $imageFile->extension();
+            $imageFile->move(public_path('uploaded/employee'), $imageName);
+            $employee->image = $imageName;
+        }
+
+        $employee->name = $request->name;
+        $employee->slug = Str::slug($request-> name);
+        $employee->email = $request->email;
+        $employee->mobile = $request->mobile;
+        $employee->job_title = $request->job_title;
+        $employee->department = $request->department;
+        $employee->save();
+        return redirect()->route('employee.index');
     }
 
     /**
@@ -81,6 +131,12 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        //
+        $oldImage = public_path(). "/uploaded/employee/". $employee->image;
+        if (file_exists($oldImage))
+        {
+            unlink($oldImage);
+        }
+        $employee->delete();
+        return redirect()->back();
     }
 }
