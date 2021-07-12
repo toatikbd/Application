@@ -30,14 +30,41 @@
                                     <label class="error">{{ $message }}</label>
                                     @enderror
                                 </div>
-                                <label for="owner">Owner Name</label>
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" id="owner" name="owner" autocomplete="off" class="form-control @error('owner') is-invalid @enderror" placeholder="Enter Project Owner Name">
+                                <div class="row clearfix">
+                                    <div class="col-md-6">
+                                        <label for="owner">Owner Name</label>
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" id="owner" name="owner" autocomplete="off" class="form-control @error('owner') is-invalid @enderror" placeholder="Enter Project Owner Name">
+                                            </div>
+                                            @error('owner')
+                                            <label class="error">{{ $message }}</label>
+                                            @enderror
+                                        </div>
                                     </div>
-                                    @error('owner')
-                                    <label class="error">{{ $message }}</label>
-                                    @enderror
+                                    <div class="col-md-6">
+                                        <label for="amount">Estimate Amount</label>
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" id="amount" name="amount" autocomplete="off" class="form-control @error('amount') is-invalid @enderror" placeholder="Enter Project Amount">
+                                            </div>
+                                            @error('amount')
+                                            <label class="error">{{ $message }}</label>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <label for="end_date">Approximate Time</label>
+                                <div class="form-line">
+                                    <div class="input-daterange input-group" id="bs_datepicker_range_container">
+                                        <div class="form-line">
+                                            <input type="text" name="start_date" autocomplete="off" class="form-control" placeholder="Date start..." au>
+                                        </div>
+                                        <span class="input-group-addon">to</span>
+                                        <div class="form-line">
+                                            <input type="text" name="end_date" autocomplete="off" class="form-control" placeholder="Date end..." autocomplete="off">
+                                        </div>
+                                    </div>
                                 </div>
                                 <label for="location">Location</label>
                                 <div class="form-group">

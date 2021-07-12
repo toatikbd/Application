@@ -18,8 +18,12 @@ class CreateProjectsTable extends Migration
             $table->string('name')->unique();
             $table->string('slug');
             $table->string('owner');
+            $table->integer('amount');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->string('location');
             $table->text('description')->nullable();
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }
