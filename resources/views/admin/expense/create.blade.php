@@ -45,6 +45,17 @@
                                 <label class="error">{{ $message }}</label>
                                 @enderror
                             </div>
+                            <label for="select_worker">Select Employee</label>
+                            <div class="form-group {{ $errors->has('employees') ? 'focused error' : '' }}">
+                                <div class="form-line custom-live-search">
+                                    <select class="form-control show-tick" id="select_worker" name="employee_id" data-live-search="true">
+                                        <option selected disabled>-- Please select employee--</option>
+                                        @foreach($employees as $key => $employee)
+                                            <option value="{{ $employee->id }}"> {{ $employee->name }} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                             <label for="select_worker">Select Project</label>
                             <div class="form-group {{ $errors->has('projects') ? 'focused error' : '' }}">
                                 <div class="form-line custom-live-search">

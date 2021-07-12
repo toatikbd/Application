@@ -33,7 +33,7 @@
                                         <th>Title</th>
                                         <th>Amount</th>
                                         <th>Project</th>
-{{--                                        <th>Employee </th>--}}
+                                        <th>Employee </th>
                                         <th>Note</th>
                                         <th class="text-right">Action</th>
                                     </tr>
@@ -45,7 +45,7 @@
                                         <td>{{ $expense->title }}</td>
                                         <td>{{ $expense->amount }}</td>
                                         <td>{{ $expense->project->name }}</td>
-{{--                                        <td>{{ $expense->employee->name }}</td>--}}
+                                        <td>{{ $expense->employee->name }}</td>
                                         <td>{{ $expense->note }}</td>
                                         <td class="text-right">
                                             <form action="{{ route('expense.destroy',$expense->id) }}" method="POST">

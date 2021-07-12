@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
 use App\Models\Expense;
 use App\Models\Project;
 use Illuminate\Http\Request;
@@ -28,7 +29,8 @@ class ExpenseController extends Controller
     public function create()
     {
         $projects = Project::latest()->get();
-        return view('admin.expense.create', compact('projects'));
+        $employees = Employee::latest()->get();
+        return view('admin.expense.create', compact('projects', 'employees'));
     }
 
     /**
@@ -75,7 +77,8 @@ class ExpenseController extends Controller
     public function edit(Expense $expense)
     {
         $projects = Project::latest()->get();
-        return view('admin.expense.edit', compact('expense', 'projects'));
+        $employees = Employee::latest()->get();
+        return view('admin.expense.edit', compact('expense', 'projects', 'employees'));
     }
 
     /**
