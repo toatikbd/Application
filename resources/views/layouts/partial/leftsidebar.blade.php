@@ -117,8 +117,8 @@
                     <span>Setting</span>
                 </a>
                 <ul class="ml-menu">
-                    <li {{ Request::is('financial-plan*') ? 'active' : '' }}>
-                        <a href="{{ route('financial-plan.index') }}">Employee</a>
+                    <li {{ Request::is('employee*') ? 'active' : '' }}>
+                        <a href="{{ route('employee.index') }}">Employee</a>
                     </li>
                 </ul>
             </li>
