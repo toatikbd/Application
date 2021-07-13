@@ -10,6 +10,7 @@ class Project extends Model
     use HasFactory;
     protected $guarded = ["created_at", "deleted_at", "updated_at"];
     protected $dates = ["start_date", "end_date"];
+
     public function mobilizations()
     {
         return $this->hasMany(Mobilization::class);
@@ -53,6 +54,10 @@ class Project extends Model
     public function purchaseOrders()
     {
         return $this->hasMany(PurchaseOrder::class);
+    }
+    public function expenses()
+    {
+        return $this->hasMany(Expense::class);
     }
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Expense;
 use App\Models\FinancialPlan;
 use App\Models\Project;
 use App\Models\PurchaseOrder;
@@ -16,7 +17,7 @@ class FinancialPlanController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project::with('expenses')->get();
         return view('admin.financial-plan.index', compact('projects'));
     }
 

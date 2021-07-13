@@ -22,12 +22,12 @@
                     <li class="list-group-item text-center bg-blue">{{ $project->name }}</li>
                     <li class="list-group-item">Approximate Time
                         <span class="badge bg-green">
-                            {{ $project->start_date->diff($project->end_date)->days }}
+                            {{ $project->start_date->diff($project->end_date)->days }} DAY
                         </span>
                     </li>
                     <li class="list-group-item">Leave Time
                         <span class="badge bg-pink">
-                            {{ $project->start_date->diffInDays() }}
+                            {{ $project->start_date->diffInDays() }} DAY
                         </span>
                     </li>
                     <li class="list-group-item">Total Task
@@ -53,19 +53,16 @@
                             </div>
                         </div>
                     </li>
-                    <a href="#">
+                    <a href="{{ route('project.show', $project->id) }}">
                         <li class="text-center bg-blue">View Details</li>
                     </a>
                 </ul>
                 </div>
             @endforeach
-
         </div>
         <!-- #END# Widgets -->
     </div>
 @endsection
 @push('js')
-    <script>
-
-    </script>
+    <script></script>
 @endpush
