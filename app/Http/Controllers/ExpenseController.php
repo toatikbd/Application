@@ -44,6 +44,8 @@ class ExpenseController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'amount' => 'required',
+            'project_id' => 'required',
+            'employee_id' => 'required',
         ]);
 
         $expense = new Expense();
@@ -93,6 +95,9 @@ class ExpenseController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'amount' => 'required',
+            'project_id' => 'required',
+            'employee_id' => 'required',
+
         ]);
 
         $expense->title = $request->title;

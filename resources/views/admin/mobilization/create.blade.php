@@ -74,10 +74,10 @@
                                             <input type="text" name="task_progress" autocomplete="off" class="form-control" placeholder="10%">
                                         </div>
                                         <span class="input-group-addon">%</span>
+                                        <label>Value Min 1 to Max 100</label>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="col-md-8">
                                 <label for="task_file">File Upload</label>
                                 <div class="form-group">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -41,6 +42,9 @@ class ProjectController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:projects|max:255',
             'owner' => 'required',
+            'amount' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
             'location' => 'required',
             'description' => 'required'
         ]);
@@ -48,6 +52,9 @@ class ProjectController extends Controller
         $project->name = $request->name;
         $project->slug = Str::slug($request-> name);
         $project->owner = $request->owner;
+        $project->amount = $request->amount;
+        $project->start_date = Carbon::createFromFormat('d-m-Y',$request->start_date);
+        $project->end_date = Carbon::createFromFormat('d-m-Y',$request->end_date);
         $project->location = $request->location;
         $project->description = $request->description;
         $project->save();
@@ -90,6 +97,9 @@ class ProjectController extends Controller
         $this->validate(request(), [
             'name' => "required|unique:projects,name,{$id}",
             'owner' => 'required',
+            'amount' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
             'location' => 'required',
             'description' => 'required'
         ]);
@@ -97,6 +107,9 @@ class ProjectController extends Controller
         $project->name = $request->name;
         $project->slug = Str::slug($request->name);
         $project->owner = $request->owner;
+        $project->amount = $request->amount;
+        $project->start_date = Carbon::createFromFormat('d-m-Y',$request->start_date);
+        $project->end_date = Carbon::createFromFormat('d-m-Y',$request->end_date);
         $project->location = $request->location;
         $project->description = $request->description;
         $project->save();

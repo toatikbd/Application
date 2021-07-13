@@ -50,7 +50,13 @@
                                                 <th scope="row">Progress</th>
                                                 <td>
                                                     <div class="progress">
-                                                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="{{ $mEP->task_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $mEP->task_progress }}%"></div>
+                                                        <div class="progress-bar bg-green"
+                                                             role="progressbar"
+                                                             aria-valuenow="{{ $mEP->task_progress }}"
+                                                             aria-valuemin="0" aria-valuemax="100"
+                                                             style="width: {{ $mEP->task_progress }}%">
+                                                            {{ $mEP->task_progress }}%
+                                                        </div>
                                                     </div>
                                                 </td>
                                             </tr>

@@ -20,13 +20,37 @@
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <ul class="list-group">
                     <li class="list-group-item text-center bg-blue">{{ $project->name }}</li>
-                    <li class="list-group-item">Approximate Time <span class="badge bg-green">20</span></li>
-                    <li class="list-group-item">Leave Time <span class="badge bg-pink">15</span></li>
-                    <li class="list-group-item">Total Task <span class="badge bg-teal">99</span></li>
-                    <li class="list-group-item">Done Task <span class="badge bg-orange">21</span></li>
+                    <li class="list-group-item">Approximate Time
+                        <span class="badge bg-green">
+                            {{ $project->start_date->diff($project->end_date)->days }}
+                        </span>
+                    </li>
+                    <li class="list-group-item">Leave Time
+                        <span class="badge bg-pink">
+                            {{ $project->start_date->diffInDays() }}
+                        </span>
+                    </li>
+                    <li class="list-group-item">Total Task
+                        <span class="badge bg-teal">
+                            {{ $total_task = $project->mobilizations->count() + $project->siteEvaluations->count() }}
+                        </span>
+                    </li>
+                    <li class="list-group-item">Done Task
+                        <span class="badge bg-orange">
+                            {{ $total_end_task = $project->mobilizations->where('status', true)->count() + $project->siteEvaluations->where('status', true)->count() }}
+                        </span>
+                    </li>
                     <li class="list-group-item">
                         <div class="progress">
-                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%"></div>
+                            <div
+                                class="progress-bar bg-green"
+                                role="progressbar"
+                                aria-valuenow="50"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                                style="width: {{ $total_task>0 ? ($total_end_task/$total_task)*100 : 0 }}%">
+                                {{ $total_task>0 ? ($total_end_task/$total_task)*100 : 0 }}%
+                            </div>
                         </div>
                     </li>
                     <a href="#">

@@ -75,6 +75,7 @@
                                         </div>
                                         <span class="input-group-addon">%</span>
                                     </div>
+                                    <label>Value Min 1 to Max 100</label>
                                 </div>
                             </div>
                             <div class="col-md-8">

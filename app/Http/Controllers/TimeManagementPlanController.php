@@ -15,7 +15,7 @@ class TimeManagementPlanController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project::with('mobilizations', 'siteEvaluations')->get();
         return view('admin.time-management-plan.index', compact('projects'));
     }
 

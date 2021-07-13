@@ -49,7 +49,13 @@
                                                     <th scope="row">Progress</th>
                                                     <td>
                                                         <div class="progress">
-                                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="{{ $documentation->task_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $documentation->task_progress }}%"></div>
+                                                            <div class="progress-bar bg-green"
+                                                                 role="progressbar"
+                                                                 aria-valuenow="{{ $documentation->task_progress }}"
+                                                                 aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: {{ $documentation->task_progress }}%">
+                                                                {{ $documentation->task_progress }}%
+                                                            </div>
                                                         </div>
                                                     </td>
                                                 </tr>

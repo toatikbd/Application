@@ -1,5 +1,11 @@
 @extends('layouts.app')
 @section('title', 'Project')
+@push('css')
+    <!-- Bootstrap Material Datetime Picker Css -->
+    <link href="{{ asset('admin') }}/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+    <!-- Bootstrap DatePicker Css -->
+    <link href="{{ asset('admin') }}/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
+@endpush
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
@@ -144,5 +150,8 @@
     @endsection
 
     @push('js')
-
+        <!-- Bootstrap Material Datetime Picker Plugin Js -->
+        <script src="{{ asset('admin') }}/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+        <!-- Bootstrap Datepicker Plugin Js -->
+        <script src="{{ asset('admin') }}/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
     @endpush

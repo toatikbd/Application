@@ -32,7 +32,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Task Title</th>
-                                    <th>Progress<span class="badge bg-pink">%</span></th>
+                                    <th>Progress</th>
                                     <th>Supervisor</th>
                                     <th>Project Name</th>
                                     <th>Start Date</th>
@@ -48,8 +48,14 @@
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ Str::limit($siteEvaluation->task_title, 10) }}</td>
                                     <td>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="{{ $siteEvaluation->task_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $siteEvaluation->task_progress }}%"></div>
+                                        <div class="progress" style="height: 20px">
+                                            <div class="progress-bar bg-green"
+                                                 role="progressbar"
+                                                 aria-valuenow="{{ $siteEvaluation->task_progress }}"
+                                                 aria-valuemin="0" aria-valuemax="100"
+                                                 style="width: {{ $siteEvaluation->task_progress }}%">
+                                                {{ $siteEvaluation->task_progress }}%
+                                            </div>
                                         </div>
                                     </td>
                                     <td>{{ optional($siteEvaluation->worker)->name }}</td>

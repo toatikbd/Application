@@ -48,23 +48,29 @@
                             <label for="select_worker">Select Employee</label>
                             <div class="form-group {{ $errors->has('employees') ? 'focused error' : '' }}">
                                 <div class="form-line custom-live-search">
-                                    <select class="form-control show-tick" id="select_worker" name="employee_id" data-live-search="true">
+                                    <select class="form-control show-tick @error('employee_id') is-invalid @enderror" id="select_worker" name="employee_id" data-live-search="true">
                                         <option selected disabled>-- Please select employee--</option>
                                         @foreach($employees as $key => $employee)
                                             <option value="{{ $employee->id }}"> {{ $employee->name }} </option>
                                         @endforeach
                                     </select>
+                                    @error('employee_id')
+                                    <label class="error">{{ $message }}</label>
+                                    @enderror
                                 </div>
                             </div>
-                            <label for="select_worker">Select Project</label>
+                            <label for="select_project">Select Project</label>
                             <div class="form-group {{ $errors->has('projects') ? 'focused error' : '' }}">
                                 <div class="form-line custom-live-search">
-                                    <select class="form-control show-tick" id="select_worker" name="project_id" data-live-search="true">
+                                    <select class="form-control show-tick @error('project_id') is-invalid @enderror" id="select_project" name="project_id" data-live-search="true">
                                         <option selected disabled>-- Please select project--</option>
                                         @foreach($projects as $key => $project)
                                             <option value="{{ $project->id }}"> {{ $project->name }} </option>
                                         @endforeach
                                     </select>
+                                    @error('project_id')
+                                    <label class="error">{{ $message }}</label>
+                                    @enderror
                                 </div>
                             </div>
                             <label for="note">Note</label>

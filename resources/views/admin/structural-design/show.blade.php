@@ -50,7 +50,13 @@
                                                     <th scope="row">Progress</th>
                                                     <td>
                                                         <div class="progress">
-                                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="{{ $structuralDesign->task_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $structuralDesign->task_progress }}%"></div>
+                                                            <div class="progress-bar bg-green"
+                                                                 role="progressbar"
+                                                                 aria-valuenow="{{ $structuralDesign->task_progress }}"
+                                                                 aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: {{ $structuralDesign->task_progress }}%">
+                                                                {{ $structuralDesign->task_progress }}%
+                                                            </div>
                                                         </div>
                                                     </td>
                                                 </tr>

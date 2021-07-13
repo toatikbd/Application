@@ -32,7 +32,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Task Title</th>
-                                    <th>Progress<span class="badge bg-pink">%</span></th>
+                                    <th>Progress</th>
                                     <th>Supervisor</th>
                                     <th>Project Name</th>
                                     <th>Start Date</th>
@@ -49,7 +49,13 @@
                                     <td>{{ Str::limit($mobilization->task_title, 10) }}</td>
                                     <td>
                                         <div class="progress">
-                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="{{ $mobilization->task_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $mobilization->task_progress }}%"></div>
+                                            <div class="progress-bar bg-green"
+                                                 role="progressbar"
+                                                 aria-valuenow="{{ $mobilization->task_progress }}"
+                                                 aria-valuemin="0" aria-valuemax="100"
+                                                 style="width: {{ $mobilization->task_progress }}%">
+                                                {{ $mobilization->task_progress }}%
+                                            </div>
                                         </div>
                                     </td>
                                     <td>{{ $mobilization->worker->name }}</td>

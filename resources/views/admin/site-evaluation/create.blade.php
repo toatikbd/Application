@@ -71,10 +71,18 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="form-line">
-                                            <input type="text" name="task_progress" autocomplete="off" class="form-control" placeholder="10%">
+                                            <input
+                                                type="text"
+                                               name="task_progress"
+                                               min="1" max="100"
+                                               autocomplete="off"
+                                               class="form-control"
+                                               placeholder="10%"
+                                            >
                                         </div>
                                         <span class="input-group-addon">%</span>
                                     </div>
+                                    <label>Value Min 1 to Max 100</label>
                                 </div>
                             </div>
                             <div class="col-md-8">
