@@ -23,20 +23,20 @@
                         </li>
                         <li class="list-group-item">Purchase Amount
                             <span class="badge bg-pink">
-                                15
+                                {{ $purchase_total = $project->purchaseOrders->sum('total_price')}}
                             </span>
                         </li>
                         <li class="list-group-item">Expense Amount
                             <span class="badge bg-pink">
-                                50
+                                {{ $expenses_total = $project->expenses->sum('amount')}}
                             </span>
                         </li>
                         <li class="list-group-item">Balance Amount
                             <span class="badge bg-teal">
-                                {{number_format(5000 - 2080, 2)}}
+                                {{number_format($project->amount - ($purchase_total + $expenses_total), 2)}}
                             </span>
                         </li>
-                        <a href="#">
+                        <a href="{{ route('project.show', $project->id) }}">
                             <li class="text-center bg-blue">View Details</li>
                         </a>
                     </ul>

@@ -22,12 +22,12 @@
                     <li class="list-group-item text-center bg-blue">{{ $project->name }}</li>
                     <li class="list-group-item">Approximate Time
                         <span class="badge bg-green">
-                            {{ $project->start_date->diff($project->end_date)->days }} DAY
+                            {{ $project->start_date->diffForHumans($project->end_date,['parts'=>2,'syntax' => 1]) }}
                         </span>
                     </li>
                     <li class="list-group-item">Leave Time
                         <span class="badge bg-pink">
-                            {{ $project->start_date->diffInDays() }} DAY
+                            {{ $project->start_date->diffForHumans(['parts'=>2,'syntax' => 1]) }}
                         </span>
                     </li>
                     <li class="list-group-item">Total Task
