@@ -23,12 +23,12 @@
                         </li>
                         <li class="list-group-item">Purchase Amount
                             <span class="badge bg-pink">
-                                {{ $purchase_total = $project->purchaseOrders->sum('total_price')}}
+                                {{ number_format($purchase_total = $project->purchaseOrders->sum('total_price'), 2) }}
                             </span>
                         </li>
                         <li class="list-group-item">Expense Amount
                             <span class="badge bg-pink">
-                                {{ $expenses_total = $project->expenses->sum('amount')}}
+                                {{ number_format($expenses_total = $project->expenses->sum('amount'), 2) }}
                             </span>
                         </li>
                         <li class="list-group-item">Balance Amount

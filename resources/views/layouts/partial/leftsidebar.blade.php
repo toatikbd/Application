@@ -2,12 +2,12 @@
     <!-- User Info -->
     <div class="user-info">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3 col-sm-3 col-xs-3">
                 <div class="image">
                     <img src="{{ asset('admin') }}/images/user.png" width="48" height="48" alt="User" />
                 </div>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-9 col-sm-9 col-xs-9">
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         TZ
