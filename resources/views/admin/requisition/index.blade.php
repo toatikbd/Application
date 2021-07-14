@@ -57,7 +57,7 @@
                                     <td class="text-right">
                                         <form action="{{ route('purchase-order.create') }}" method="GET">
                                             <input type="hidden" value="{{ $requisition->id }}" name="requisition_id">
-                                            <button class="btn btn-primary btn-xs waves-effect">
+                                            <button class="btn btn-success btn-xs waves-effect">
                                                 Make a PO
                                             </button>
                                         </form>

@@ -763,15 +763,15 @@
                                                             <tbody>
                                                             <tr>
                                                                 <th scope="row">Title</th>
-                                                                <td>{{ ($requisition->title) }}</td>
-                                                                <th scope="row">Status</th>
-                                                                <td>
-                                                                    @if($requisition->approved_by == true)
-                                                                        <span class="badge bg-blue">Approved</span>
-                                                                    @else
-                                                                        <span class="badge bg-pink">Unapproved</span>
-                                                                    @endif
-                                                                </td>
+                                                                <td colspan="3">{{ ($requisition->title) }}</td>
+{{--                                                                <th scope="row">Status</th>--}}
+{{--                                                                <td>--}}
+{{--                                                                    @if($requisition->approved_by == true)--}}
+{{--                                                                        <span class="badge bg-blue">Approved</span>--}}
+{{--                                                                    @else--}}
+{{--                                                                        <span class="badge bg-pink">Unapproved</span>--}}
+{{--                                                                    @endif--}}
+{{--                                                                </td>--}}
                                                             </tr>
                                                             <tr>
                                                                 <th scope="row">Requisition Number</th>
@@ -830,42 +830,32 @@
                                         <div id="collapseTwo_22" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo_22">
                                             <div class="panel-body">
                                                 <div class="table-responsive">
-                                                    @forelse($project->requisitions as $requisition)
-                                                        <table class="table table-hover table-bordered dashboard-task-infos">
-                                                            <tbody>
+                                                    <table class="table table-hover table-bordered dashboard-task-infos">
+                                                        <tbody>
                                                             <tr>
-                                                                <th scope="row">Title</th>
-                                                                <td>{{ ($requisition->title) }}</td>
+                                                                <th>#</th>
+                                                                <th>Product Name</th>
+                                                                <th>PO Number</th>
+                                                                <th>RQ Number</th>
+                                                                <th>Quantity</th>
+                                                                <th>Unit Price</th>
+                                                                <th>Total Price</th>
                                                             </tr>
+                                                            @forelse($project->purchaseOrders as $key => $purchaseOrder)
                                                             <tr>
-                                                                <th scope="row">Requisition Number</th>
-                                                                <td>{{ ($requisition->requisition_no) }}</td>
+                                                                <td>{{ $key + 1 }}</td>
+                                                                <td>{{ $purchaseOrder->title }}</td>
+                                                                <td>{{ ($purchaseOrder->po_no) }}</td>
+                                                                <td>{{ ($purchaseOrder->requisition_no) }}</td>
+                                                                <td>{{ $purchaseOrder->quantity }}</td>
+                                                                <td>{{ $purchaseOrder->price }}</td>
+                                                                <td>{{ $purchaseOrder->total_price }}</td>
                                                             </tr>
-                                                            <tr>
-                                                                <th scope="row">Category</th>
-                                                                <td>{{ $requisition->requisitionCategory->name }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">Requisition Type</th>
-                                                                <td>{{ $requisition->requisition_type }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">Manufacturer</th>
-                                                                <td>{{ $requisition->manufacturer }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">Country of Origin</th>
-                                                                <td>{{ $requisition->requisitionCountry->name }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">Description</th>
-                                                                <td>{{ $requisition->description }}</td>
-                                                            </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    @empty
-                                                        <p class="text-center text-danger">Purchase Order Date Not Found</p>
-                                                    @endforelse
+                                                            @empty
+                                                                <td colspan="6" class="text-center text-danger">Purchase Order Date Not Found</td>
+                                                            @endforelse
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                             </div>
                                         </div>

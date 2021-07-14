@@ -14,45 +14,91 @@
                     </a>
                 </li>
                 <!-- #END# Call Search -->
-                <!-- Notifications -->
+                <!-- Preliminary Work -->
                 <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
                         <i class="material-icons">layers</i>
-                        <span class="label-count">5</span>
                     </a>
                     <ul class="dropdown-menu">
                         <li class="header">Preliminary Work</li>
                         <li class="body">
                             <ul class="menu">
-{{--                                <li>--}}
-{{--                                    <a href="javascript:void(0);">--}}
-{{--                                        <div class="icon-circle bg-red">--}}
-{{--                                            <i class="material-icons">delete_forever</i>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="menu-info">--}}
-{{--                                            <h4><b>Nancy Doe</b> deleted account</h4>--}}
-{{--                                            <p>--}}
-{{--                                                <i class="material-icons">access_time</i> 3 hours ago--}}
-{{--                                            </p>--}}
-{{--                                        </div>--}}
-{{--                                    </a>--}}
-{{--                                </li>--}}
-                                <li class="{{ Request::is('preliminary-work*') ? 'active' : '' }}">
-                                    <a href="{{ route('preliminary-work.index') }}">
-                                        <i class="material-icons">layers</i>
-                                        <span>Preliminary Work</span>
+                                <li>
+                                    <a href="javascript:void(0);">
+                                        <div class="icon-circle bg-green">
+                                            <i class="material-icons">add</i>
+                                        </div>
+                                        <div class="menu-info">
+                                            <h4><b>Up</b> Upcoming</h4>
+                                            <p>
+                                                <i class="material-icons">access_time</i> 00 hours ago
+                                            </p>
+                                        </div>
                                     </a>
                                 </li>
                             </ul>
                         </li>
                     </ul>
                 </li>
-                <!-- #END# Notifications -->
+                <!-- #END# Preliminary Work -->
+                <!-- Design and Drawing -->
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                        <i class="material-icons">gesture</i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">Design and Drawing</li>
+                        <li class="body">
+                            <ul class="menu">
+                                <li>
+                                    <a href="javascript:void(0);">
+                                        <div class="icon-circle bg-green">
+                                            <i class="material-icons">add</i>
+                                        </div>
+                                        <div class="menu-info">
+                                            <h4><b>Up</b> Upcoming</h4>
+                                            <p>
+                                                <i class="material-icons">access_time</i> 00 hours ago
+                                            </p>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <!-- #END# Design and Drawing -->
+                <!-- Documentation -->
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                        <i class="material-icons">insert_drive_file</i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">Documentation</li>
+                        <li class="body">
+                            <ul class="menu">
+                                <li>
+                                    <a href="javascript:void(0);">
+                                        <div class="icon-circle bg-green">
+                                            <i class="material-icons">add</i>
+                                        </div>
+                                        <div class="menu-info">
+                                            <h4><b>Up</b> Upcoming</h4>
+                                            <p>
+                                                <i class="material-icons">access_time</i> 00 hours ago
+                                            </p>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <!-- #END# Documentation -->
                 <!-- Tasks -->
                 <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
                         <i class="material-icons">work</i>
-                        <span class="label-count">5</span>
                     </a>
                     <ul class="dropdown-menu">
                         <li class="header">Projects</li>
@@ -61,11 +107,11 @@
                                 <li>
                                     <a href="javascript:void(0);">
                                         <h4>
-                                            Footer display issue
+                                            Up Coming
                                             <small>32%</small>
                                         </h4>
                                         <div class="progress">
-                                            <div class="progress-bar bg-pink" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 32%">
+                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 32%">
                                             </div>
                                         </div>
                                     </a>

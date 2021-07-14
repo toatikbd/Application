@@ -7,7 +7,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="block-header">
-            <h2>All Expense <span class="badge bg-blue">23</span></h2>
+            <h2>All Expense <span class="badge bg-blue">{{ $expenses->count() }}</span></h2>
             <ol class="breadcrumb breadcrumb-col-pink breadcrumb-right-align">
                 <li><a href="{{ url('/home') }}"><i class="material-icons">home</i> Dashboard</a></li>
                 <li class="active"><i class="material-icons">archive</i>Expense</li>
