@@ -128,7 +128,7 @@
     <!-- Footer -->
     <div class="legal">
         <div class="copyright" style="margin-bottom: -5px;">
-            &copy; 2021<a href="javascript:void(0);">TZ - Application</a>.
+            &copy; 2021 <a href="javascript:void(0);">TZ - App</a>
         </div>
         <div class="version">
             <b>Version: </b> 0.1.0
