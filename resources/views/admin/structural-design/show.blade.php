@@ -49,7 +49,7 @@
                                                 <tr>
                                                     <th scope="row">Progress</th>
                                                     <td>
-                                                        <div class="progress">
+                                                        <div class="progress height-20">
                                                             <div class="progress-bar bg-green"
                                                                  role="progressbar"
                                                                  aria-valuenow="{{ $structuralDesign->task_progress }}"

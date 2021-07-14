@@ -49,12 +49,12 @@
                                                 <tr>
                                                     <th scope="row">Progress</th>
                                                     <td>
-                                                        <div class="progress">
+                                                        <div class="progress height-20">
                                                             <div class="progress-bar bg-green"
                                                                  role="progressbar"
                                                                  aria-valuenow="{{ $architecturalDrawing->task_progress }}"
                                                                  aria-valuemin="0" aria-valuemax="100"
-                                                                 tyle="width: {{ $architecturalDrawing->task_progress }}%">
+                                                                 style="width: {{ $architecturalDrawing->task_progress }}%">
                                                                 {{ $architecturalDrawing->task_progress }}%
                                                             </div>
                                                         </div>

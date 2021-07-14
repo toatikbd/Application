@@ -32,12 +32,28 @@
                     </li>
                     <li class="list-group-item">Total Task
                         <span class="badge bg-teal">
-                            {{ $total_task = $project->mobilizations->count() + $project->siteEvaluations->count() }}
+                            {{ $total_task = $project->mobilizations->count()
+                                            + $project->siteEvaluations->count()
+                                            + $project->siteClearances->count()
+                                            + $project->architecturalDrawings->count()
+                                            + $project->structuralDesigns->count()
+                                            + $project->interiorDetails->count()
+                                            + $project->MEPs->count()
+                                            + $project->documentations->count()
+                             }}
                         </span>
                     </li>
                     <li class="list-group-item">Done Task
                         <span class="badge bg-orange">
-                            {{ $total_end_task = $project->mobilizations->where('status', true)->count() + $project->siteEvaluations->where('status', true)->count() }}
+                            {{ $total_end_task = $project->mobilizations->where('status', true)->count()
+                                                + $project->siteEvaluations->where('status', true)->count()
+                                                + $project->siteClearances->where('status', true)->count()
+                                                + $project->architecturalDrawings->where('status', true)->count()
+                                                + $project->structuralDesigns->where('status', true)->count()
+                                                + $project->interiorDetails->where('status', true)->count()
+                                                + $project->MEPs->where('status', true)->count()
+                                                + $project->documentations->where('status', true)->count()
+                             }}
                         </span>
                     </li>
                     <li class="list-group-item">

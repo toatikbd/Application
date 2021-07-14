@@ -48,13 +48,13 @@
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ Str::limit($interiorDetail->task_title, 10) }}</td>
                                     <td>
-                                        <div class="progress">
+                                        <div class="progress height-20">
                                             <div class="progress-bar bg-green"
                                                  role="progressbar"
                                                  aria-valuenow="{{ $interiorDetail->task_progress }}"
                                                  aria-valuemin="0" aria-valuemax="100"
                                                  style="width: {{ $interiorDetail->task_progress }}%">
-                                                {{ $interiorDetail->task_progress }}%"
+                                                {{ $interiorDetail->task_progress }}%
                                             </div>
                                         </div>
                                     </td>

@@ -48,7 +48,7 @@
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ Str::limit($siteClearance->task_title, 10) }}</td>
                                     <td>
-                                        <div class="progress">
+                                        <div class="progress height-20">
                                             <div class="progress-bar bg-green"
                                                  role="progressbar"
                                                  aria-valuenow="{{ $siteClearance->task_progress }}"
